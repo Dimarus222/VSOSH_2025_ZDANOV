@@ -2,7 +2,8 @@
 <html lang="ru">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Создание QR-кода</title>
+	<meta charset="utf-8">
+    <title>Г‘Г®Г§Г¤Г Г­ГЁГҐ QR-ГЄГ®Г¤Г </title>
     <style>
  body {
             font-family: 'Arial', sans-serif;
@@ -11,12 +12,12 @@
             padding: 0;
             background-color: #e9ecef;
             color: #343a40;
-            font-size: 1em; /* Базовый размер шрифта для всей страницы */
+            font-size: 1em; /* ГЃГ Г§Г®ГўГ»Г© Г°Г Г§Г¬ГҐГ° ГёГ°ГЁГґГІГ  Г¤Г«Гї ГўГ±ГҐГ© Г±ГІГ°Г Г­ГЁГ¶Г» */
         }
         header {
             background-color: #007bff;
             color: white;
-            padding: 2em 0; /* Используем em для отступов */
+            padding: 2em 0; /* Г€Г±ГЇГ®Г«ГјГ§ГіГҐГ¬ em Г¤Г«Гї Г®ГІГ±ГІГіГЇГ®Гў */
             border-radius: 0 0 0.8em 0.8em;
             position: relative;
         }
@@ -82,8 +83,8 @@
         }
         .create-qr-button {
             position: absolute;
-            top: 7em; /* Примерное значение, нужно подобрать под высоту шапки */
-            right: 1em; /* Отступ справа */
+            top: 7em; /* ГЏГ°ГЁГ¬ГҐГ°Г­Г®ГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ, Г­ГіГ¦Г­Г® ГЇГ®Г¤Г®ГЎГ°Г ГІГј ГЇГ®Г¤ ГўГ»Г±Г®ГІГі ГёГ ГЇГЄГЁ */
+            right: 1em; /* ГЋГІГ±ГІГіГЇ Г±ГЇГ°Г ГўГ  */
         }
 
         footer {
@@ -95,17 +96,17 @@
 </head>
 <body>
     <header>
-        <h1>Создание QR-кода</h1>
+        <h1>Г‘Г®Г§Г¤Г Г­ГЁГҐ QR-ГЄГ®Г¤Г </h1>
     </header>
-<a href="index.html" class="custom-button-1 create-qr-button">Проверить QR-код</a> <!-- Кнопка перехода -->
+<a href="index.html" class="custom-button-1 create-qr-button">ГЏГ°Г®ГўГҐГ°ГЁГІГј QR-ГЄГ®Г¤</a> <!-- ГЉГ­Г®ГЇГЄГ  ГЇГҐГ°ГҐГµГ®Г¤Г  -->
     <div id="content">
-        <input type="text" id="text-input" placeholder="Введите текст или URL" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-        <button class="custom-button" id="generate-button">Создать QR-код</button>
+        <input type="text" id="text-input" placeholder="Г‚ГўГҐГ¤ГЁГІГҐ ГІГҐГЄГ±ГІ ГЁГ«ГЁ URL" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+        <button class="custom-button" id="generate-button">Г‘Г®Г§Г¤Г ГІГј QR-ГЄГ®Г¤</button>
         <div id="qr-code"></div>
-        <a id="download-button" class="custom-button" style="display:none;">Скачать QR-код</a>
+        <a id="download-button" class="custom-button" style="display:none;">Г‘ГЄГ Г·Г ГІГј QR-ГЄГ®Г¤</a>
     </div>
     <footer>
-        <p>© 2023 Проверка QR-кодов. Все права защищены.</p>
+        <p>В© 2023 ГЏГ°Г®ГўГҐГ°ГЄГ  QR-ГЄГ®Г¤Г®Гў. Г‚Г±ГҐ ГЇГ°Г ГўГ  Г§Г Г№ГЁГ№ГҐГ­Г».</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/qrious/dist/qrious.min.js"></script>
@@ -117,18 +118,18 @@
 
         generateButton.addEventListener('click', () => {
             const qr = new QRious({
-                element: document.createElement('canvas'), // Создаем элемент canvas для QR-кода
+                element: document.createElement('canvas'), // Г‘Г®Г§Г¤Г ГҐГ¬ ГЅГ«ГҐГ¬ГҐГ­ГІ canvas Г¤Г«Гї QR-ГЄГ®Г¤Г 
                 value: textInput.value,
-                size: 300 // Размер QR-кода
+                size: 300 // ГђГ Г§Г¬ГҐГ° QR-ГЄГ®Г¤Г 
             });
 
-            qrCodeDiv.innerHTML = ''; // Очищаем предыдущий QR-код
-            qrCodeDiv.appendChild(qr.canvas); // Добавляем новый QR-код
+            qrCodeDiv.innerHTML = ''; // ГЋГ·ГЁГ№Г ГҐГ¬ ГЇГ°ГҐГ¤Г»Г¤ГіГ№ГЁГ© QR-ГЄГ®Г¤
+            qrCodeDiv.appendChild(qr.canvas); // Г„Г®ГЎГ ГўГ«ГїГҐГ¬ Г­Г®ГўГ»Г© QR-ГЄГ®Г¤
 
-            // Настройка кнопки для скачивания
-            downloadButton.style.display = 'block'; // Показываем кнопку
-            downloadButton.href = qr.toDataURL(); // Устанавливаем ссылку на изображение
-            downloadButton.download = 'qrcode.png'; // Устанавливаем имя файла для загрузки
+            // ГЌГ Г±ГІГ°Г®Г©ГЄГ  ГЄГ­Г®ГЇГЄГЁ Г¤Г«Гї Г±ГЄГ Г·ГЁГўГ Г­ГЁГї
+            downloadButton.style.display = 'block'; // ГЏГ®ГЄГ Г§Г»ГўГ ГҐГ¬ ГЄГ­Г®ГЇГЄГі
+            downloadButton.href = qr.toDataURL(); // Г“Г±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ Г±Г±Г»Г«ГЄГі Г­Г  ГЁГ§Г®ГЎГ°Г Г¦ГҐГ­ГЁГҐ
+            downloadButton.download = 'qrcode.png'; // Г“Г±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ ГЁГ¬Гї ГґГ Г©Г«Г  Г¤Г«Гї Г§Г ГЈГ°ГіГ§ГЄГЁ
         });
     </script>
 </body>
