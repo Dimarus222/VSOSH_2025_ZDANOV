@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание QR-кода</title>
+    <style>
+ body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #e9ecef;
+            color: #343a40;
+            font-size: 1em; /* Базовый размер шрифта для всей страницы */
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 2em 0; /* Используем em для отступов */
+            border-radius: 0 0 0.8em 0.8em;
+            position: relative;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        #content {
+            max-width: 37.5em; /* 600px / 16px = 37.5em */
+            margin: 4em auto;
+            background: white;
+            border-radius: 0.8em;
+            box-shadow: 0 0.25em 1.25em rgba(0, 0, 0, 0.2);
+            padding: 2em;
+        }
+        #qr-input {
+            display: none;
+        }
+        .custom-button-1 {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.6em 1.25em;
+            border-radius: 0.3em;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+}
+    .custom-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.6em 1.25em;
+            border-radius: 0.3em;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+		margin:1em auto;
+        }
+        .custom-button:hover {
+            background-color: #0056b3;
+        }
+        #upload-button {
+            margin: 1.25em 0;
+        }
+        #qrcode {
+            margin: 1.25em auto;
+            display: flex;
+            justify-content: center;
+        }
+         #result {
+            margin-top: 1.25em;
+            font-weight: bold;
+            padding: 0.6em;
+            border: 1px solid #ddd;
+            border-radius: 0.3em;
+            background-color: #f9f9f9;
+            white-space: pre-wrap;
+            overflow-wrap: break-word;
+            max-height: 12.5em;
+            overflow: auto;
+            text-align: left;
+        }
+        .create-qr-button {
+            position: absolute;
+            top: 7em; /* Примерное значение, нужно подобрать под высоту шапки */
+            right: 1em; /* Отступ справа */
+        }
+
+        footer {
+            margin: 1.25em 0;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Создание QR-кода</h1>
+    </header>
+<a href="index.html" class="custom-button-1 create-qr-button">Проверить QR-код</a> <!-- Кнопка перехода -->
+    <div id="content">
+        <input type="text" id="text-input" placeholder="Введите текст или URL" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+        <button class="custom-button" id="generate-button">Создать QR-код</button>
+        <div id="qr-code"></div>
+        <a id="download-button" class="custom-button" style="display:none;">Скачать QR-код</a>
+    </div>
+    <footer>
+        <p>© 2023 Проверка QR-кодов. Все права защищены.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrious/dist/qrious.min.js"></script>
+    <script>
+        const generateButton = document.getElementById('generate-button');
+        const qrCodeDiv = document.getElementById('qr-code');
+        const textInput = document.getElementById('text-input');
+        const downloadButton = document.getElementById('download-button');
+
+        generateButton.addEventListener('click', () => {
+            const qr = new QRious({
+                element: document.createElement('canvas'), // Создаем элемент canvas для QR-кода
+                value: textInput.value,
+                size: 300 // Размер QR-кода
+            });
+
+            qrCodeDiv.innerHTML = ''; // Очищаем предыдущий QR-код
+            qrCodeDiv.appendChild(qr.canvas); // Добавляем новый QR-код
+
+            // Настройка кнопки для скачивания
+            downloadButton.style.display = 'block'; // Показываем кнопку
+            downloadButton.href = qr.toDataURL(); // Устанавливаем ссылку на изображение
+            downloadButton.download = 'qrcode.png'; // Устанавливаем имя файла для загрузки
+        });
+    </script>
+</body>
+</html>
