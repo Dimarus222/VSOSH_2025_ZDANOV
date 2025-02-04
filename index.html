@@ -2,7 +2,8 @@
 <html lang="ru">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Проверка безопасности QR-кода</title>
+	<meta charset="utf-8">
+    <title>ГЏГ°Г®ГўГҐГ°ГЄГ  ГЎГҐГ§Г®ГЇГ Г±Г­Г®Г±ГІГЁ QR-ГЄГ®Г¤Г </title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -11,12 +12,12 @@
             padding: 0;
             background-color: #e9ecef;
             color: #343a40;
-            font-size: 1em; /* Базовый размер шрифта для всей страницы */
+            font-size: 1em; /* ГЃГ Г§Г®ГўГ»Г© Г°Г Г§Г¬ГҐГ° ГёГ°ГЁГґГІГ  Г¤Г«Гї ГўГ±ГҐГ© Г±ГІГ°Г Г­ГЁГ¶Г» */
         }
         header {
             background-color: #007bff;
             color: white;
-            padding: 2em 0; /* Используем em для отступов */
+            padding: 2em 0; /* Г€Г±ГЇГ®Г«ГјГ§ГіГҐГ¬ em Г¤Г«Гї Г®ГІГ±ГІГіГЇГ®Гў */
             border-radius: 0 0 0.8em 0.8em;
             position: relative;
         }
@@ -82,8 +83,8 @@
         }
         .create-qr-button {
             position: absolute;
-            top: 7em; /* Примерное значение, нужно подобрать под высоту шапки */
-            right: 1em; /* Отступ справа */
+            top: 7em; /* ГЏГ°ГЁГ¬ГҐГ°Г­Г®ГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ, Г­ГіГ¦Г­Г® ГЇГ®Г¤Г®ГЎГ°Г ГІГј ГЇГ®Г¤ ГўГ»Г±Г®ГІГі ГёГ ГЇГЄГЁ */
+            right: 1em; /* ГЋГІГ±ГІГіГЇ Г±ГЇГ°Г ГўГ  */
         }
 
         footer {
@@ -95,20 +96,20 @@
 </head>
 <body>
     <header>
-        <h1>Проверка безопасности QR-кода</h1>
+        <h1>ГЏГ°Г®ГўГҐГ°ГЄГ  ГЎГҐГ§Г®ГЇГ Г±Г­Г®Г±ГІГЁ QR-ГЄГ®Г¤Г </h1>
         
     </header>
-<a href="cr.html" class="custom-button-1 create-qr-button">Создать QR-код</a> <!-- Кнопка перехода -->
+<a href="cr.html" class="custom-button-1 create-qr-button">Г‘Г®Г§Г¤Г ГІГј QR-ГЄГ®Г¤</a> <!-- ГЉГ­Г®ГЇГЄГ  ГЇГҐГ°ГҐГµГ®Г¤Г  -->
     <div id="content">
-        <p>Загрузите изображение с QR-кодом:</p>
-        <label for="qr-input" class="custom-button" id="upload-button">Выбрать файл</label>
+        <p>Г‡Г ГЈГ°ГіГ§ГЁГІГҐ ГЁГ§Г®ГЎГ°Г Г¦ГҐГ­ГЁГҐ Г± QR-ГЄГ®Г¤Г®Г¬:</p>
+        <label for="qr-input" class="custom-button" id="upload-button">Г‚Г»ГЎГ°Г ГІГј ГґГ Г©Г«</label>
         <input type="file" id="qr-input" accept="image/*">
         <div id="qrcode"></div>
         <div id="result"></div>
-        <button class="custom-button" onclick="getAllQRCodes()">Показать все QR-коды</button>
+        <button class="custom-button" onclick="getAllQRCodes()">ГЏГ®ГЄГ Г§Г ГІГј ГўГ±ГҐ QR-ГЄГ®Г¤Г»</button>
     </div>
     <footer>
-        <p>© 2023 Проверка QR-кодов. Все права защищены.</p>
+        <p>В© 2023 ГЏГ°Г®ГўГҐГ°ГЄГ  QR-ГЄГ®Г¤Г®Гў. Г‚Г±ГҐ ГЇГ°Г ГўГ  Г§Г Г№ГЁГ№ГҐГ­Г».</p>
     </footer>
 
     <script>
@@ -116,61 +117,61 @@
             "http://example-phishing.com",
             "http://malicious-site.com",
             "http://scam-website.com",
-            // Добавьте свои фишинговые ссылки здесь
+            // Г„Г®ГЎГ ГўГјГІГҐ Г±ГўГ®ГЁ ГґГЁГёГЁГ­ГЈГ®ГўГ»ГҐ Г±Г±Г»Г«ГЄГЁ Г§Г¤ГҐГ±Гј
         ];
 
-        // Объяснения по фишинговым сайтам
+        // ГЋГЎГєГїГ±Г­ГҐГ­ГЁГї ГЇГ® ГґГЁГёГЁГ­ГЈГ®ГўГ»Г¬ Г±Г Г©ГІГ Г¬
         const phishingExplanations = {
-            "http://example-phishing.com": "Этот сайт имеет плохую репутацию и часто используется для фишинга.",
-            "http://malicious-site.com": "Известно, что этот сайт содержит вредоносные программы.",
-            "http://scam-website.com": "Этот сайт был связан с мошенническими действиями, что вызывает необходимость в осторожности.",
-            // Добавьте объяснения для других ссылок
+            "http://example-phishing.com": "ГќГІГ®ГІ Г±Г Г©ГІ ГЁГ¬ГҐГҐГІ ГЇГ«Г®ГµГіГѕ Г°ГҐГЇГіГІГ Г¶ГЁГѕ ГЁ Г·Г Г±ГІГ® ГЁГ±ГЇГ®Г«ГјГ§ГіГҐГІГ±Гї Г¤Г«Гї ГґГЁГёГЁГ­ГЈГ .",
+            "http://malicious-site.com": "Г€Г§ГўГҐГ±ГІГ­Г®, Г·ГІГ® ГЅГІГ®ГІ Г±Г Г©ГІ Г±Г®Г¤ГҐГ°Г¦ГЁГІ ГўГ°ГҐГ¤Г®Г­Г®Г±Г­Г»ГҐ ГЇГ°Г®ГЈГ°Г Г¬Г¬Г».",
+            "http://scam-website.com": "ГќГІГ®ГІ Г±Г Г©ГІ ГЎГ»Г« Г±ГўГїГ§Г Г­ Г± Г¬Г®ГёГҐГ­Г­ГЁГ·ГҐГ±ГЄГЁГ¬ГЁ Г¤ГҐГ©Г±ГІГўГЁГїГ¬ГЁ, Г·ГІГ® ГўГ»Г§Г»ГўГ ГҐГІ Г­ГҐГ®ГЎГµГ®Г¤ГЁГ¬Г®Г±ГІГј Гў Г®Г±ГІГ®Г°Г®Г¦Г­Г®Г±ГІГЁ.",
+            // Г„Г®ГЎГ ГўГјГІГҐ Г®ГЎГєГїГ±Г­ГҐГ­ГЁГї Г¤Г«Гї Г¤Г°ГіГЈГЁГµ Г±Г±Г»Г«Г®ГЄ
         };
 
-        const safeComment = "Этот сайт безопасен и имеет хорошую репутацию среди пользователей.";
+        const safeComment = "ГќГІГ®ГІ Г±Г Г©ГІ ГЎГҐГ§Г®ГЇГ Г±ГҐГ­ ГЁ ГЁГ¬ГҐГҐГІ ГµГ®Г°Г®ГёГіГѕ Г°ГҐГЇГіГІГ Г¶ГЁГѕ Г±Г°ГҐГ¤ГЁ ГЇГ®Г«ГјГ§Г®ГўГ ГІГҐГ«ГҐГ©.";
 
         const qrInput = document.getElementById('qr-input');
         const resultDiv = document.getElementById('result');
         const qrcodeDiv = document.getElementById('qrcode');
         let db;
 
-        // Инициализация IndexedDB.
+        // Г€Г­ГЁГ¶ГЁГ Г«ГЁГ§Г Г¶ГЁГї IndexedDB.
         function initDB() {
             const request = indexedDB.open("QRCodeDB", 1);
 
             request.onupgradeneeded = (event) => {
                 db = event.target.result;
-                const objectStore = db.createObjectStore("qrcodes", { keyPath: "url" }); // Используем URL в качестве ключа
+                const objectStore = db.createObjectStore("qrcodes", { keyPath: "url" }); // Г€Г±ГЇГ®Г«ГјГ§ГіГҐГ¬ URL Гў ГЄГ Г·ГҐГ±ГІГўГҐ ГЄГ«ГѕГ·Г 
                 objectStore.createIndex("status", "status", { unique: false });
             };
 
             request.onsuccess = (event) => {
                 db = event.target.result;
-                console.log("База данных успешно инициализирована");
+                console.log("ГЃГ Г§Г  Г¤Г Г­Г­Г»Гµ ГіГ±ГЇГҐГёГ­Г® ГЁГ­ГЁГ¶ГЁГ Г«ГЁГ§ГЁГ°Г®ГўГ Г­Г ");
             };
 
             request.onerror = (event) => {
-                console.error("Ошибка при открытии базы данных:", event);
+                console.error("ГЋГёГЁГЎГЄГ  ГЇГ°ГЁ Г®ГІГЄГ°Г»ГІГЁГЁ ГЎГ Г§Г» Г¤Г Г­Г­Г»Гµ:", event);
             };
         }
 
-        // Функция для добавления QR-кода в базу данных.
+        // Г”ГіГ­ГЄГ¶ГЁГї Г¤Г«Гї Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГї QR-ГЄГ®Г¤Г  Гў ГЎГ Г§Гі Г¤Г Г­Г­Г»Гµ.
         function addQRCode(url, status, comment) {
             const transaction = db.transaction(["qrcodes"], "readwrite");
             const objectStore = transaction.objectStore("qrcodes");
 
-            const request = objectStore.put({ url, status, comment }); // Добавляем поле comment
+            const request = objectStore.put({ url, status, comment }); // Г„Г®ГЎГ ГўГ«ГїГҐГ¬ ГЇГ®Г«ГҐ comment
 
             request.onsuccess = () => {
-                console.log("QR-код добавлен или обновлен в базе данных");
+                console.log("QR-ГЄГ®Г¤ Г¤Г®ГЎГ ГўГ«ГҐГ­ ГЁГ«ГЁ Г®ГЎГ­Г®ГўГ«ГҐГ­ Гў ГЎГ Г§ГҐ Г¤Г Г­Г­Г»Гµ");
             };
 
             request.onerror = (event) => {
-                console.error("Ошибка при добавлении QR-кода в базу данных:", event);
+                console.error("ГЋГёГЁГЎГЄГ  ГЇГ°ГЁ Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГЁ QR-ГЄГ®Г¤Г  Гў ГЎГ Г§Гі Г¤Г Г­Г­Г»Гµ:", event);
             };
         }
 
-        // Функция для получения статуса URL из IndexedDB.
+        // Г”ГіГ­ГЄГ¶ГЁГї Г¤Г«Гї ГЇГ®Г«ГіГ·ГҐГ­ГЁГї Г±ГІГ ГІГіГ±Г  URL ГЁГ§ IndexedDB.
         function getQRCodeStatus(url) {
             return new Promise((resolve, reject) => {
                 const transaction = db.transaction(["qrcodes"], "readonly");
@@ -179,19 +180,19 @@
 
                 request.onsuccess = (event) => {
                     if (event.target.result) {
-                        resolve(event.target.result); // Возвращаем весь объект
+                        resolve(event.target.result); // Г‚Г®Г§ГўГ°Г Г№Г ГҐГ¬ ГўГҐГ±Гј Г®ГЎГєГҐГЄГІ
                     } else {
-                        resolve(null); // Если запись не найдена
+                        resolve(null); // Г…Г±Г«ГЁ Г§Г ГЇГЁГ±Гј Г­ГҐ Г­Г Г©Г¤ГҐГ­Г 
                     }
                 };
 
                 request.onerror = (event) => {
-                    reject("Ошибка при извлечении QR-кода из базы данных.");
+                    reject("ГЋГёГЁГЎГЄГ  ГЇГ°ГЁ ГЁГ§ГўГ«ГҐГ·ГҐГ­ГЁГЁ QR-ГЄГ®Г¤Г  ГЁГ§ ГЎГ Г§Г» Г¤Г Г­Г­Г»Гµ.");
                 };
             });
         }
 
-        // Функция для получения всех QR-кодов.
+        // Г”ГіГ­ГЄГ¶ГЁГї Г¤Г«Гї ГЇГ®Г«ГіГ·ГҐГ­ГЁГї ГўГ±ГҐГµ QR-ГЄГ®Г¤Г®Гў.
         function getAllQRCodes() {
             const transaction = db.transaction(["qrcodes"], "readonly");
             const objectStore = transaction.objectStore("qrcodes");
@@ -201,14 +202,14 @@
             request.onsuccess = (event) => {
                 const qrcodes = event.target.result;
                 if (qrcodes.length > 0) {
-                    resultDiv.textContent = "Сохраненные QR-коды:\n" + qrcodes.map(q => `${q.url} - ${q.status}\nКомментарий: ${q.comment}`).join('\n');
+                    resultDiv.textContent = "Г‘Г®ГµГ°Г Г­ГҐГ­Г­Г»ГҐ QR-ГЄГ®Г¤Г»:\n" + qrcodes.map(q => `${q.url} - ${q.status}\nГЉГ®Г¬Г¬ГҐГ­ГІГ Г°ГЁГ©: ${q.comment}`).join('\n');
                 } else {
-                    resultDiv.textContent = "Нет сохраненных QR-кодов.";
+                    resultDiv.textContent = "ГЌГҐГІ Г±Г®ГµГ°Г Г­ГҐГ­Г­Г»Гµ QR-ГЄГ®Г¤Г®Гў.";
                 }
             };
 
             request.onerror = (event) => {
-                console.error("Ошибка при извлечении QR-кодов:", event);
+                console.error("ГЋГёГЁГЎГЄГ  ГЇГ°ГЁ ГЁГ§ГўГ«ГҐГ·ГҐГ­ГЁГЁ QR-ГЄГ®Г¤Г®Гў:", event);
             };
         }
 
@@ -242,31 +243,31 @@
 
                         if (qrCode) {
                             const url = qrCode.data;
-                            resultDiv.textContent = `Данные QR-кода: ${url}`;
+                            resultDiv.textContent = `Г„Г Г­Г­Г»ГҐ QR-ГЄГ®Г¤Г : ${url}`;
 
-                            // Проверка статуса URL в массиве фишинговых ссылок
+                            // ГЏГ°Г®ГўГҐГ°ГЄГ  Г±ГІГ ГІГіГ±Г  URL Гў Г¬Г Г±Г±ГЁГўГҐ ГґГЁГёГЁГ­ГЈГ®ГўГ»Гµ Г±Г±Г»Г«Г®ГЄ
                             if (phishingLinks.includes(url)) {
-                                const explanation = phishingExplanations[url] || "Данный сайт может быть опасным. Рекомендуется избегать его.";
-                                resultDiv.textContent += `\nСтатус QR-кода: Опасный сайт (в фишинговом списке)`;
-                                resultDiv.textContent += `\nПричина: ${explanation}`;
-                                // Добавляем статус в IndexedDB
-                                addQRCode(url, 'Опасный сайт', explanation);
+                                const explanation = phishingExplanations[url] || "Г„Г Г­Г­Г»Г© Г±Г Г©ГІ Г¬Г®Г¦ГҐГІ ГЎГ»ГІГј Г®ГЇГ Г±Г­Г»Г¬. ГђГҐГЄГ®Г¬ГҐГ­Г¤ГіГҐГІГ±Гї ГЁГ§ГЎГҐГЈГ ГІГј ГҐГЈГ®.";
+                                resultDiv.textContent += `\nГ‘ГІГ ГІГіГ± QR-ГЄГ®Г¤Г : ГЋГЇГ Г±Г­Г»Г© Г±Г Г©ГІ (Гў ГґГЁГёГЁГ­ГЈГ®ГўГ®Г¬ Г±ГЇГЁГ±ГЄГҐ)`;
+                                resultDiv.textContent += `\nГЏГ°ГЁГ·ГЁГ­Г : ${explanation}`;
+                                // Г„Г®ГЎГ ГўГ«ГїГҐГ¬ Г±ГІГ ГІГіГ± Гў IndexedDB
+                                addQRCode(url, 'ГЋГЇГ Г±Г­Г»Г© Г±Г Г©ГІ', explanation);
                                 return;
                             }
 
-                            // Проверка статуса URL в базе данных
+                            // ГЏГ°Г®ГўГҐГ°ГЄГ  Г±ГІГ ГІГіГ±Г  URL Гў ГЎГ Г§ГҐ Г¤Г Г­Г­Г»Гµ
                             const existingData = await getQRCodeStatus(url);
                             if (existingData !== null) {
-                                // Запись найдена в базе данных
-                                resultDiv.textContent += `\nСтатус QR-кода: ${existingData.status}`;
-                                resultDiv.textContent += `\nКомментарий: ${existingData.comment}`;
+                                // Г‡Г ГЇГЁГ±Гј Г­Г Г©Г¤ГҐГ­Г  Гў ГЎГ Г§ГҐ Г¤Г Г­Г­Г»Гµ
+                                resultDiv.textContent += `\nГ‘ГІГ ГІГіГ± QR-ГЄГ®Г¤Г : ${existingData.status}`;
+                                resultDiv.textContent += `\nГЉГ®Г¬Г¬ГҐГ­ГІГ Г°ГЁГ©: ${existingData.comment}`;
                             } else if (url.startsWith('http')) {
-                                resultDiv.textContent += '\nПроверяем URL на безопасность через Google Safe Browsing API...';
-                                const apiKey = 'YOUR_GOOGLE_SAFEBROWSING_API_KEY'; // Замените на ваш ключ API
+                                resultDiv.textContent += '\nГЏГ°Г®ГўГҐГ°ГїГҐГ¬ URL Г­Г  ГЎГҐГ§Г®ГЇГ Г±Г­Г®Г±ГІГј Г·ГҐГ°ГҐГ§ Google Safe Browsing API...';
+                                const apiKey = 'YOUR_GOOGLE_SAFEBROWSING_API_KEY'; // Г‡Г Г¬ГҐГ­ГЁГІГҐ Г­Г  ГўГ Гё ГЄГ«ГѕГ· API
                                 const apiUrl = `https://safebrowsing.googleapis.com/v4/threatMatches:find?key=${apiKey}`;
                                 const body = {
                                     client: {
-                                        clientId: 'YOUR_CLIENT_ID', // Замените на ваш clientId
+                                        clientId: 'YOUR_CLIENT_ID', // Г‡Г Г¬ГҐГ­ГЁГІГҐ Г­Г  ГўГ Гё clientId
                                         clientVersion: '1.5.2'
                                     },
                                     threatInfo: {
@@ -276,7 +277,7 @@
                                         threatEntries: [{url}]
                                     }
                                 };
-                                resultDiv.textContent += '\nРезультат проверки: ';
+                                resultDiv.textContent += '\nГђГҐГ§ГіГ«ГјГІГ ГІ ГЇГ°Г®ГўГҐГ°ГЄГЁ: ';
 
                                 try {
                                     const response = await fetch(apiUrl, {
@@ -289,30 +290,30 @@
                                     const data = await response.json();
                                     
                                     let status;
-                                    // Проверяем существует ли поле threatMatches и имеет ли оно длину
+                                    // ГЏГ°Г®ГўГҐГ°ГїГҐГ¬ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ Г«ГЁ ГЇГ®Г«ГҐ threatMatches ГЁ ГЁГ¬ГҐГҐГІ Г«ГЁ Г®Г­Г® Г¤Г«ГЁГ­Гі
                                     if (data.threatMatches && data.threatMatches.length > 0) {
-                                        status = 'Опасный URL';
+                                        status = 'ГЋГЇГ Г±Г­Г»Г© URL';
                                         resultDiv.textContent += status;
-                                        resultDiv.textContent += `\nПричина: Этот сайт был идентифицирован как содержащий угрозу.`;
+                                        resultDiv.textContent += `\nГЏГ°ГЁГ·ГЁГ­Г : ГќГІГ®ГІ Г±Г Г©ГІ ГЎГ»Г« ГЁГ¤ГҐГ­ГІГЁГґГЁГ¶ГЁГ°Г®ГўГ Г­ ГЄГ ГЄ Г±Г®Г¤ГҐГ°Г¦Г Г№ГЁГ© ГіГЈГ°Г®Г§Гі.`;
                                     } else {
-                                        status = 'Безопасный URL';
+                                        status = 'ГЃГҐГ§Г®ГЇГ Г±Г­Г»Г© URL';
                                         resultDiv.textContent += status;
-                                        resultDiv.textContent += `\nКомментарий: ${safeComment}`;
+                                        resultDiv.textContent += `\nГЉГ®Г¬Г¬ГҐГ­ГІГ Г°ГЁГ©: ${safeComment}`;
                                     }
 
-                                    // Сохраняем статус в базе данных
-                                    addQRCode(url, status, (status === 'Опасный URL') ? "Этот сайт был идентифицирован как содержащий угрозу." : safeComment);
+                                    // Г‘Г®ГµГ°Г Г­ГїГҐГ¬ Г±ГІГ ГІГіГ± Гў ГЎГ Г§ГҐ Г¤Г Г­Г­Г»Гµ
+                                    addQRCode(url, status, (status === 'ГЋГЇГ Г±Г­Г»Г© URL') ? "ГќГІГ®ГІ Г±Г Г©ГІ ГЎГ»Г« ГЁГ¤ГҐГ­ГІГЁГґГЁГ¶ГЁГ°Г®ГўГ Г­ ГЄГ ГЄ Г±Г®Г¤ГҐГ°Г¦Г Г№ГЁГ© ГіГЈГ°Г®Г§Гі." : safeComment);
                                 } catch (error) {
-                                    resultDiv.textContent += `Ошибка при проверке URL: ${error.message}`;
+                                    resultDiv.textContent += `ГЋГёГЁГЎГЄГ  ГЇГ°ГЁ ГЇГ°Г®ГўГҐГ°ГЄГҐ URL: ${error.message}`;
                                 }
                             } else {
-                                resultDiv.textContent += '\nЭто не URL. Проверка не требуется.';
+                                resultDiv.textContent += '\nГќГІГ® Г­ГҐ URL. ГЏГ°Г®ГўГҐГ°ГЄГ  Г­ГҐ ГІГ°ГҐГЎГіГҐГІГ±Гї.';
                             }
                         } else {
-                            resultDiv.textContent = 'QR-код не распознан.';
+                            resultDiv.textContent = 'QR-ГЄГ®Г¤ Г­ГҐ Г°Г Г±ГЇГ®Г§Г­Г Г­.';
                         }
                     } catch (error) {
-                        resultDiv.textContent = 'Ошибка при декодировании QR-кода: ' + error.message;
+                        resultDiv.textContent = 'ГЋГёГЁГЎГЄГ  ГЇГ°ГЁ Г¤ГҐГЄГ®Г¤ГЁГ°Г®ГўГ Г­ГЁГЁ QR-ГЄГ®Г¤Г : ' + error.message;
                     }
                 };
             };
