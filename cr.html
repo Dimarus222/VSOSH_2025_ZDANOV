@@ -2,8 +2,8 @@
 <html lang="ru">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta charset="utf-8">
-    <title>Ñîçäàíèå QR-êîäà</title>
+<meta charset="UTF-8">
+    <title>Создание QR-кода</title>
     <style>
  body {
             font-family: 'Arial', sans-serif;
@@ -12,12 +12,12 @@
             padding: 0;
             background-color: #e9ecef;
             color: #343a40;
-            font-size: 1em; /* Áàçîâûé ðàçìåð øðèôòà äëÿ âñåé ñòðàíèöû */
+            font-size: 1em; /* Базовый размер шрифта для всей страницы */
         }
         header {
             background-color: #007bff;
             color: white;
-            padding: 2em 0; /* Èñïîëüçóåì em äëÿ îòñòóïîâ */
+            padding: 2em 0; /* Используем em для отступов */
             border-radius: 0 0 0.8em 0.8em;
             position: relative;
         }
@@ -83,8 +83,8 @@
         }
         .create-qr-button {
             position: absolute;
-            top: 7em; /* Ïðèìåðíîå çíà÷åíèå, íóæíî ïîäîáðàòü ïîä âûñîòó øàïêè */
-            right: 1em; /* Îòñòóï ñïðàâà */
+            top: 7em; /* Примерное значение, нужно подобрать под высоту шапки */
+            right: 1em; /* Отступ справа */
         }
 
         footer {
@@ -96,17 +96,17 @@
 </head>
 <body>
     <header>
-        <h1>Ñîçäàíèå QR-êîäà</h1>
+        <h1>Создание QR-кода</h1>
     </header>
-<a href="index.html" class="custom-button-1 create-qr-button">Ïðîâåðèòü QR-êîä</a> <!-- Êíîïêà ïåðåõîäà -->
+<a href="index.html" class="custom-button-1 create-qr-button">Проверить QR-код</a> <!-- Кнопка перехода -->
     <div id="content">
-        <input type="text" id="text-input" placeholder="Ââåäèòå òåêñò èëè URL" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-        <button class="custom-button" id="generate-button">Ñîçäàòü QR-êîä</button>
+        <input type="text" id="text-input" placeholder="Введите текст или URL" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+        <button class="custom-button" id="generate-button">Создать QR-код</button>
         <div id="qr-code"></div>
-        <a id="download-button" class="custom-button" style="display:none;">Ñêà÷àòü QR-êîä</a>
+        <a id="download-button" class="custom-button" style="display:none;">Скачать QR-код</a>
     </div>
     <footer>
-        <p>© 2023 Ïðîâåðêà QR-êîäîâ. Âñå ïðàâà çàùèùåíû.</p>
+        <p>© 2023 Проверка QR-кодов. Все права защищены.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/qrious/dist/qrious.min.js"></script>
@@ -118,18 +118,18 @@
 
         generateButton.addEventListener('click', () => {
             const qr = new QRious({
-                element: document.createElement('canvas'), // Ñîçäàåì ýëåìåíò canvas äëÿ QR-êîäà
+                element: document.createElement('canvas'), // Создаем элемент canvas для QR-кода
                 value: textInput.value,
-                size: 300 // Ðàçìåð QR-êîäà
+                size: 300 // Размер QR-кода
             });
 
-            qrCodeDiv.innerHTML = ''; // Î÷èùàåì ïðåäûäóùèé QR-êîä
-            qrCodeDiv.appendChild(qr.canvas); // Äîáàâëÿåì íîâûé QR-êîä
+            qrCodeDiv.innerHTML = ''; // Очищаем предыдущий QR-код
+            qrCodeDiv.appendChild(qr.canvas); // Добавляем новый QR-код
 
-            // Íàñòðîéêà êíîïêè äëÿ ñêà÷èâàíèÿ
-            downloadButton.style.display = 'block'; // Ïîêàçûâàåì êíîïêó
-            downloadButton.href = qr.toDataURL(); // Óñòàíàâëèâàåì ññûëêó íà èçîáðàæåíèå
-            downloadButton.download = 'qrcode.png'; // Óñòàíàâëèâàåì èìÿ ôàéëà äëÿ çàãðóçêè
+            // Настройка кнопки для скачивания
+            downloadButton.style.display = 'block'; // Показываем кнопку
+            downloadButton.href = qr.toDataURL(); // Устанавливаем ссылку на изображение
+            downloadButton.download = 'qrcode.png'; // Устанавливаем имя файла для загрузки
         });
     </script>
 </body>
