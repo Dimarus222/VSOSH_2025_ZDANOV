@@ -1,0 +1,420 @@
+/* Базовые стили */
+:root {
+    --primary: #5a7c65;
+    --secondary: #e8e5da;
+    --accent: #c4a287;
+    --dark: #3c3c3b;
+    --light: #f9f8f5;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    color: var(--dark);
+    line-height: 1.6;
+    background-color: var(--light);
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #47604f;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.section {
+    padding: 80px 0;
+}
+
+/* Шапка */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(249, 248, 245, 0.95);
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: var(--transition);
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+    font-family: 'Playfair Display', serif;
+}
+
+.nav a {
+    color: var(--dark);
+    text-decoration: none;
+    margin-left: 30px;
+    font-weight: 500;
+    position: relative;
+    transition: var(--transition);
+}
+
+.nav a:hover {
+    color: var(--primary);
+}
+
+.nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: var(--transition);
+}
+
+.nav a:hover::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: var(--dark);
+    margin: 5px 0;
+    transition: var(--transition);
+}
+
+/* Герой */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(90, 124, 101, 0.1) 0%, rgba(196, 162, 135, 0.05) 100%);
+    position: relative;
+    margin-top: 70px;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.hero h1 {
+    font-size: 4.5rem;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    font-weight: 300;
+    max-width: 500px;
+}
+
+/* Обо мне */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-photo {
+    position: relative;
+    height: 500px;
+}
+
+.photo-placeholder {
+    height: 100%;
+    background: linear-gradient(45deg, var(--secondary), var(--accent));
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.about-text h2 {
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+}
+
+/* Подход */
+.approach {
+    background: var(--secondary);
+}
+
+.approach h2 {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.approach-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    color: var(--primary);
+}
+
+/* Услуги */
+.services h2 {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.service-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.service-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: var(--transition);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.service-card h3 {
+    background: var(--primary);
+    color: white;
+    padding: 25px;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.service-card p {
+    padding: 20px;
+    font-weight: 500;
+    color: var(--primary);
+    background: rgba(90, 124, 101, 0.1);
+    margin: 0;
+}
+
+.service-card ul {
+    padding: 20px;
+    list-style: none;
+}
+
+.service-card ul li {
+    padding: 10px 0;
+    position: relative;
+    padding-left: 20px;
+}
+
+.service-card ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+/* Контакты */
+.contact {
+    background: linear-gradient(to bottom, var(--light) 50%, var(--secondary) 50%);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+}
+
+.contact-info {
+    padding: 60px;
+    background: linear-gradient(135deg, rgba(90, 124, 101, 0.05) 0%, rgba(196, 162, 135, 0.02) 100%);
+}
+
+.contact-info h2 {
+    margin-bottom: 30px;
+}
+
+.contact-info p {
+    margin-bottom: 20px;
+}
+
+.social a {
+    display: inline-block;
+    margin-right: 20px;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.social a:hover {
+    text-decoration: underline;
+}
+
+.contact-form {
+    padding: 60px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(196, 162, 135, 0.2);
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Футер */
+.footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+    font-size: 0.9rem;
+}
+
+/* Адаптивность */
+@media (max-width: 992px) {
+    .about-grid,
+    .approach-cards,
+    .service-cards,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+
+    .nav a {
+        margin-left: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        background: white;
+        width: 70%;
+        height: calc(100vh - 70px);
+        flex-direction: column;
+        padding: 40px 20px;
+        transition: var(--transition);
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    }
+
+    .nav.active {
+        right: 0;
+    }
+
+    .nav a {
+        margin: 15px 0;
+        font-size: 1.2rem;
+    }
+
+    .hero {
+        margin-top: 60px;
+    }
+
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .contact-info,
+    .contact-form {
+        padding: 30px;
+    }
+}
