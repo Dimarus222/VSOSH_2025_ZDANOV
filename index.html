@@ -1,329 +1,152 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta charset="UTF-8">
-    <title>Проверка безопасности QR-кода</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            background-color: #e9ecef;
-            color: #343a40;
-            font-size: 1em; /* Базовый размер шрифта для всей страницы */
-        }
-        header {
-            background-color: #007bff;
-            color: white;
-            padding: 2em 0; /* Используем em для отступов */
-            border-radius: 0 0 0.8em 0.8em;
-            position: relative;
-        }
-        h1 {
-            margin: 0;
-            font-size: 2em;
-        }
-        #content {
-            max-width: 37.5em; /* 600px / 16px = 37.5em */
-            margin: 4em auto;
-            background: white;
-            border-radius: 0.8em;
-            box-shadow: 0 0.25em 1.25em rgba(0, 0, 0, 0.2);
-            padding: 2em;
-        }
-        #qr-input {
-            display: none;
-        }
-        .custom-button-1 {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 0.6em 1.25em;
-            border-radius: 0.3em;
-            cursor: pointer;
-            font-size: 1em;
-            transition: background-color 0.3s;
-}
-    .custom-button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 0.6em 1.25em;
-            border-radius: 0.3em;
-            cursor: pointer;
-            font-size: 1em;
-            transition: background-color 0.3s;
-		margin:1em auto;
-        }
-        .custom-button:hover {
-            background-color: #0056b3;
-        }
-        #upload-button {
-            margin: 1.25em 0;
-        }
-        #qrcode {
-            margin: 1.25em auto;
-            display: flex;
-            justify-content: center;
-        }
-         #result {
-            margin-top: 1.25em;
-            font-weight: bold;
-            padding: 0.6em;
-            border: 1px solid #ddd;
-            border-radius: 0.3em;
-            background-color: #f9f9f9;
-            white-space: pre-wrap;
-            overflow-wrap: break-word;
-            max-height: 12.5em;
-            overflow: auto;
-            text-align: left;
-        }
-        .create-qr-button {
-            position: absolute;
-            top: 7em; /* Примерное значение, нужно подобрать под высоту шапки */
-            right: 1em; /* Отступ справа */
-        }
-
-        footer {
-            margin: 1.25em 0;
-            font-size: 0.9em;
-            color: #777;
-        }
-    </style>
+    <title>Мария Астрид | Экзистенциальный психолог</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Проверка безопасности QR-кода</h1>
-        
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="#" class="logo">MA</a>
+                <nav class="nav">
+                    <a href="#about">Обо мне</a>
+                    <a href="#approach">Мой подход</a>
+                    <a href="#services">Услуги</a>
+                    <a href="#contact">Контакты</a>
+                </nav>
+                <button class="menu-toggle" aria-label="Меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
     </header>
-<a href="cr.html" class="custom-button-1 create-qr-button">Создать QR-код</a> <!-- Кнопка перехода -->
-    <div id="content">
-        <p>Загрузите изображение с QR-кодом:</p>
-        <label for="qr-input" class="custom-button" id="upload-button">Выбрать файл</label>
-        <input type="file" id="qr-input" accept="image/*">
-        <div id="qrcode"></div>
-        <div id="result"></div>
-        <button class="custom-button" onclick="getAllQRCodes()">Показать все QR-коды</button>
-    </div>
-    <footer>
-        <p>© 2023 Проверка QR-кодов. Все права защищены.</p>
+
+    <!-- Герой -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Мария Астрид</h1>
+                <p class="subtitle">Экзистенциальная психология для тех, кто ищет глубину</p>
+                <a href="#contact" class="btn">Запись на консультацию</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Обо мне -->
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-photo">
+                    <div class="photo-placeholder"></div>
+                </div>
+                <div class="about-text">
+                    <h2>Обо мне</h2>
+                    <p>12 лет помогаю людям находить диалог с собой. Моя специализация — экзистенциальные кризисы, профессиональное выгорание и поиск идентичности.</p>
+                    <p>Образование: PhD по клинической психологии (Сорбонна), сертификат по логотерапии (Вена), автор метода "Сознательная интроспекция".</p>
+                    <p>Работаю с творческими профессионалами, предпринимателями и теми, кто чувствует, что "застрял" в жизни.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подход -->
+    <section id="approach" class="section approach">
+        <div class="container">
+            <h2>Мой подход</h2>
+            <div class="approach-cards">
+                <div class="card">
+                    <h3>Без шаблонов</h3>
+                    <p>Каждая терапия — уникальный процесс, построенный вокруг ваших ценностей</p>
+                </div>
+                <div class="card">
+                    <h3>Честность</h3>
+                    <p>Прямые вопросы, которые помогают добраться до сути</p>
+                </div>
+                <div class="card">
+                    <h3>Фокус на смыслах</h3>
+                    <p>Работаем не только с симптомами, но с их экзистенциальным значением</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Услуги -->
+    <section id="services" class="section services">
+        <div class="container">
+            <h2>Формат работы</h2>
+            <div class="service-cards">
+                <div class="service-card">
+                    <h3>Индивидуально</h3>
+                    <p>60 мин · 5 000 ₽</p>
+                    <ul>
+                        <li>Личная сессия</li>
+                        <li>Работа с запросом</li>
+                        <li>Домашние наблюдения</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Пара</h3>
+                    <p>90 мин · 8 000 ₽</p>
+                    <ul>
+                        <li>Анализ динамики</li>
+                        <li>Проработка конфликтов</li>
+                        <li>Восстановление диалога</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Глубинная терапия</h3>
+                    <p>120 мин · 12 000 ₽</p>
+                    <ul>
+                        <li>Работа с травмой</li>
+                        <li>Экзистенциальный анализ</li>
+                        <li>Долгосрочные изменения</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Контакты</h2>
+                    <p>г. Москва, Пятницкая ул. 42<br>Кабинет "Психея"</p>
+                    <p>+7 (977) 123-45-67<br>astrid@therapy.ru</p>
+                    <div class="social">
+                        <a href="#">Instagram</a>
+                        <a href="#">Telegram</a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="consult-form">
+                        <input type="text" placeholder="Имя" required>
+                        <input type="email" placeholder="Email" required>
+                        <textarea placeholder="Ваш запрос..." rows="4"></textarea>
+                        <button type="submit" class="btn">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 Мария Астрид. Все права защищены</p>
+        </div>
     </footer>
 
-    <script>
-        const phishingLinks = [
-            "http://example-phishing.com",
-            "http://malicious-site.com",
-            "http://scam-website.com",
-            // Добавьте свои фишинговые ссылки здесь
-        ];
-
-        // Объяснения по фишинговым сайтам
-        const phishingExplanations = {
-            "http://example-phishing.com": "Этот сайт имеет плохую репутацию и часто используется для фишинга.",
-            "http://malicious-site.com": "Известно, что этот сайт содержит вредоносные программы.",
-            "http://scam-website.com": "Этот сайт был связан с мошенническими действиями, что вызывает необходимость в осторожности.",
-            // Добавьте объяснения для других ссылок
-        };
-
-        const safeComment = "Этот сайт безопасен и имеет хорошую репутацию среди пользователей.";
-
-        const qrInput = document.getElementById('qr-input');
-        const resultDiv = document.getElementById('result');
-        const qrcodeDiv = document.getElementById('qrcode');
-        let db;
-
-        // Инициализация IndexedDB.
-        function initDB() {
-            const request = indexedDB.open("QRCodeDB", 1);
-
-            request.onupgradeneeded = (event) => {
-                db = event.target.result;
-                const objectStore = db.createObjectStore("qrcodes", { keyPath: "url" }); // Используем URL в качестве ключа
-                objectStore.createIndex("status", "status", { unique: false });
-            };
-
-            request.onsuccess = (event) => {
-                db = event.target.result;
-                console.log("База данных успешно инициализирована");
-            };
-
-            request.onerror = (event) => {
-                console.error("Ошибка при открытии базы данных:", event);
-            };
-        }
-
-        // Функция для добавления QR-кода в базу данных.
-        function addQRCode(url, status, comment) {
-            const transaction = db.transaction(["qrcodes"], "readwrite");
-            const objectStore = transaction.objectStore("qrcodes");
-
-            const request = objectStore.put({ url, status, comment }); // Добавляем поле comment
-
-            request.onsuccess = () => {
-                console.log("QR-код добавлен или обновлен в базе данных");
-            };
-
-            request.onerror = (event) => {
-                console.error("Ошибка при добавлении QR-кода в базу данных:", event);
-            };
-        }
-
-        // Функция для получения статуса URL из IndexedDB.
-        function getQRCodeStatus(url) {
-            return new Promise((resolve, reject) => {
-                const transaction = db.transaction(["qrcodes"], "readonly");
-                const objectStore = transaction.objectStore("qrcodes");
-                const request = objectStore.get(url);
-
-                request.onsuccess = (event) => {
-                    if (event.target.result) {
-                        resolve(event.target.result); // Возвращаем весь объект
-                    } else {
-                        resolve(null); // Если запись не найдена
-                    }
-                };
-
-                request.onerror = (event) => {
-                    reject("Ошибка при извлечении QR-кода из базы данных.");
-                };
-            });
-        }
-
-        // Функция для получения всех QR-кодов.
-        function getAllQRCodes() {
-            const transaction = db.transaction(["qrcodes"], "readonly");
-            const objectStore = transaction.objectStore("qrcodes");
-
-            const request = objectStore.getAll();
-
-            request.onsuccess = (event) => {
-                const qrcodes = event.target.result;
-                if (qrcodes.length > 0) {
-                    resultDiv.textContent = "Сохраненные QR-коды:\n" + qrcodes.map(q => `${q.url} - ${q.status}\nКомментарий: ${q.comment}`).join('\n');
-                } else {
-                    resultDiv.textContent = "Нет сохраненных QR-кодов.";
-                }
-            };
-
-            request.onerror = (event) => {
-                console.error("Ошибка при извлечении QR-кодов:", event);
-            };
-        }
-
-        qrInput.addEventListener('change', async (event) => {
-            const file = event.target.files[0];
-            if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = async (e) => {
-                const image = new Image();
-                image.src = e.target.result;
-
-                qrcodeDiv.innerHTML = '';
-                const imgElement = document.createElement('img');
-                imgElement.src = e.target.result;
-                imgElement.style.maxWidth = '100%';
-                imgElement.style.borderRadius = '5px';
-                qrcodeDiv.appendChild(imgElement);
-
-                image.onload = async () => {
-                    try {
-                        const canvas = document.createElement('canvas');
-                        const context = canvas.getContext('2d');
-                        canvas.width = image.width;
-                        canvas.height = image.height;
-                        context.drawImage(image, 0, 0, image.width, image.height);
-
-                        const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-
-                        const qrCode = jsQR(imageData.data, imageData.width, imageData.height);
-
-                        if (qrCode) {
-                            const url = qrCode.data;
-                            resultDiv.textContent = `Данные QR-кода: ${url}`;
-
-                            // Проверка статуса URL в массиве фишинговых ссылок
-                            if (phishingLinks.includes(url)) {
-                                const explanation = phishingExplanations[url] || "Данный сайт может быть опасным. Рекомендуется избегать его.";
-                                resultDiv.textContent += `\nСтатус QR-кода: Опасный сайт (в фишинговом списке)`;
-                                resultDiv.textContent += `\nПричина: ${explanation}`;
-                                // Добавляем статус в IndexedDB
-                                addQRCode(url, 'Опасный сайт', explanation);
-                                return;
-                            }
-
-                            // Проверка статуса URL в базе данных
-                            const existingData = await getQRCodeStatus(url);
-                            if (existingData !== null) {
-                                // Запись найдена в базе данных
-                                resultDiv.textContent += `\nСтатус QR-кода: ${existingData.status}`;
-                                resultDiv.textContent += `\nКомментарий: ${existingData.comment}`;
-                            } else if (url.startsWith('http')) {
-                                resultDiv.textContent += '\nПроверяем URL на безопасность через Google Safe Browsing API...';
-                                const apiKey = 'YOUR_GOOGLE_SAFEBROWSING_API_KEY'; // Замените на ваш ключ API
-                                const apiUrl = `https://safebrowsing.googleapis.com/v4/threatMatches:find?key=${apiKey}`;
-                                const body = {
-                                    client: {
-                                        clientId: 'YOUR_CLIENT_ID', // Замените на ваш clientId
-                                        clientVersion: '1.5.2'
-                                    },
-                                    threatInfo: {
-                                        threatTypes: ["MALWARE", "SOCIAL_ENGINEERING", "UNWANTED_SOFTWARE", "THREAT_TYPE_UNSPECIFIED"],
-                                        platformTypes: ["ANY_PLATFORM", "WINDOWS", "MACOSX", "LINUX"],
-                                        threatEntryType: "URL",
-                                        threatEntries: [{url}]
-                                    }
-                                };
-                                resultDiv.textContent += '\nРезультат проверки: ';
-
-                                try {
-                                    const response = await fetch(apiUrl, {
-                                        method: "POST",
-                                        headers: {
-                                            "Content-Type": "application/json"
-                                        },
-                                        body: JSON.stringify(body)
-                                    });
-                                    const data = await response.json();
-                                    
-                                    let status;
-                                    // Проверяем существует ли поле threatMatches и имеет ли оно длину
-                                    if (data.threatMatches && data.threatMatches.length > 0) {
-                                        status = 'Опасный URL';
-                                        resultDiv.textContent += status;
-                                        resultDiv.textContent += `\nПричина: Этот сайт был идентифицирован как содержащий угрозу.`;
-                                    } else {
-                                        status = 'Безопасный URL';
-                                        resultDiv.textContent += status;
-                                        resultDiv.textContent += `\nКомментарий: ${safeComment}`;
-                                    }
-
-                                    // Сохраняем статус в базе данных
-                                    addQRCode(url, status, (status === 'Опасный URL') ? "Этот сайт был идентифицирован как содержащий угрозу." : safeComment);
-                                } catch (error) {
-                                    resultDiv.textContent += `Ошибка при проверке URL: ${error.message}`;
-                                }
-                            } else {
-                                resultDiv.textContent += '\nЭто не URL. Проверка не требуется.';
-                            }
-                        } else {
-                            resultDiv.textContent = 'QR-код не распознан.';
-                        }
-                    } catch (error) {
-                        resultDiv.textContent = 'Ошибка при декодировании QR-кода: ' + error.message;
-                    }
-                };
-            };
-            reader.readAsDataURL(file);
-        });
-
-        window.onload = function() {
-            initDB();
-        };
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
