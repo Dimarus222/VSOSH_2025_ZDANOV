@@ -156,6 +156,11 @@ h1, h2, h3 {
     z-index: 999;
 }
 
+.nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
 /* Блокировка скролла */
 .no-scroll {
     overflow: hidden;
@@ -436,6 +441,7 @@ h1, h2, h3 {
         margin: 15px 0 !important;
         font-size: 1.2rem;
         padding: 10px 0;
+        margin-left: 0 !important;
     }
 
     /* Анимация бургера */
