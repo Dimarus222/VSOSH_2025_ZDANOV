@@ -188,12 +188,6 @@
             width: 100%;
         }
 
-        .mobile-menu {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
         /* Главная секция (герой) */
         #hero {
             background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-light) 100%);
@@ -660,12 +654,21 @@
         }
 
         @media (max-width: 768px) {
-            nav ul {
-                display: none;
+            /* Улучшенная мобильная навигация без бургера */
+            .header-container {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px 0;
             }
             
-            .mobile-menu {
-                display: block;
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 15px;
+            }
+            
+            nav ul li {
+                margin: 8px 15px;
             }
             
             .qualifications {
@@ -683,18 +686,59 @@
             section {
                 padding: 60px 0;
             }
-        }
-
-        @media (max-width: 576px) {
-            .hero-content .btn {
-                display: block;
-                margin: 10px auto;
-                width: 80%;
+            
+            #hero {
+                padding-top: 150px;
             }
             
             .profile-img {
-                width: 250px;
-                height: 250px;
+                width: 280px;
+                height: 280px;
+            }
+            
+            .contact-container {
+                gap: 30px;
+            }
+            
+            .contact-form {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            nav ul li {
+                margin: 6px 10px;
+                font-size: 0.9rem;
+            }
+            
+            .hero-content .btn {
+                display: block;
+                margin: 10px auto;
+                width: 90%;
+                max-width: 300px;
+            }
+            
+            .profile-img {
+                width: 240px;
+                height: 240px;
+            }
+            
+            .service-icon {
+                padding: 20px;
+                font-size: 2rem;
+            }
+            
+            .service-content {
+                padding: 20px;
+            }
+            
+            .contact-form {
+                padding: 20px;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
         }
     </style>
@@ -714,9 +758,6 @@
                     <li><a href="#contact">Контакты</a></li>
                 </ul>
             </nav>
-            <div class="mobile-menu">
-                <i class="fas fa-bars"></i>
-            </div>
         </div>
     </header>
 
@@ -1109,12 +1150,6 @@
             alert('Спасибо за вашу заявку! Я свяжусь с вами в ближайшее время.');
             this.reset();
         });
-
-        // Мобильное меню
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            const nav = document.querySelector('nav ul');
-            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-        });
     </script>
 </body>
-                    </html>
+    </html>
