@@ -109,16 +109,18 @@
         nav ul li {
             margin-left: 20px;
         }
-
-        nav ul li a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 600;
-            padding: 8px 15px;
-            border-radius: 4px;
-            transition: all 0.3s;
-            border: 1px solid transparent;
-        }
+/* Внутри блока: */
+nav ul li a {
+    /* существующие стили */
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: all 0.3s;
+    border: 1px solid transparent;
+    white-space: nowrap; /* добавляем сюда */
+}
 
         nav ul li a:hover, nav ul li a.active {
             background-color: rgba(255, 255, 255, 0.1);
