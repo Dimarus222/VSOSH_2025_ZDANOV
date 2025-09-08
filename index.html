@@ -1148,14 +1148,16 @@ h3 {
                         </div>
                     </div>
                     <div class="contact-form">
-                        <form id="contactForm" action="https://formspree.io/f/mvgbdlpq" method="POST">
-                            <input type="text" placeholder="Ваше имя" required>
-                            <input type="email" placeholder="Ваш Email" required>
-                            <input type="text" placeholder="Тема сообщения">
-                            <textarea placeholder="Ваше сообщение" required></textarea>
-                            <button type="submit" class="btn">Отправить сообщение</button>
-                        </form>
+                        <form id="contactForm" action="https://formspree.io/f/mrbgveqg" method="POST">
+        <input type="text" name="name" placeholder="Ваше имя" required>
+        <input type="email" name="email" placeholder="Ваш Email" required>
+        <input type="text" name="subject" placeholder="Тема сообщения">
+        <textarea name="message" placeholder="Ваше сообщение" required></textarea>
+        <button type="submit" class="btn">Отправить сообщение</button>
+        <p id="form-status"></p>
+    </form>
                     </div>
+                    
                 </div>
 
                 <section style="margin-top: 50px;">
@@ -1213,38 +1215,43 @@ h3 {
         </div>
     </footer>
 <script>
-  var form = document.getElementById("my-form");
+ // Получаем форму по id
+  var form = document.getElementById("contactForm");
   
-  async function handleSubmit(event) {
-    event.preventDefault();
-    var status = document.getElementById("my-form-status");
-    var data = new FormData(event.target);
-    fetch(event.target.action, {
-      method: form.method,
+  // Обработчик отправки формы
+  async function handleFormSubmit(event) {
+    event.preventDefault(); // Предотвратить стандартную отправку
+    var status = document.getElementById("form-status");
+    var data = new FormData(form);
+    
+    fetch(form.action, {
+      method: 'POST',
       body: data,
       headers: {
-          'Accept': 'application/json'
+        'Accept': 'application/json'
       }
-    }).then(response => {
+    })
+    .then(response => {
       if (response.ok) {
-        status.innerHTML = "Thanks for your submission!";
-        form.reset()
+        status.innerHTML = "Спасибо за ваше сообщение!";
+        form.reset();
       } else {
         response.json().then(data => {
           if (Object.hasOwn(data, 'errors')) {
-            status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+            status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
           } else {
-            status.innerHTML = "Oops! There was a problem submitting your form"
+            status.innerHTML = "Произошла ошибка при отправке формы.";
           }
-        })
+        });
       }
-    }).catch(error => {
-      status.innerHTML = "Oops! There was a problem submitting your form"
+    })
+    .catch(error => {
+      status.innerHTML = "Произошла ошибка при отправке формы.";
     });
   }
-  form.addEventListener("submit", handleSubmit)
-</script>
-    <script>
+
+  // Добавляем обработчик события
+  form.addEventListener("submit", handleFormSubmit);
         document.addEventListener('DOMContentLoaded', function() {
             // Навигация между страницами
             const navLinks = document.querySelectorAll('.nav-link, .footer-nav-link');
