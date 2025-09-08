@@ -1154,7 +1154,6 @@ h3 {
         <input type="text" name="subject" placeholder="Тема сообщения">
         <textarea name="message" placeholder="Ваше сообщение" required></textarea>
         <button type="submit" class="btn">Отправить сообщение</button>
-        <p id="form-status"></p>
     </form>
                     </div>
                     
@@ -1215,43 +1214,7 @@ h3 {
         </div>
     </footer>
 <script>
- // Получаем форму по id
-  var form = document.getElementById("contactForm");
-  
-  // Обработчик отправки формы
-  async function handleFormSubmit(event) {
-    event.preventDefault(); // Предотвратить стандартную отправку
-    var status = document.getElementById("form-status");
-    var data = new FormData(form);
-    
-    fetch(form.action, {
-      method: 'POST',
-      body: data,
-      headers: {
-        'Accept': 'application/json'
-      }
-    })
-    .then(response => {
-      if (response.ok) {
-        status.innerHTML = "Спасибо за ваше сообщение!";
-        form.reset();
-      } else {
-        response.json().then(data => {
-          if (Object.hasOwn(data, 'errors')) {
-            status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
-          } else {
-            status.innerHTML = "Произошла ошибка при отправке формы.";
-          }
-        });
-      }
-    })
-    .catch(error => {
-      status.innerHTML = "Произошла ошибка при отправке формы.";
-    });
-  }
 
-  // Добавляем обработчик события
-  form.addEventListener("submit", handleFormSubmit);
         document.addEventListener('DOMContentLoaded', function() {
             // Навигация между страницами
             const navLinks = document.querySelectorAll('.nav-link, .footer-nav-link');
