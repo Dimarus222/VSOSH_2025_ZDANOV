@@ -1148,17 +1148,15 @@ h3 {
                         </div>
                     </div>
                     <div class="contact-form">
-                        <form id="contactForm" action="https://formspree.io/f/mrbgveqg" method="POST">
-        <input type="text" name="name" placeholder="Ваше имя" required>
-        <input type="email" name="email" placeholder="Ваш Email" required>
-        <input type="text" name="subject" placeholder="Тема сообщения">
-        <textarea name="message" placeholder="Ваше сообщение" required></textarea>
-        <button type="submit" class="btn">Отправить сообщение</button>
-    </form>
+                        <form id="my-form" action="https://formspree.io/f/mrbgveqg" method="POST">
+                            <input type="text" name="name" placeholder="Ваше имя" required>
+                            <input type="email" name="email" placeholder="Ваш Email" required>
+                            <input type="text" name="subject" placeholder="Тема сообщения">
+                            <textarea name="message" placeholder="Ваше сообщение" required></textarea>
+                            <button id="my-form-button" class="btn">Отправить сообщение</button>
+                        </form>
                     </div>
-                    
                 </div>
-
                 <section style="margin-top: 50px;">
                     <h2 class="section-title">Мы в социальных сетях</h2>
                     <div style="text-align: center; margin-top: 30px;">
@@ -1274,5 +1272,37 @@ h3 {
             });
         });
     </script>
+    <script>
+  const form = document.getElementById("my-form");
+  const status = document.getElementById("my-form-status");
+
+  form.addEventListener("submit", async function(e) {
+    e.preventDefault();
+    status.innerHTML = "";
+    const data = new FormData(form);
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      if (response.ok) {
+        status.innerHTML = "Спасибо за ваше сообщение!";
+        form.reset();
+      } else {
+        const dataResponse = await response.json();
+        if (Object.hasOwn(dataResponse, 'errors')) {
+          status.innerHTML = dataResponse.errors.map(error => error.message).join(", ");
+        } else {
+          status.innerHTML = "Произошла ошибка при отправке формы.";
+        }
+      }
+    } catch (error) {
+      status.innerHTML = "Произошла ошибка при отправке формы.";
+    }
+  });
+</script>
 </body>
 </html>
