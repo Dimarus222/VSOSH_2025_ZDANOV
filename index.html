@@ -1148,14 +1148,17 @@ h3 {
                         </div>
                     </div>
                     <div class="contact-form">
-                        <form id="my-form" action="https://formspree.io/f/mrbgveqg" method="POST">
-                            <input type="text" name="name" placeholder="Ваше имя" required>
-                            <input type="email" name="email" placeholder="Ваш Email" required>
-                            <input type="text" name="subject" placeholder="Тема сообщения">
-                            <textarea name="message" placeholder="Ваше сообщение" required></textarea>
-                            <button id="my-form-button" class="btn">Отправить сообщение</button>
-                        </form>
-                    </div>
+                    <!-- ИСПРАВЛЕННАЯ ФОРМА -->
+                    <form id="contactForm" action="https://formspree.io/f/mrbgveqg" method="POST">
+                        <input type="text" name="name" placeholder="Ваше имя" required>
+                        <input type="email" name="_replyto" placeholder="Ваш Email" required>
+                        <input type="text" name="subject" placeholder="Тема сообщения">
+                        <textarea name="message" placeholder="Ваше сообщение" required></textarea>
+                        <input type="hidden" name="_subject" value="Новое сообщение с сайта Кадетского Парламента">
+                        <input type="text" name="_gotcha" style="display:none">
+                        <button type="submit" class="btn">Отправить сообщение</button>
+                    </form>
+                </div>
                 </div>
                 <section style="margin-top: 50px;">
                     <h2 class="section-title">Мы в социальных сетях</h2>
