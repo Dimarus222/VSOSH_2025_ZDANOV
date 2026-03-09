@@ -335,7 +335,8 @@
         .activities-grid,
         .news-grid,
         .members-grid,
-        .best-members {
+        .best-members,
+        .documents-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
@@ -345,7 +346,8 @@
         .activity-card,
         .news-card,
         .member-card,
-        .best-member-card {
+        .best-member-card,
+        .document-card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-radius: 20px;
@@ -361,7 +363,8 @@
         .activity-card:hover,
         .news-card:hover,
         .member-card:hover,
-        .best-member-card:hover {
+        .best-member-card:hover,
+        .document-card:hover {
             transform: translateY(-10px);
             border-color: var(--gold);
             box-shadow: var(--shadow-lg);
@@ -371,7 +374,8 @@
         .activity-img,
         .news-img,
         .member-img,
-        .best-member-img {
+        .best-member-img,
+        .document-img {
             height: 280px;
             overflow: hidden;
             position: relative;
@@ -381,7 +385,8 @@
         .activity-img::after,
         .news-img::after,
         .member-img::after,
-        .best-member-img::after {
+        .best-member-img::after,
+        .document-img::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -394,7 +399,8 @@
         .activity-img img,
         .news-img img,
         .member-img img,
-        .best-member-img img {
+        .best-member-img img,
+        .document-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -411,14 +417,16 @@
         .activity-card:hover img,
         .news-card:hover img,
         .member-card:hover img,
-        .best-member-card:hover img {
+        .best-member-card:hover img,
+        .document-card:hover img {
             transform: scale(1.1);
         }
 
         .activity-content,
         .news-content,
         .member-content,
-        .best-member-content {
+        .best-member-content,
+        .document-content {
             padding: 1.8rem;
             background: rgba(255, 255, 255, 0.95);
             flex: 1;
@@ -429,7 +437,8 @@
         .activity-content h3,
         .news-content h3,
         .member-content h3,
-        .best-member-content h3 {
+        .best-member-content h3,
+        .document-content h3 {
             color: var(--deep-navy);
             margin-bottom: 0.8rem;
             font-size: 1.5rem;
@@ -555,6 +564,84 @@
         .timeline-content h3 {
             color: var(--deep-navy);
             margin-bottom: 0.5rem;
+        }
+
+        /* ДОКУМЕНТЫ */
+        .document-category {
+            margin-bottom: 3rem;
+        }
+
+        .document-category h3 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            border-left: 4px solid var(--gold);
+            padding-left: 1rem;
+        }
+
+        .document-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 1rem 0;
+            color: var(--ocean-blue);
+            font-size: 0.9rem;
+        }
+
+        .document-meta i {
+            color: var(--gold);
+        }
+
+        .document-size {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .document-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .document-description {
+            color: var(--deep-navy);
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--gradient-gold);
+            color: var(--deep-navy);
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: auto;
+            border: 2px solid transparent;
+        }
+
+        .download-btn:hover {
+            background: transparent;
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .download-btn i {
+            font-size: 1.1rem;
+        }
+
+        .documents-header {
+            text-align: center;
+            color: var(--white);
+            margin-bottom: 3rem;
+            font-size: 1.2rem;
         }
 
         /* КОНТАКТЫ */
@@ -778,7 +865,8 @@
             }
             
             .activities-grid,
-            .best-members {
+            .best-members,
+            .documents-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -801,7 +889,8 @@
             }
             
             .activity-img,
-            .best-member-img {
+            .best-member-img,
+            .document-img {
                 height: 220px;
             }
         }
@@ -857,6 +946,7 @@
                     <li><a href="#" class="nav-link" data-page="history"><i class="fas fa-anchor"></i> История</a></li>
                     <li><a href="#" class="nav-link" data-page="best-members"><i class="fas fa-star"></i> Лучшие кадеты</a></li>
                     <li><a href="#" class="nav-link" data-page="activities"><i class="fas fa-compass"></i> Деятельность</a></li>
+                    <li><a href="#" class="nav-link" data-page="documents"><i class="fas fa-file-alt"></i> Документы</a></li>
                     <li><a href="#" class="nav-link" data-page="contact"><i class="fas fa-envelope"></i> Контакты</a></li>
                 </ul>
             </nav>
@@ -977,7 +1067,7 @@
             </div>
         </div>
 
-        <!-- ЛУЧШИЕ КАДЕТЫ (ПОЛНОСТЬЮ ВОССТАНОВЛЕННЫЙ ТЕКСТ) -->
+        <!-- ЛУЧШИЕ КАДЕТЫ -->
         <div id="best-members" class="page">
             <div class="container">
                 <h2 class="section-title">Лучшие кадеты Парламента</h2>
@@ -1114,6 +1204,203 @@
             </div>
         </div>
 
+        <!-- ДОКУМЕНТЫ -->
+        <div id="documents" class="page">
+            <div class="container">
+                <h2 class="section-title">Документы Кадетского Парламента</h2>
+                <p class="documents-header">Официальные документы, регламентирующие деятельность Кадетского Парламента</p>
+                
+                <!-- Уставные документы -->
+                <div class="document-category">
+                    <h3><i class="fas fa-gavel" style="margin-right: 15px;"></i> Уставные документы</h3>
+                    <div class="documents-grid">
+                        <div class="document-card">
+                            <div class="document-img">
+                                <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Положение о Парламенте">
+                            </div>
+                            <div class="document-content">
+                                <div class="document-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <h3>Положение о Кадетском Парламенте</h3>
+                                <p class="document-description">Основной документ, определяющий цели, задачи, права, обязанности и структуру Кадетского Парламента Канского Морского Кадетского Корпуса.</p>
+                                <div class="document-meta">
+                                    <span><i class="fas fa-calendar"></i> 15.09.2022</span>
+                                    <span class="document-size"><i class="fas fa-file"></i> 2.4 МБ</span>
+                                    <span><i class="fas fa-file-pdf"></i> PDF</span>
+                                </div>
+                                <a href="#" class="download-btn" download><i class="fas fa-download"></i> Скачать документ</a>
+                            </div>
+                        </div>
+                        
+                        <div class="document-card">
+                            <div class="document-img">
+                                <img src="https://images.unsplash.com/photo-1589330691061-23c3434e3c68?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Регламент">
+                            </div>
+                            <div class="document-content">
+                                <div class="document-icon">
+                                    <i class="fas fa-file-word"></i>
+                                </div>
+                                <h3>Регламент работы Парламента</h3>
+                                <p class="document-description">Порядок проведения заседаний, процедура голосования, правила внесения предложений и принятия решений.</p>
+                                <div class="document-meta">
+                                    <span><i class="fas fa-calendar"></i> 01.10.2022</span>
+                                    <span class="document-size"><i class="fas fa-file"></i> 1.8 МБ</span>
+                                    <span><i class="fas fa-file-word"></i> DOCX</span>
+                                </div>
+                                <a href="#" class="download-btn" download><i class="fas fa-download"></i> Скачать документ</a>
+                            </div>
+                        </div>
+                        
+                        <div class="document-card">
+                            <div class="document-img">
+                                <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Кодекс этики">
+                            </div>
+                            <div class="document-content">
+                                <div class="document-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <h3>Кодекс чести кадета-парламентария</h3>
+                                <p class="document-description">Этические нормы и правила поведения для членов Кадетского Парламента, стандарты чести и достоинства.</p>
+                                <div class="document-meta">
+                                    <span><i class="fas fa-calendar"></i> 20.10.2022</span>
+                                    <span class="document-size"><i class="fas fa-file"></i> 1.2 МБ</span>
+                                    <span><i class="fas fa-file-pdf"></i> PDF</span>
+                                </div>
+                                <a href="#" class="download-btn" download><i class="fas fa-download"></i> Скачать документ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Отчеты и протоколы -->
+                <div class="document-category">
+                    <h3><i class="fas fa-chart-bar" style="margin-right: 15px;"></i> Отчеты и протоколы</h3>
+                    <div class="documents-grid">
+                        <div class="document-card">
+                            <div class="document-img">
+                                <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Годовой отчет">
+                            </div>
+                            <div class="document-content">
+                                <div class="document-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <h3>Годовой отчет 2023-2024</h3>
+                                <p class="document-description">Отчет о деятельности Кадетского Парламента за 2023-2024 учебный год: достижения, мероприятия, статистика.</p>
+                                <div class="document-meta">
+                                    <span><i class="fas fa-calendar"></i> 25.05.2024</span>
+                                    <span class="document-size"><i class="fas fa-file"></i> 3.5 МБ</span>
+                                    <span><i class="fas fa-file-pdf"></i> PDF</span>
+                                </div>
+                                <a href="#" class="download-btn" download><i class="fas fa-download"></i> Скачать документ</a>
+                            </div>
+                        </div>
+                        
+                        <div class="document-card">
+                            <div class="document-img">
+                                <img src="https://images.unsplash.com/photo-1512314889357-e157c22f938d?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Протоколы">
+                            </div>
+                            <div class="document-content">
+                                <div class="document-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <h3>Протоколы заседаний (сборник)</h3>
+                                <p class="document-description">Сборник протоколов заседаний Кадетского Парламента за 2023-2024 учебный год.</p>
+                                <div class="document-meta">
+                                    <span><i class="fas fa-calendar"></i> 30.05.2024</span>
+                                    <span class="document-size"><i class="fas fa-file"></i> 4.2 МБ</span>
+                                    <span><i class="fas fa-file-pdf"></i> PDF</span>
+                                </div>
+                                <a href="#" class="download-btn" download><i class="fas fa-download"></i> Скачать документ</a>
+                            </div>
+                        </div>
+                        
+                        <div class="document-card">
+                            <div class="document-img">
+                                <img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="План работы">
+                            </div>
+                            <div class="document-content">
+                                <div class="document-icon">
+                                    <i class="fas fa-file-excel"></i>
+                                </div>
+                                <h3>План работы на 2024-2025</h3>
+                                <p class="document-description">План мероприятий и заседаний Кадетского Парламента на 2024-2025 учебный год.</p>
+                                <div class="document-meta">
+                                    <span><i class="fas fa-calendar"></i> 01.09.2024</span>
+                                    <span class="document-size"><i class="fas fa-file"></i> 1.5 МБ</span>
+                                    <span><i class="fas fa-file-excel"></i> XLSX</span>
+                                </div>
+                                <a href="#" class="download-btn" download><i class="fas fa-download"></i> Скачать документ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Проекты и инициативы -->
+                <div class="document-category">
+                    <h3><i class="fas fa-lightbulb" style="margin-right: 15px;"></i> Проекты и инициативы</h3>
+                    <div class="documents-grid">
+                        <div class="document-card">
+                            <div class="document-img">
+                                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Проект Каток">
+                            </div>
+                            <div class="document-content">
+                                <div class="document-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <h3>Проект "Каток"</h3>
+                                <p class="document-description">Проектная документация по созданию катка на территории Канского Морского Кадетского Корпуса.</p>
+                                <div class="document-meta">
+                                    <span><i class="fas fa-calendar"></i> 10.11.2024</span>
+                                    <span class="document-size"><i class="fas fa-file"></i> 5.7 МБ</span>
+                                    <span><i class="fas fa-file-pdf"></i> PDF</span>
+                                </div>
+                                <a href="#" class="download-btn" download><i class="fas fa-download"></i> Скачать документ</a>
+                            </div>
+                        </div>
+                        
+                        <div class="document-card">
+                            <div class="document-img">
+                                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Положение о наградах">
+                            </div>
+                            <div class="document-content">
+                                <div class="document-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <h3>Положение о наградах Парламента</h3>
+                                <p class="document-description">Положение об ордене "Военно-Морской Флот" и других наградах Кадетского Парламента.</p>
+                                <div class="document-meta">
+                                    <span><i class="fas fa-calendar"></i> 15.12.2022</span>
+                                    <span class="document-size"><i class="fas fa-file"></i> 1.1 МБ</span>
+                                    <span><i class="fas fa-file-pdf"></i> PDF</span>
+                                </div>
+                                <a href="#" class="download-btn" download><i class="fas fa-download"></i> Скачать документ</a>
+                            </div>
+                        </div>
+                        
+                        <div class="document-card">
+                            <div class="document-img">
+                                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Медиация">
+                            </div>
+                            <div class="document-content">
+                                <div class="document-icon">
+                                    <i class="fas fa-file-word"></i>
+                                </div>
+                                <h3>Регламент Медиационного Отдела</h3>
+                                <p class="document-description">Порядок работы отдела дисциплины и медиации, процедура разрешения конфликтов.</p>
+                                <div class="document-meta">
+                                    <span><i class="fas fa-calendar"></i> 05.02.2023</span>
+                                    <span class="document-size"><i class="fas fa-file"></i> 1.3 МБ</span>
+                                    <span><i class="fas fa-file-word"></i> DOCX</span>
+                                </div>
+                                <a href="#" class="download-btn" download><i class="fas fa-download"></i> Скачать документ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- КОНТАКТЫ -->
         <div id="contact" class="page">
             <div class="container">
@@ -1207,6 +1494,7 @@
                         <li><a href="#" class="footer-nav-link" data-page="history"><i class="fas fa-angle-right"></i> История</a></li>
                         <li><a href="#" class="footer-nav-link" data-page="best-members"><i class="fas fa-angle-right"></i> Лучшие кадеты</a></li>
                         <li><a href="#" class="footer-nav-link" data-page="activities"><i class="fas fa-angle-right"></i> Деятельность</a></li>
+                        <li><a href="#" class="footer-nav-link" data-page="documents"><i class="fas fa-angle-right"></i> Документы</a></li>
                         <li><a href="#" class="footer-nav-link" data-page="contact"><i class="fas fa-angle-right"></i> Контакты</a></li>
                     </ul>
                 </div>
@@ -1324,4 +1612,4 @@
         }
     </script>
 </body>
-    </html>
+                                </html>
