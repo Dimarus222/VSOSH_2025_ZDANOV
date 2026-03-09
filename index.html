@@ -331,7 +331,7 @@
             transform: scale(1.05);
         }
 
-        /* КАРТОЧКИ */
+        /* КАРТОЧКИ - ОДИНАКОВЫЙ РАЗМЕР */
         .activities-grid,
         .news-grid,
         .members-grid,
@@ -353,6 +353,9 @@
             box-shadow: var(--shadow-md);
             border: 2px solid rgba(255, 184, 28, 0.2);
             transition: all 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .activity-card:hover,
@@ -364,13 +367,15 @@
             box-shadow: var(--shadow-lg);
         }
 
+        /* ОДИНАКОВАЯ ВЫСОТА ДЛЯ ИЗОБРАЖЕНИЙ */
         .activity-img,
         .news-img,
         .member-img,
         .best-member-img {
-            height: 250px;
+            height: 280px;
             overflow: hidden;
             position: relative;
+            flex-shrink: 0;
         }
 
         .activity-img::after,
@@ -393,7 +398,14 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center 20%;
             transition: transform 0.5s;
+        }
+
+        /* СПЕЦИАЛЬНО ДЛЯ ФОТОГРАФИЙ КАДЕТ - БОЛЕЕ ДЛИННЫЙ ФОРМАТ */
+        .best-member-img img,
+        .member-img img {
+            object-position: center 30%;
         }
 
         .activity-card:hover img,
@@ -407,8 +419,11 @@
         .news-content,
         .member-content,
         .best-member-content {
-            padding: 1.5rem;
+            padding: 1.8rem;
             background: rgba(255, 255, 255, 0.95);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .activity-content h3,
@@ -416,7 +431,7 @@
         .member-content h3,
         .best-member-content h3 {
             color: var(--deep-navy);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             font-size: 1.5rem;
         }
 
@@ -523,7 +538,7 @@
 
         .timeline-content {
             background: rgba(255, 255, 255, 0.95);
-            padding: 1.5rem;
+            padding: 1.8rem;
             border-radius: 15px;
             box-shadow: var(--shadow-md);
             border: 2px solid var(--gold);
@@ -761,6 +776,11 @@
             .contact-content {
                 grid-template-columns: 1fr;
             }
+            
+            .activities-grid,
+            .best-members {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 480px) {
@@ -776,13 +796,13 @@
                 font-size: 2rem;
             }
             
-            .activities-grid,
-            .best-members {
-                grid-template-columns: 1fr;
-            }
-            
             .section-title {
                 font-size: 2rem;
+            }
+            
+            .activity-img,
+            .best-member-img {
+                height: 220px;
             }
         }
 
@@ -822,7 +842,7 @@
         <div class="container header-content">
             <div class="logo">
                 <div class="logo-icon">
-                    <img src="kmkk.png" alt="Логотип Кадетского Парламента">
+                    <img src="IMG_20260308_141624_767.jpg" alt="Логотип Кадетского Парламента">
                 </div>
                 <div class="logo-text">
                     <h1>Кадетский Парламент</h1>
@@ -880,49 +900,49 @@
                 <div class="history-timeline">
                     <div class="timeline-item">
                         <div class="timeline-content">
-                            <div class="timeline-date">Осень 2022</div>
+                            <div class="timeline-date">2022 год - Осень</div>
                             <h3>Создание Парламента</h3>
                             <p>Реформирование бывшего органа ученического самоуправления КСоЛД в Кадетский Парламент кадетом 9-ого класса, Каверзиным Иваном Игоревичом. Первые выборы председателя и членов парламента.</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
-                            <div class="timeline-date">Зима 2022</div>
+                            <div class="timeline-date">2022 год - Зима</div>
                             <h3>Первые крупные изменения</h3>
                             <p>Организация первых масштабных мероприятий, создание положения о Кадетском Парламенте, формирование состава Парламента, начало работы.</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
-                            <div class="timeline-date">Весна 2022</div>
+                            <div class="timeline-date">2022 год - Весна</div>
                             <h3>Первые результаты</h3>
                             <p>Завершение года, подведение итогов и выявление лучших по истечению периода. Подача отчетов Директору корпуса.</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
-                            <div class="timeline-date">Осень 2023</div>
+                            <div class="timeline-date">2023 год - Осень</div>
                             <h3>Межкорпусное сотрудничество</h3>
                             <p>Налаживание партнерских отношений с кадетскими парламентами других корпусов, проведение совместных онлайн - встреч и обмен опытом.</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
-                            <div class="timeline-date">Весна 2023</div>
+                            <div class="timeline-date">2023 год - Весна</div>
                             <h3>Окончание срока Первого Председателя</h3>
                             <p>Награждение похвальными грамотами и орденами "Военно - Морской Флот".</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
-                            <div class="timeline-date">Осень 2025</div>
+                            <div class="timeline-date">2025 год - Осень</div>
                             <h3>Создание первого сайта Парламента</h3>
                             <p>Развитие в цифровой сфере для увеличения массовой известности в кругах корпуса, города и края.</p>
                         </div>
                     </div>
                 </div>
 
-                <section class="mt-5">
+                <section style="margin-top: 50px;">
                     <h2 class="section-title">Достижения за годы работы</h2>
                     <div class="activities-grid">
                         <div class="activity-card">
@@ -957,7 +977,7 @@
             </div>
         </div>
 
-        <!-- ЛУЧШИЕ КАДЕТЫ -->
+        <!-- ЛУЧШИЕ КАДЕТЫ (ПОЛНОСТЬЮ ВОССТАНОВЛЕННЫЙ ТЕКСТ) -->
         <div id="best-members" class="page">
             <div class="container">
                 <h2 class="section-title">Лучшие кадеты Парламента</h2>
@@ -970,14 +990,14 @@
                         </div>
                         <div class="best-member-content">
                             <h3>Каверзин Иван Игоревич</h3>
-                            <div class="best-member-role">Основатель и Первый Председатель 2022-2024</div>
+                            <div class="best-member-role">Основатель и Первый Председатель Кадетского Парламента 2022-2024 учебный год</div>
                             <p>Выпускник Канского Морского Кадетского Корпуса (2024), серебряный медалист, лауреат государственных премий Союза Писателей России, за заслуги награжден Благодарственным письмом и Орденом "Военно - Морской Флот".</p>
                             <div class="achievements">
                                 <h4>Достижения:</h4>
                                 <ul>
-                                    <li>Выступил с инициативой создания Кадетского парламента</li>
-                                    <li>Разработал Положение о Кадетском парламенте</li>
-                                    <li>Избран первым председателем, заложил традиции работы</li>
+                                    <li>Выступил с инициативой создания Кадетского парламента, доказав его необходимость для развития корпуса.</li>
+                                    <li>Лично разработал и сформировал Положение о Кадетском парламенте — основной документ, определяющий его цели, задачи, права, обязанности и структуру.</li>
+                                    <li>Был избран первым председателем, что является признанием его лидерских качеств и авторитета среди кадет. На этом посту он заложил традиции работы парламента, наладил взаимодействие между кадетами и администрацией корпуса.</li>
                                 </ul>
                             </div>
                         </div>
@@ -989,14 +1009,14 @@
                         </div>
                         <div class="best-member-content">
                             <h3>Потылицын Лев Евгеньевич</h3>
-                            <div class="best-member-role">Вице-Председатель 2023-2024</div>
-                            <p>Выпускник Канского Морского Кадетского Корпуса (2024), активист Кадетского Парламента, награжден Благодарственным письмом и Орденом "Военно - Морской Флот".</p>
+                            <div class="best-member-role">Вице - Председатель Кадетского Парламента 2023-2024 учебный год</div>
+                            <p>Выпускник Канского Морского Кадетского Корпуса (2024), активист Кадетского Парламента, за заслуги награжден Благодарственным письмом и Орденом "Военно - Морской Флот".</p>
                             <div class="achievements">
                                 <h4>Достижения:</h4>
                                 <ul>
-                                    <li>Организация Медиационного Отдела</li>
-                                    <li>Активное участие в организации Корпусных Мероприятий</li>
-                                    <li>Помощь в разработке Положения о Парламенте</li>
+                                    <li>Организация нового Медиационного Отдела в Отделе Дисциплины Кадетского Парламента, активный контроль дисциплины в корпусе в учебное и внеурочное время.</li>
+                                    <li>Активное участие в организации Корпусных Мероприятий, проявление инициативы и выдвижение предложений для их организации.</li>
+                                    <li>Помощь в разработке Положения о Кадетском Парламенте, инициатива создания поощрительной меры стимулирования (орден "Военно - Морской Флот"), особый вклад в развитие дисциплинарного отдела Парламента, безупречное ведение работы на посту Министра Отдела Дисциплины.</li>
                                 </ul>
                             </div>
                         </div>
@@ -1008,48 +1028,48 @@
                         </div>
                         <div class="best-member-content">
                             <h3>Макиенко Дмитрий Михайлович</h3>
-                            <div class="best-member-role">Секретарь Парламента (2025-2026)</div>
+                            <div class="best-member-role">Активист Парламента, ведущий Корпусных мероприятий, хорошист.</div>
                             <p>Кадет 9-ого класса, Секретарь Кадетского Парламента (2025-2026).</p>
                             <div class="achievements">
                                 <h4>Достижения:</h4>
                                 <ul>
-                                    <li>Активно участвует в организации мероприятий</li>
-                                    <li>Служит примером для младших товарищей</li>
-                                    <li>Удостоен должности "Секретарь Кадетского Парламента"</li>
+                                    <li>На протяжении двух лет активно участвует в организации корпусных мероприятий, также ведет мероприятия, посвященные знаменательным датам и открытиям Аллей Памяти по приглашению от города Канска.</li>
+                                    <li>Активный член Кадетского Парламента, вступивший в год основания. Проявляет инициативу в делах Органа, за что был удостоен высокой должности "Секретарь Кадетского Парламента".</li>
+                                    <li>Служит примером для младших товарищей, участвует в подготовке вновь прибывших обучающихся пятого класса к принятию Кадетской Клятвы, уча пятиклассников элементам строевой подготовки и нравственным принципам кадетской жизни, создавая важную базу для будущего обучения пятиклассников в Кадетском Корпусе.</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <section class="mt-5">
+                <section style="margin-top: 50px;">
                     <h2 class="section-title">Галерея достижений</h2>
                     <div class="activities-grid">
                         <div class="activity-card">
                             <div class="activity-img">
-                                <img src="https://images.unsplash.com/photo-1567690346811-22291ebe92ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=872&q=80" alt="Награды">
+                                <img src="https://images.unsplash.com/photo-1567690346811-22291ebe92ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=872&q=80" alt="Награды наших кадет">
                             </div>
                             <div class="activity-content">
                                 <h3>Награды наших кадет</h3>
-                                <p>Более 70 наград в олимпиадах, соревнованиях и конкурсах различных уровней.</p>
+                                <p>За последние 3 года кадеты Парламента получили более 70 наград, участвуя в олимпиадах, соревнованиях и конкурсах различных уровней (от муниципального до международного).</p>
                             </div>
                         </div>
                         <div class="activity-card">
                             <div class="activity-img">
-                                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Медалисты">
+                                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Выпускники-медалисты">
                             </div>
                             <div class="activity-content">
                                 <h3>Выпускники-медалисты</h3>
-                                <p>2 выпускника-члена Парламента закончили корпус с золотыми медалями.</p>
+                                <p>2 выпускника-члена Парламента закончили корпус с золотыми медалями за последние 3 года. Медалисты без проблем смогли поступить в ВУЗ-ы страны, которые выбрали изначально.</p>
                             </div>
                         </div>
                         <div class="activity-card">
                             <div class="activity-img">
-                                <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Поступления">
+                                <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Поступления в вузы">
                             </div>
                             <div class="activity-content">
                                 <h3>Поступления в вузы</h3>
-                                <p>100% выпускников-членов Парламента поступают в высшие учебные заведения.</p>
+                                <p>100% выпускников-членов Парламента поступают в высшие учебные военные и гражданские заведения Российской Федерации имея запас и высокие места в рейтингах поступления.</p>
                             </div>
                         </div>
                     </div>
@@ -1087,7 +1107,7 @@
                         </div>
                         <div class="activity-content">
                             <h3>Патриотические мероприятия</h3>
-                            <p>Организация мероприятий, направленных на формирование любви к Родине и уважения к флотским традициям.</p>
+                            <p>Организация мероприятий, направленных на формирование любви к Родине и уважения к флотским традициям. Проведение уроков мужества, встреч с ветеранами.</p>
                         </div>
                     </div>
                 </div>
@@ -1151,7 +1171,7 @@
                     </div>
                 </div>
                 
-                <section class="mt-5">
+                <section style="margin-top: 50px;">
                     <h2 class="section-title">Мы в социальных сетях</h2>
                     <div class="text-center" style="margin-top: 30px;">
                         <div class="social-links" style="justify-content: center;">
