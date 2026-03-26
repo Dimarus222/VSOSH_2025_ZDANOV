@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кадетский Парламент | Канский Морской Кадетский Корпус</title>
+    <title>Кадетский Парламент | Канский МКК</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <!-- AOS анимации -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,478 +14,339 @@
         }
 
         :root {
-            --navy-deep: #0A1428;
-            --navy-primary: #0F1A2F;
-            --navy-secondary: #1A2A3F;
-            --ocean: #2C5F7A;
-            --gold-primary: #D4AF37;
-            --gold-dark: #B4942C;
-            --gold-light: #F3D572;
+            --navy-deep: #0B1A33;
+            --navy-primary: #13294B;
+            --gold: #FFB81C;
             --white: #FFFFFF;
-            --off-white: #F8F9FC;
-            --gray-light: #E8EDF2;
+            --gray-light: #F5F7FA;
             --shadow-sm: 0 5px 20px rgba(0,0,0,0.08);
             --shadow-md: 0 10px 30px rgba(0,0,0,0.12);
-            --shadow-lg: 0 20px 50px rgba(0,0,0,0.2);
-            --gradient-navy: linear-gradient(135deg, #0A1428 0%, #13213A 50%, #1A2F45 100%);
-            --gradient-gold: linear-gradient(135deg, #D4AF37 0%, #F3D572 50%, #D4AF37 100%);
-            --glow-gold: 0 0 20px rgba(212, 175, 55, 0.3);
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--gradient-navy);
+            background: var(--navy-deep);
             color: var(--white);
             line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Кастомный скроллбар */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--navy-deep);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--gold-primary);
-            border-radius: 5px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--gold-dark);
         }
 
         .container {
             width: 90%;
-            max-width: 1400px;
+            max-width: 1300px;
             margin: 0 auto;
         }
 
-        /* Анимации при загрузке */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
-        /* Типография */
-        h1, h2, h3, h4 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
-
-        h1 { font-size: 3.5rem; }
-        h2 { font-size: 2.8rem; }
-        h3 { font-size: 1.8rem; }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-            font-size: 2.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--white) 0%, var(--gold-light) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 3px;
-            background: var(--gradient-gold);
-            margin: 20px auto 0;
-            border-radius: 3px;
-        }
-
-        /* Шапка с эффектом стекла */
+        /* ========== ШАПКА С БУРГЕРОМ ========== */
         header {
-            background: rgba(10, 20, 40, 0.95);
-            backdrop-filter: blur(12px);
+            background: var(--navy-deep);
             padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
-            transition: all 0.3s;
-        }
-
-        header.scrolled {
-            background: rgba(10, 20, 40, 0.98);
-            box-shadow: var(--shadow-lg);
+            border-bottom: 2px solid var(--gold);
         }
 
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
         }
 
         .logo-icon img {
-            width: 65px;
-            height: 65px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            border: 2px solid var(--gold-primary);
-            box-shadow: var(--glow-gold);
-            transition: all 0.3s;
-        }
-
-        .logo-icon img:hover {
-            transform: rotate(5deg) scale(1.05);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            border: 2px solid var(--gold);
+            object-fit: cover;
         }
 
         .logo-text h1 {
             color: var(--white);
-            margin: 0;
-            font-size: 1.6rem;
+            font-size: 1.3rem;
             font-weight: 700;
+            margin: 0;
+        }
+
+        .logo-text p {
+            font-size: 0.75rem;
+            color: var(--gold);
         }
 
         .logo-text p a {
-            color: var(--gold-light);
+            color: var(--gold);
             text-decoration: none;
-            transition: color 0.3s;
         }
 
-        .logo-text p a:hover {
-            color: var(--gold-primary);
+        /* Десктопная навигация */
+        .nav-desktop {
+            display: flex;
         }
 
-        /* Навигация с эффектами */
-        nav ul {
+        .nav-desktop ul {
             display: flex;
             list-style: none;
             gap: 5px;
-            flex-wrap: wrap;
         }
 
-        nav ul li a {
+        .nav-desktop ul li a {
             color: var(--white);
             text-decoration: none;
             font-weight: 500;
-            padding: 10px 20px;
-            border-radius: 40px;
+            padding: 10px 18px;
+            border-radius: 8px;
             transition: all 0.3s;
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.95rem;
-            position: relative;
+            font-size: 0.9rem;
         }
 
-        nav ul li a i {
-            color: var(--gold-primary);
-            transition: transform 0.3s;
+        .nav-desktop ul li a i {
+            color: var(--gold);
         }
 
-        nav ul li a:hover {
-            background: rgba(212, 175, 55, 0.15);
-            transform: translateY(-2px);
+        .nav-desktop ul li a:hover,
+        .nav-desktop ul li a.active {
+            background: rgba(255, 184, 28, 0.15);
         }
 
-        nav ul li a:hover i {
-            transform: translateX(-3px);
+        /* Бургер-меню (только на мобильных) */
+        .burger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
         }
 
-        nav ul li a.active {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.05));
-            border: 1px solid rgba(212, 175, 55, 0.4);
+        .burger span {
+            width: 28px;
+            height: 2px;
+            background: var(--gold);
+            transition: 0.3s;
         }
 
-        /* Страницы */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: var(--navy-deep);
+            border-bottom: 1px solid var(--gold);
+            z-index: 999;
+            padding: 1rem 0;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0 1.5rem;
+        }
+
+        .mobile-menu ul li a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 0;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(255, 184, 28, 0.2);
+        }
+
+        .mobile-menu ul li a i {
+            color: var(--gold);
+            width: 24px;
+        }
+
+        .mobile-menu ul li:last-child a {
+            border-bottom: none;
+        }
+
+        /* ========== СТРАНИЦЫ ========== */
         .page {
             display: none;
-            animation: fadeInUp 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            animation: fadeIn 0.4s ease;
         }
 
         .page.active {
             display: block;
         }
 
-        /* Герой с параллаксом */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ГЛАВНАЯ (оригинальный вид) */
         .hero {
-            background: linear-gradient(rgba(10, 20, 40, 0.7), rgba(10, 20, 40, 0.85)), 
+            background: linear-gradient(rgba(11, 26, 51, 0.85), rgba(11, 26, 51, 0.85)), 
                         url('https://images.unsplash.com/photo-1587441529457-37c5ac44329f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
-            min-height: 550px;
+            min-height: 500px;
             display: flex;
             align-items: center;
-            border-radius: 30px;
-            margin: 30px 0 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(212, 175, 55, 0.1), transparent 70%);
-        }
-
-        .hero::after {
-            content: '⚓';
-            position: absolute;
-            bottom: 20px;
-            right: 30px;
-            font-size: 120px;
-            opacity: 0.05;
-            font-family: monospace;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 3rem;
+            border-radius: 20px;
+            margin: 30px 0;
             text-align: center;
         }
 
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem;
+        }
+
         .hero h2 {
-            font-size: 3.8rem;
+            font-size: 2.8rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 20px rgba(0,0,0,0.3);
-            line-height: 1.2;
+            color: var(--white);
         }
 
         .hero p {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 2rem;
-            opacity: 0.95;
+            opacity: 0.9;
         }
 
-        /* Кнопки с эффектом */
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            padding: 14px 38px;
-            background: var(--gradient-gold);
+            gap: 10px;
+            padding: 12px 32px;
+            background: var(--gold);
             color: var(--navy-deep);
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 40px;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
             border: none;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
             font-size: 0.95rem;
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 35px rgba(212, 175, 55, 0.6);
-            gap: 15px;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 184, 28, 0.4);
         }
 
-        /* Секции с фоном */
+        /* Секция "О нас" */
         section {
-            padding: 4rem 0;
+            padding: 3rem 0;
         }
 
-        /* Карточки с эффектом стекла и наведения */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            color: var(--white);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+            margin: 12px auto 0;
+        }
+
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 3rem;
             align-items: center;
         }
 
-        .about-text {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            padding: 2.5rem;
-            border-radius: 24px;
-            border: 1px solid rgba(212, 175, 55, 0.25);
-            transition: all 0.3s;
-        }
-
-        .about-text:hover {
-            border-color: var(--gold-primary);
-            box-shadow: var(--glow-gold);
-            transform: translateY(-5px);
-        }
-
         .about-text p {
-            color: var(--off-white);
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
+            color: #e0e4e9;
+            margin-bottom: 1.2rem;
             line-height: 1.7;
         }
 
         .about-image {
-            border-radius: 24px;
+            border-radius: 16px;
             overflow: hidden;
-            border: 2px solid rgba(212, 175, 55, 0.5);
-            box-shadow: var(--shadow-lg);
-            height: 450px;
-            position: relative;
+            height: 400px;
         }
 
         .about-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s;
         }
 
-        .about-image:hover img {
-            transform: scale(1.08);
-        }
-
-        /* Универсальные карточки */
+        /* Карточки */
         .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
         }
 
         .card {
             background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 24px;
+            border-radius: 16px;
             overflow: hidden;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
+            border: 1px solid rgba(255, 184, 28, 0.2);
+            transition: all 0.3s;
         }
 
         .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--gold-primary);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3), var(--glow-gold);
+            transform: translateY(-5px);
+            border-color: var(--gold);
         }
 
         .card-img {
-            height: 260px;
+            height: 220px;
             overflow: hidden;
-            position: relative;
-        }
-
-        .card-img::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 60px;
-            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
         }
 
         .card-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s;
-        }
-
-        .card:hover .card-img img {
-            transform: scale(1.1);
         }
 
         .card-content {
-            padding: 1.8rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
+            padding: 1.5rem;
         }
 
         .card-content h3 {
-            color: var(--gold-light);
+            color: var(--gold);
             margin-bottom: 0.8rem;
+            font-size: 1.3rem;
         }
 
         .card-role {
-            color: var(--gold-primary);
-            font-weight: 600;
+            color: var(--gold);
             font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            opacity: 0.8;
         }
 
         .achievements-list {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px dashed rgba(212, 175, 55, 0.3);
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 184, 28, 0.2);
         }
 
         .achievements-list h4 {
-            color: var(--gold-light);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            color: var(--gold);
         }
 
         .achievements-list ul {
@@ -495,84 +354,58 @@
         }
 
         .achievements-list li {
-            margin-bottom: 0.8rem;
-            padding-left: 25px;
+            margin-bottom: 0.6rem;
+            padding-left: 20px;
             position: relative;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .achievements-list li::before {
             content: "⚓";
-            color: var(--gold-primary);
+            color: var(--gold);
             position: absolute;
             left: 0;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
-        /* Таймлайн с анимацией */
+        /* Таймлайн */
         .timeline {
             position: relative;
-            max-width: 1000px;
-            margin: 3rem auto;
-            padding: 20px 0;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .timeline::before {
             content: '';
             position: absolute;
-            width: 3px;
-            background: linear-gradient(to bottom, var(--gold-primary), transparent);
-            top: 0;
-            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--gold);
         }
 
         .timeline-item {
-            padding: 20px 40px;
+            margin-bottom: 2rem;
             position: relative;
-            width: 50%;
         }
-
-        .timeline-item:nth-child(odd) { left: 0; }
-        .timeline-item:nth-child(even) { left: 50%; }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            width: 18px;
-            height: 18px;
-            background: var(--gold-primary);
-            border: 3px solid var(--white);
-            border-radius: 50%;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 2;
-            box-shadow: 0 0 15px var(--gold-primary);
-        }
-
-        .timeline-item:nth-child(odd)::before { right: -9px; }
-        .timeline-item:nth-child(even)::before { left: -9px; }
 
         .timeline-content {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            padding: 1.8rem;
-            border-radius: 20px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            width: 45%;
+            border: 1px solid rgba(255, 184, 28, 0.2);
         }
 
-        .timeline-content:hover {
-            border-color: var(--gold-primary);
-            transform: scale(1.02);
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
         }
 
         .timeline-date {
-            color: var(--gold-primary);
+            color: var(--gold);
             font-weight: 700;
             margin-bottom: 0.5rem;
-            font-size: 1rem;
         }
 
         /* Контакты */
@@ -584,110 +417,92 @@
 
         .contact-card {
             background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            padding: 1.8rem;
-            border-radius: 20px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 1.5rem;
+            border-radius: 16px;
             display: flex;
-            align-items: flex-start;
-            gap: 1.5rem;
-            transition: all 0.3s;
-        }
-
-        .contact-card:hover {
-            border-color: var(--gold-primary);
-            transform: translateX(5px);
+            gap: 1.2rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 184, 28, 0.2);
         }
 
         .contact-icon {
-            width: 55px;
-            height: 55px;
-            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            width: 45px;
+            height: 45px;
+            background: var(--gold);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--navy-deep);
-            font-size: 1.3rem;
-            flex-shrink: 0;
+            font-size: 1.2rem;
         }
 
         .contact-card h3 {
-            color: var(--gold-light);
-            margin-bottom: 0.5rem;
+            color: var(--gold);
+            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
         }
 
         .contact-form {
             background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 24px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 1.8rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 184, 28, 0.2);
         }
 
         .contact-form input,
         .contact-form textarea {
             width: 100%;
-            padding: 14px 18px;
+            padding: 12px;
             margin-bottom: 1rem;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 12px;
-            font-family: inherit;
+            border: 1px solid rgba(255, 184, 28, 0.3);
+            border-radius: 8px;
             background: rgba(255, 255, 255, 0.1);
             color: var(--white);
-            transition: all 0.3s;
+            font-family: inherit;
         }
 
         .contact-form input:focus,
         .contact-form textarea:focus {
             outline: none;
-            border-color: var(--gold-primary);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .contact-form input::placeholder,
-        .contact-form textarea::placeholder {
-            color: rgba(255, 255, 255, 0.5);
+            border-color: var(--gold);
         }
 
         .contact-form textarea {
-            min-height: 130px;
+            min-height: 120px;
             resize: vertical;
         }
 
         /* Футер */
         footer {
-            background: rgba(10, 20, 40, 0.95);
-            padding: 4rem 0 2rem;
-            border-top: 2px solid rgba(212, 175, 55, 0.3);
+            background: #07132B;
+            padding: 3rem 0 2rem;
             margin-top: 3rem;
+            border-top: 1px solid rgba(255, 184, 28, 0.3);
         }
 
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
+            gap: 2rem;
         }
 
         .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--gold-primary);
-            margin-bottom: 1rem;
-            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
         }
 
         .social-links {
             display: flex;
-            gap: 15px;
-            margin-top: 1.5rem;
+            gap: 12px;
+            margin-top: 1rem;
         }
 
         .social-links a {
-            width: 42px;
-            height: 42px;
+            width: 36px;
+            height: 36px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             display: flex;
@@ -695,18 +510,18 @@
             justify-content: center;
             color: var(--white);
             text-decoration: none;
-            transition: all 0.3s;
+            transition: 0.3s;
         }
 
         .social-links a:hover {
-            background: var(--gold-primary);
+            background: var(--gold);
             color: var(--navy-deep);
-            transform: translateY(-3px) rotate(360deg);
         }
 
         .footer-links h4 {
-            color: var(--gold-light);
-            margin-bottom: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 1rem;
         }
 
         .footer-links ul {
@@ -714,87 +529,100 @@
         }
 
         .footer-links ul li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.6rem;
         }
 
         .footer-links ul li a {
-            color: var(--gray-light);
+            color: #aaa;
             text-decoration: none;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            transition: 0.3s;
         }
 
         .footer-links ul li a:hover {
-            color: var(--gold-primary);
-            transform: translateX(5px);
+            color: var(--gold);
         }
 
         .copyright {
             text-align: center;
             padding-top: 2rem;
+            margin-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.5);
+            color: #777;
+            font-size: 0.8rem;
         }
 
-        /* Адаптивность */
-        @media (max-width: 968px) {
-            .header-content { flex-direction: column; text-align: center; }
-            nav ul { justify-content: center; }
-            .about-content { grid-template-columns: 1fr; }
-            .contact-grid { grid-template-columns: 1fr; }
-            .timeline::before { left: 20px; }
-            .timeline-item { width: 100%; padding-left: 50px; padding-right: 20px; }
-            .timeline-item:nth-child(even) { left: 0; }
-            .timeline-item::before { left: 11px !important; right: auto !important; }
-            .hero h2 { font-size: 2.5rem; }
-            .section-title { font-size: 2.2rem; }
+        .text-center {
+            text-align: center;
         }
 
-        @media (max-width: 576px) {
-            .hero { min-height: 450px; }
-            .hero h2 { font-size: 1.8rem; }
-            .hero p { font-size: 1rem; }
-            .grid-3 { grid-template-columns: 1fr; }
+        /* АДАПТИВ */
+        @media (max-width: 768px) {
+            .nav-desktop {
+                display: none;
+            }
+
+            .burger {
+                display: flex;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 50px);
+                margin-left: 50px !important;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .hero {
+                min-height: 400px;
+            }
         }
 
-        /* Анимация загрузки */
-        .loading-spinner {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--navy-deep);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s;
-        }
+        @media (max-width: 480px) {
+            .logo-text h1 {
+                font-size: 1rem;
+            }
 
-        .spinner {
-            width: 60px;
-            height: 60px;
-            border: 3px solid rgba(212, 175, 55, 0.3);
-            border-top-color: var(--gold-primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
+            .logo-icon img {
+                width: 40px;
+                height: 40px;
+            }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .btn {
+                padding: 10px 24px;
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="loading-spinner" id="loader">
-    <div class="spinner"></div>
-</div>
-
-<header id="header">
+<header>
     <div class="container header-content">
         <div class="logo">
             <div class="logo-icon">
@@ -805,7 +633,9 @@
                 <p><a href="https://kanskkadet.ru/?ysclid=mfb2lwohtz787805989" target="_blank">Канский Морской Кадетский Корпус</a></p>
             </div>
         </div>
-        <nav>
+        
+        <!-- Десктопная навигация -->
+        <div class="nav-desktop">
             <ul>
                 <li><a href="#" class="nav-link active" data-page="home"><i class="fas fa-home"></i> Главная</a></li>
                 <li><a href="#" class="nav-link" data-page="history"><i class="fas fa-anchor"></i> История</a></li>
@@ -814,31 +644,50 @@
                 <li><a href="#" class="nav-link" data-page="documents"><i class="fas fa-file-alt"></i> Документы</a></li>
                 <li><a href="#" class="nav-link" data-page="contact"><i class="fas fa-envelope"></i> Контакты</a></li>
             </ul>
-        </nav>
+        </div>
+
+        <!-- Бургер-иконка (только мобильные) -->
+        <div class="burger" id="burgerBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- Мобильное меню (раскрывающееся) -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#" class="mobile-nav-link" data-page="home"><i class="fas fa-home"></i> Главная</a></li>
+            <li><a href="#" class="mobile-nav-link" data-page="history"><i class="fas fa-anchor"></i> История</a></li>
+            <li><a href="#" class="mobile-nav-link" data-page="best-members"><i class="fas fa-star"></i> Лучшие кадеты</a></li>
+            <li><a href="#" class="mobile-nav-link" data-page="activities"><i class="fas fa-compass"></i> Деятельность</a></li>
+            <li><a href="#" class="mobile-nav-link" data-page="documents"><i class="fas fa-file-alt"></i> Документы</a></li>
+            <li><a href="#" class="mobile-nav-link" data-page="contact"><i class="fas fa-envelope"></i> Контакты</a></li>
+        </ul>
     </div>
 </header>
 
 <main>
-    <!-- ГЛАВНАЯ -->
+    <!-- ГЛАВНАЯ (в исходном виде) -->
     <div id="home" class="page active">
         <div class="container">
-            <div class="hero" data-aos="fade-up">
+            <div class="hero">
                 <div class="hero-content">
-                    <h2 data-aos="fade-up" data-aos-delay="100">Кадетский Парламент<br>Канского Морского Кадетского Корпуса</h2>
-                    <p data-aos="fade-up" data-aos-delay="200">Орган ученического самоуправления, развивающий лидерские качества кадет</p>
-                    <button class="btn" id="learn-more-btn" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-arrow-right"></i> Узнать больше</button>
+                    <h2>Кадетский Парламент<br>Канского Морского Кадетского Корпуса</h2>
+                    <p>Орган ученического самоуправления, развивающий лидерские качества кадет</p>
+                    <button class="btn" id="learn-more-btn"><i class="fas fa-arrow-right"></i> Узнать больше</button>
                 </div>
             </div>
 
-            <section id="about" data-aos="fade-up">
+            <section>
                 <h2 class="section-title">О Кадетском Парламенте</h2>
                 <div class="about-content">
-                    <div class="about-text" data-aos="fade-right">
+                    <div class="about-text">
                         <p>Кадетский Парламент — законодательный и представительный орган ученического самоуправления Канского Морского Кадетского Корпуса. Он олицетворяет собой принципы чести, долга, справедливости и коллективной ответственности, служа фундаментом для развития кадетской демократии и формирования подлинного корпоративного духа.</p>
                         <p>Основанный на принципах всеобщего, равного и прямого избирательного права при тайном голосовании, Парламент формируется путём подсчета общего количества голосов за каждого из кандидатов. Таким образом, в его состав попадают самые достойные представители корпуса — кадеты, чьи лидерские качества, активная гражданская позиция, безупречная репутация и преданность идеалам снискали всеобщее уважение и доверие.</p>
                         <p>Это — не только орган управления, но и кузница будущих руководителей. В его стенах на практике постигаются азы правовой культуры, стратегического планирования, искусства переговоров и коллективного принятия решений.</p>
                     </div>
-                    <div class="about-image" data-aos="fade-left">
+                    <div class="about-image">
                         <img src="kadetsky.jpg" alt="Кадеты">
                     </div>
                 </div>
@@ -849,44 +698,44 @@
     <!-- ИСТОРИЯ -->
     <div id="history" class="page">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">История Кадетского Парламента</h2>
+            <h2 class="section-title">История Кадетского Парламента</h2>
             <div class="timeline">
-                <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-item">
                     <div class="timeline-content">
                         <div class="timeline-date">2022 год - Осень</div>
                         <h3>Создание Парламента</h3>
                         <p>Реформирование бывшего органа ученического самоуправления КСоЛД в Кадетский Парламент кадетом 9-ого класса, Каверзиным Иваном Игоревичом. Первые выборы председателя и членов парламента.</p>
                     </div>
                 </div>
-                <div class="timeline-item" data-aos="fade-left">
+                <div class="timeline-item">
                     <div class="timeline-content">
                         <div class="timeline-date">2022 год - Зима</div>
                         <h3>Первые крупные изменения</h3>
                         <p>Организация первых масштабных мероприятий, создание положения о Кадетском Парламенте, формирование состава Парламента, начало работы.</p>
                     </div>
                 </div>
-                <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-item">
                     <div class="timeline-content">
                         <div class="timeline-date">2022 год - Весна</div>
                         <h3>Первые результаты</h3>
                         <p>Завершение года, подведение итогов и выявление лучших по истечению периода. Подача отчетов Директору корпуса.</p>
                     </div>
                 </div>
-                <div class="timeline-item" data-aos="fade-left">
+                <div class="timeline-item">
                     <div class="timeline-content">
                         <div class="timeline-date">2023 год - Осень</div>
                         <h3>Межкорпусное сотрудничество</h3>
                         <p>Налаживание партнерских отношений с кадетскими парламентами других корпусов, проведение совместных онлайн - встреч и обмен опытом.</p>
                     </div>
                 </div>
-                <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-item">
                     <div class="timeline-content">
                         <div class="timeline-date">2023 год - Весна</div>
                         <h3>Окончание срока Первого Председателя</h3>
                         <p>Награждение похвальными грамотами и орденами "Военно - Морской Флот".</p>
                     </div>
                 </div>
-                <div class="timeline-item" data-aos="fade-left">
+                <div class="timeline-item">
                     <div class="timeline-content">
                         <div class="timeline-date">2025 год - Осень</div>
                         <h3>Создание первого сайта Парламента</h3>
@@ -895,35 +744,20 @@
                 </div>
             </div>
 
-            <section data-aos="fade-up">
+            <section>
                 <h2 class="section-title">Достижения за годы работы</h2>
                 <div class="grid-3">
                     <div class="card">
-                        <div class="card-img">
-                            <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Награды">
-                        </div>
-                        <div class="card-content">
-                            <h3>Награды</h3>
-                            <p>За активную работу на корпусном уровне, первый Председатель и Вице-Председатель Парламента были удостоены Высшей Награды Парламента, ордена "Военно-Морской Флот", а также Благодарственной Грамоты от Директора Корпуса.</p>
-                        </div>
+                        <div class="card-img"><img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Награды"></div>
+                        <div class="card-content"><h3>Награды</h3><p>За активную работу на корпусном уровне, первый Председатель и Вице-Председатель Парламента были удостоены Высшей Награды Парламента, ордена "Военно-Морской Флот", а также Благодарственной Грамоты от Директора Корпуса.</p></div>
                     </div>
                     <div class="card">
-                        <div class="card-img">
-                            <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Участники">
-                        </div>
-                        <div class="card-content">
-                            <h3>Участники</h3>
-                            <p>Более 40 кадет приняли участие в работе Парламента за всю историю его существования, активно развивая Орган на корпусном уровне и проявляя инициативу в развитии отношений между кадетами и администрацией.</p>
-                        </div>
+                        <div class="card-img"><img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Участники"></div>
+                        <div class="card-content"><h3>Участники</h3><p>Более 40 кадет приняли участие в работе Парламента за всю историю его существования, активно развивая Орган на корпусном уровне и проявляя инициативу в развитии отношений между кадетами и администрацией.</p></div>
                     </div>
                     <div class="card">
-                        <div class="card-img">
-                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Проекты">
-                        </div>
-                        <div class="card-content">
-                            <h3>Проекты</h3>
-                            <p>Под руководством Парламента в 2025 - ом учебном году было положено начало разработке проекта "Каток" для облагораживания и продуктивной эксплуатации прилегающей к корпусу территории.</p>
-                        </div>
+                        <div class="card-img"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Проекты"></div>
+                        <div class="card-content"><h3>Проекты</h3><p>Под руководством Парламента в 2025 - ом учебном году было положено начало разработке проекта "Каток" для облагораживания и продуктивной эксплуатации прилегающей к корпусу территории.</p></div>
                     </div>
                 </div>
             </section>
@@ -933,180 +767,77 @@
     <!-- ЛУЧШИЕ КАДЕТЫ -->
     <div id="best-members" class="page">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Лучшие кадеты Парламента</h2>
-            <p class="text-center" style="color: var(--gold-light); margin-bottom: 40px; font-size: 1.2rem; text-align: center;" data-aos="fade-up">Гордость нашего корпуса — кадеты, проявившие выдающиеся лидерские качества</p>
+            <h2 class="section-title">Лучшие кадеты Парламента</h2>
+            <p class="text-center" style="margin-bottom: 2rem; color: #ccc;">Гордость нашего корпуса - кадеты, проявившие выдающиеся лидерские качества</p>
             <div class="grid-3">
-                <div class="card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-img">
-                        <img src="van.jpg" alt="Каверзин Иван">
-                    </div>
+                <div class="card">
+                    <div class="card-img"><img src="van.jpg" alt="Каверзин Иван"></div>
                     <div class="card-content">
                         <h3>Каверзин Иван Игоревич</h3>
                         <div class="card-role">Основатель и Первый Председатель 2022-2024</div>
                         <p>Выпускник Канского Морского Кадетского Корпуса (2024), серебряный медалист, лауреат государственных премий Союза Писателей России.</p>
-                        <div class="achievements-list">
-                            <h4>Достижения:</h4>
-                            <ul>
-                                <li>Выступил с инициативой создания Кадетского парламента</li>
-                                <li>Лично разработал и сформировал Положение о Кадетском парламенте</li>
-                                <li>Был избран первым председателем, заложил традиции работы</li>
-                            </ul>
-                        </div>
+                        <div class="achievements-list"><h4>Достижения:</h4><ul><li>Выступил с инициативой создания Кадетского парламента</li><li>Лично разработал и сформировал Положение о Кадетском парламенте</li><li>Был избран первым председателем</li></ul></div>
                     </div>
                 </div>
-                <div class="card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card-img">
-                        <img src="" alt="Потылицын Лев">
-                    </div>
+                <div class="card">
+                    <div class="card-img"><img src="" alt="Потылицын Лев"></div>
                     <div class="card-content">
                         <h3>Потылицын Лев Евгеньевич</h3>
                         <div class="card-role">Вице-Председатель 2023-2024</div>
                         <p>Выпускник Канского Морского Кадетского Корпуса (2024), активист Кадетского Парламента.</p>
-                        <div class="achievements-list">
-                            <h4>Достижения:</h4>
-                            <ul>
-                                <li>Организация Медиационного Отдела в Отделе Дисциплины</li>
-                                <li>Активное участие в организации Корпусных Мероприятий</li>
-                                <li>Инициатива создания ордена "Военно-Морской Флот"</li>
-                            </ul>
-                        </div>
+                        <div class="achievements-list"><h4>Достижения:</h4><ul><li>Организация Медиационного Отдела</li><li>Активное участие в организации Корпусных Мероприятий</li><li>Инициатива создания ордена "Военно-Морской Флот"</li></ul></div>
                     </div>
                 </div>
-                <div class="card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card-img">
-                        <img src="" alt="Макиенко Дмитрий">
-                    </div>
+                <div class="card">
+                    <div class="card-img"><img src="" alt="Макиенко Дмитрий"></div>
                     <div class="card-content">
                         <h3>Макиенко Дмитрий Михайлович</h3>
                         <div class="card-role">Секретарь Кадетского Парламента (2025-2026)</div>
                         <p>Кадет 9-ого класса, активист Парламента, ведущий корпусных мероприятий.</p>
-                        <div class="achievements-list">
-                            <h4>Достижения:</h4>
-                            <ul>
-                                <li>Активно участвует в организации корпусных мероприятий</li>
-                                <li>Служит примером для младших товарищей</li>
-                                <li>Удостоен должности Секретаря Кадетского Парламента</li>
-                            </ul>
-                        </div>
+                        <div class="achievements-list"><h4>Достижения:</h4><ul><li>Активно участвует в организации корпусных мероприятий</li><li>Служит примером для младших товарищей</li><li>Удостоен должности Секретаря</li></ul></div>
                     </div>
                 </div>
             </div>
-
-            <section data-aos="fade-up">
-                <h2 class="section-title">Галерея достижений</h2>
-                <div class="grid-3">
-                    <div class="card">
-                        <div class="card-img">
-                            <img src="https://images.unsplash.com/photo-1567690346811-22291ebe92ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=872&q=80" alt="Награды">
-                        </div>
-                        <div class="card-content">
-                            <h3>Награды наших кадет</h3>
-                            <p>За последние 3 года кадеты Парламента получили более 70 наград, участвуя в олимпиадах, соревнованиях и конкурсах различных уровней.</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-img">
-                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Медалисты">
-                        </div>
-                        <div class="card-content">
-                            <h3>Выпускники-медалисты</h3>
-                            <p>2 выпускника-члена Парламента закончили корпус с золотыми медалями за последние 3 года.</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-img">
-                            <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Поступления">
-                        </div>
-                        <div class="card-content">
-                            <h3>Поступления в вузы</h3>
-                            <p>100% выпускников-членов Парламента поступают в высшие учебные заведения Российской Федерации.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </div>
     </div>
 
     <!-- ДЕЯТЕЛЬНОСТЬ -->
     <div id="activities" class="page">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Направления деятельности</h2>
+            <h2 class="section-title">Направления деятельности</h2>
             <div class="grid-3">
-                <div class="card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Учебная подготовка">
-                    </div>
-                    <div class="card-content">
-                        <h3>Учебная подготовка</h3>
-                        <p>Проверка учебников, помощь отстающим кадетам в повышении успеваемости путем объяснения пропущенного или непонимаемого материала.</p>
-                    </div>
+                <div class="card">
+                    <div class="card-img"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Учебная подготовка"></div>
+                    <div class="card-content"><h3>Учебная подготовка</h3><p>Проверка учебников, помощь отстающим кадетам в повышении успеваемости путем объяснения пропущенного или непонимаемого материала.</p></div>
                 </div>
-                <div class="card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Внутренняя работа">
-                    </div>
-                    <div class="card-content">
-                        <h3>Внутренняя работа</h3>
-                        <p>Решение конфликтов между кадетами, работа по соблюдению порядка во время учебного процесса, помощь кадетам в строевой подготовке.</p>
-                    </div>
+                <div class="card">
+                    <div class="card-img"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Внутренняя работа"></div>
+                    <div class="card-content"><h3>Внутренняя работа</h3><p>Решение конфликтов между кадетами, работа по соблюдению порядка во время учебного процесса, помощь кадетам в строевой подготовке.</p></div>
                 </div>
-                <div class="card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1580375600118-69f4cad54b4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Патриотические мероприятия">
-                    </div>
-                    <div class="card-content">
-                        <h3>Патриотические мероприятия</h3>
-                        <p>Организация мероприятий, направленных на формирование любви к Родине и уважения к флотским традициям. Проведение уроков мужества, встреч с ветеранами.</p>
-                    </div>
+                <div class="card">
+                    <div class="card-img"><img src="https://images.unsplash.com/photo-1580375600118-69f4cad54b4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Патриотические мероприятия"></div>
+                    <div class="card-content"><h3>Патриотические мероприятия</h3><p>Организация мероприятий, направленных на формирование любви к Родине и уважения к флотским традициям.</p></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ДОКУМЕНТЫ (сокращён для читаемости, структура сохранена) -->
+    <!-- ДОКУМЕНТЫ -->
     <div id="documents" class="page">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Документы Кадетского Парламента</h2>
-            <p class="text-center" style="color: var(--gold-light); margin-bottom: 2rem; text-align: center;">Официальные документы, регламентирующие деятельность</p>
+            <h2 class="section-title">Документы Кадетского Парламента</h2>
             <div class="grid-3">
-                <div class="card" data-aos="fade-up">
-                    <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Положение">
-                    </div>
-                    <div class="card-content">
-                        <h3>Положение о Кадетском Парламенте</h3>
-                        <p>Основной документ, определяющий цели, задачи, права, обязанности и структуру Кадетского Парламента.</p>
-                        <div class="document-meta" style="margin: 1rem 0; color: var(--gold-light);">
-                            <i class="fas fa-calendar"></i> 15.09.2022 &nbsp; <i class="fas fa-file-pdf"></i> PDF
-                        </div>
-                        <a href="#" class="download-btn" style="display: inline-flex; align-items: center; gap: 8px; background: var(--gold-primary); color: var(--navy-deep); padding: 10px 20px; border-radius: 40px; text-decoration: none; font-weight: 600;"><i class="fas fa-download"></i> Скачать</a>
-                    </div>
+                <div class="card">
+                    <div class="card-img"><img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Положение"></div>
+                    <div class="card-content"><h3>Положение о Кадетском Парламенте</h3><p>Основной документ, определяющий цели, задачи, права, обязанности и структуру.</p><div style="margin-top: 1rem;"><a href="#" class="btn" style="padding: 8px 20px; font-size: 0.85rem;"><i class="fas fa-download"></i> Скачать PDF</a></div></div>
                 </div>
-                <div class="card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1589330691061-23c3434e3c68?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Регламент">
-                    </div>
-                    <div class="card-content">
-                        <h3>Регламент работы Парламента</h3>
-                        <p>Порядок проведения заседаний, процедура голосования, правила внесения предложений и принятия решений.</p>
-                        <div class="document-meta" style="margin: 1rem 0; color: var(--gold-light);">
-                            <i class="fas fa-calendar"></i> 01.10.2022 &nbsp; <i class="fas fa-file-word"></i> DOCX
-                        </div>
-                        <a href="#" class="download-btn" style="display: inline-flex; align-items: center; gap: 8px; background: var(--gold-primary); color: var(--navy-deep); padding: 10px 20px; border-radius: 40px; text-decoration: none; font-weight: 600;"><i class="fas fa-download"></i> Скачать</a>
-                    </div>
+                <div class="card">
+                    <div class="card-img"><img src="https://images.unsplash.com/photo-1589330691061-23c3434e3c68?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Регламент"></div>
+                    <div class="card-content"><h3>Регламент работы Парламента</h3><p>Порядок проведения заседаний, процедура голосования, правила внесения предложений.</p><div style="margin-top: 1rem;"><a href="#" class="btn" style="padding: 8px 20px; font-size: 0.85rem;"><i class="fas fa-download"></i> Скачать DOCX</a></div></div>
                 </div>
-                <div class="card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Кодекс">
-                    </div>
-                    <div class="card-content">
-                        <h3>Кодекс чести кадета-парламентария</h3>
-                        <p>Этические нормы и правила поведения для членов Кадетского Парламента, стандарты чести и достоинства.</p>
-                        <div class="document-meta" style="margin: 1rem 0; color: var(--gold-light);">
-                            <i class="fas fa-calendar"></i> 20.10.2022 &nbsp; <i class="fas fa-file-pdf"></i> PDF
-                        </div>
-                        <a href="#" class="download-btn" style="display: inline-flex; align-items: center; gap: 8px; background: var(--gold-primary); color: var(--navy-deep); padding: 10px 20px; border-radius: 40px; text-decoration: none; font-weight: 600;"><i class="fas fa-download"></i> Скачать</a>
-                    </div>
+                <div class="card">
+                    <div class="card-img"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Кодекс"></div>
+                    <div class="card-content"><h3>Кодекс чести кадета-парламентария</h3><p>Этические нормы и правила поведения, стандарты чести и достоинства.</p><div style="margin-top: 1rem;"><a href="#" class="btn" style="padding: 8px 20px; font-size: 0.85rem;"><i class="fas fa-download"></i> Скачать PDF</a></div></div>
                 </div>
             </div>
         </div>
@@ -1115,48 +846,24 @@
     <!-- КОНТАКТЫ -->
     <div id="contact" class="page">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Свяжитесь с нами</h2>
+            <h2 class="section-title">Свяжитесь с нами</h2>
             <div class="contact-grid">
-                <div class="contact-info" data-aos="fade-right">
-                    <div class="contact-card">
-                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <div><h3>Адрес</h3><p>Канский Морской Кадетский Корпус<br>ул. Герцена 11, г.Канск, Красноярский край</p></div>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                        <div><h3>Email</h3><p>Fo8983@yandex.ru</p></div>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon"><i class="fas fa-clock"></i></div>
-                        <div><h3>Время работы</h3><p>Пн-Вс: 8:00 - 21:00</p></div>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon"><i class="fas fa-users"></i></div>
-                        <div><h3>Председатель Парламента</h3><p>Жданов Дмитрий Иванович</p></div>
-                    </div>
+                <div>
+                    <div class="contact-card"><div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><div><h3>Адрес</h3><p>Канский Морской Кадетский Корпус<br>ул. Герцена 11, г.Канск, Красноярский край</p></div></div>
+                    <div class="contact-card"><div class="contact-icon"><i class="fas fa-envelope"></i></div><div><h3>Email</h3><p>Fo8983@yandex.ru</p></div></div>
+                    <div class="contact-card"><div class="contact-icon"><i class="fas fa-clock"></i></div><div><h3>Время работы</h3><p>Пн-Вс: 8:00 - 21:00</p></div></div>
+                    <div class="contact-card"><div class="contact-icon"><i class="fas fa-users"></i></div><div><h3>Председатель Парламента</h3><p>Жданов Дмитрий Иванович</p></div></div>
                 </div>
-                <div class="contact-form" data-aos="fade-left">
+                <div class="contact-form">
                     <form id="contactForm" action="https://formspree.io/f/mrbgveqg" method="POST">
                         <input type="text" name="name" placeholder="Ваше имя" required>
                         <input type="email" name="_replyto" placeholder="Ваш Email" required>
                         <input type="text" name="subject" placeholder="Тема сообщения">
                         <textarea name="message" placeholder="Ваше сообщение" required></textarea>
-                        <button type="submit" class="btn" style="width: 100%; justify-content: center;"><i class="fas fa-paper-plane"></i> Отправить сообщение</button>
+                        <button type="submit" class="btn" style="width: 100%; justify-content: center;"><i class="fas fa-paper-plane"></i> Отправить</button>
                     </form>
                 </div>
             </div>
-            <section data-aos="fade-up">
-                <h2 class="section-title">Мы в социальных сетях</h2>
-                <div class="text-center" style="text-align: center; margin-top: 2rem;">
-                    <div class="social-links" style="justify-content: center;">
-                        <a href="#"><i class="fab fa-vk"></i></a>
-                        <a href="#"><i class="fab fa-telegram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                    <p style="color: var(--white); margin-top: 1.5rem;">Подписывайтесь на наши страницы!</p>
-                </div>
-            </section>
         </div>
     </div>
 </main>
@@ -1166,7 +873,7 @@
         <div class="footer-grid">
             <div>
                 <div class="footer-logo">⚓ Кадетский Парламент</div>
-                <p>Официальный сайт Кадетского Парламента Канского Морского Кадетского Корпуса.</p>
+                <p style="color: #aaa;">Официальный сайт Кадетского Парламента Канского Морского Кадетского Корпуса.</p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-vk"></i></a>
                     <a href="#"><i class="fab fa-telegram"></i></a>
@@ -1176,21 +883,12 @@
             <div class="footer-links">
                 <h4>Быстрые ссылки</h4>
                 <ul>
-                    <li><a href="#" class="footer-nav-link" data-page="home"><i class="fas fa-angle-right"></i> Главная</a></li>
-                    <li><a href="#" class="footer-nav-link" data-page="history"><i class="fas fa-angle-right"></i> История</a></li>
-                    <li><a href="#" class="footer-nav-link" data-page="best-members"><i class="fas fa-angle-right"></i> Лучшие кадеты</a></li>
-                    <li><a href="#" class="footer-nav-link" data-page="activities"><i class="fas fa-angle-right"></i> Деятельность</a></li>
-                    <li><a href="#" class="footer-nav-link" data-page="documents"><i class="fas fa-angle-right"></i> Документы</a></li>
-                    <li><a href="#" class="footer-nav-link" data-page="contact"><i class="fas fa-angle-right"></i> Контакты</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>Наши проекты</h4>
-                <ul>
-                    <li><a href="#"><i class="fas fa-angle-right"></i> Морские походы</a></li>
-                    <li><a href="#"><i class="fas fa-angle-right"></i> Патриотические акции</a></li>
-                    <li><a href="#"><i class="fas fa-angle-right"></i> Волонтерство</a></li>
-                    <li><a href="#"><i class="fas fa-angle-right"></i> Спортивные мероприятия</a></li>
+                    <li><a href="#" class="footer-nav-link" data-page="home">Главная</a></li>
+                    <li><a href="#" class="footer-nav-link" data-page="history">История</a></li>
+                    <li><a href="#" class="footer-nav-link" data-page="best-members">Лучшие кадеты</a></li>
+                    <li><a href="#" class="footer-nav-link" data-page="activities">Деятельность</a></li>
+                    <li><a href="#" class="footer-nav-link" data-page="documents">Документы</a></li>
+                    <li><a href="#" class="footer-nav-link" data-page="contact">Контакты</a></li>
                 </ul>
             </div>
         </div>
@@ -1200,19 +898,17 @@
     </div>
 </footer>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    // Инициализация AOS
-    AOS.init({ duration: 800, once: true, offset: 100 });
+    // Бургер-меню
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
 
-    // Скрыть лоадер
-    window.addEventListener('load', () => {
-        const loader = document.getElementById('loader');
-        loader.style.opacity = '0';
-        setTimeout(() => loader.style.display = 'none', 500);
+    burgerBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
     });
 
-    // Навигация
+    // Закрывать меню при клике на ссылку
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
     const navLinks = document.querySelectorAll('.nav-link, .footer-nav-link');
     const pages = document.querySelectorAll('.page');
 
@@ -1223,6 +919,7 @@
         navLinks.forEach(link => link.classList.remove('active'));
         if (activeLink) activeLink.classList.add('active');
         
+        mobileMenu.classList.remove('active');
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -1234,27 +931,23 @@
         });
     });
 
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetPage = this.getAttribute('data-page');
+            switchPage(targetPage, document.querySelector(`.nav-link[data-page="${targetPage}"]`));
+        });
+    });
+
     document.getElementById('learn-more-btn')?.addEventListener('click', () => {
         switchPage('history', document.querySelector('.nav-link[data-page="history"]'));
     });
 
-    // Header скролл эффект
-    window.addEventListener('scroll', () => {
-        const header = document.getElementById('header');
-        if (window.scrollY > 50) header.classList.add('scrolled');
-        else header.classList.remove('scrolled');
-    });
-
-    // Форма
+    // Форма обратной связи
     const form = document.getElementById("contactForm");
     if (form) {
         form.addEventListener("submit", async function(e) {
             e.preventDefault();
-            const status = document.createElement('div');
-            status.className = 'status-message';
-            status.style.cssText = 'margin-top: 1rem; padding: 0.8rem; border-radius: 12px; text-align: center;';
-            form.appendChild(status);
-            
             const data = new FormData(form);
             try {
                 const response = await fetch(form.action, {
@@ -1263,20 +956,16 @@
                     headers: { 'Accept': 'application/json' }
                 });
                 if (response.ok) {
-                    status.innerHTML = "✓ Спасибо! Сообщение отправлено.";
-                    status.style.background = "rgba(46,125,50,0.2)";
-                    status.style.border = "1px solid #2E7D32";
+                    alert("Сообщение отправлено!");
                     form.reset();
-                    setTimeout(() => status.remove(), 5000);
-                } else throw new Error();
+                } else {
+                    alert("Ошибка отправки. Попробуйте позже.");
+                }
             } catch {
-                status.innerHTML = "✗ Ошибка отправки. Попробуйте позже.";
-                status.style.background = "rgba(211,47,47,0.2)";
-                status.style.border = "1px solid #d32f2f";
-                setTimeout(() => status.remove(), 5000);
+                alert("Ошибка отправки. Попробуйте позже.");
             }
         });
     }
 </script>
 </body>
-                            </html>
+    </html>
