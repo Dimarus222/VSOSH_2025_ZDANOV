@@ -56,7 +56,7 @@
             font-size: clamp(1.8rem, 5vw, 2.5rem);
             font-weight: 800;
             position: relative;
-            margin-top: 15px;  /* добавили отступ сверху 15px */
+            margin-top: 15px;
         }
 
         .section-title::after {
@@ -69,7 +69,6 @@
             border-radius: 2px;
         }
 
-        /* ========== ХЕДЕР С БУРГЕРОМ (для всех устройств) ========== */
         header {
             background: rgba(11, 26, 51, 0.98);
             backdrop-filter: blur(12px);
@@ -127,7 +126,6 @@
             text-decoration: none;
         }
 
-        /* Бургер-кнопка (для всех устройств) */
         .burger-btn {
             display: flex;
             flex-direction: column;
@@ -156,7 +154,6 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
 
-        /* Мобильное меню (выезжающее) */
         .mobile-nav {
             position: fixed;
             top: 70px;
@@ -254,7 +251,7 @@
         }
 
         .hero p {
-            font-size: clamp(0.95rem, 3vw, 1.2rem);
+            font-size: clamp(0.85rem, 2.5vw, 1rem);
             margin-bottom: 1.8rem;
             max-width: 700px;
             margin-left: auto;
@@ -282,8 +279,7 @@
             box-shadow: 0 8px 25px rgba(255, 184, 28, 0.4);
         }
 
-        /* общие стили для абзацев — выравнивание по ширине */
-        p {
+        p, li {
             text-align: justify;
         }
 
@@ -374,7 +370,6 @@
             flex-direction: column;
         }
 
-        /* заголовки h3 внутри карточек — по центру */
         .card-content h3 {
             color: var(--gold);
             margin-bottom: 0.5rem;
@@ -413,7 +408,7 @@
             padding-left: 22px;
             position: relative;
             font-size: 0.85rem;
-            text-align: left;
+            text-align: justify;
         }
 
         .achievements-list li::before {
@@ -637,9 +632,8 @@
             text-align: center;
         }
 
-        /* Специальные стили для страницы "Лучшие кадеты": увеличиваем высоту изображений в карточках */
         #best-members .card-img {
-            height: 320px;
+            height: 425px;
         }
         #best-members .card-img img {
             object-fit: cover;
@@ -658,7 +652,7 @@
                 grid-template-columns: 1fr;
             }
             #best-members .card-img {
-                height: 280px;
+                height: 380px;
             }
         }
 
@@ -674,7 +668,7 @@
                 font-size: 1.2rem;
             }
             #best-members .card-img {
-                height: 260px;
+                height: 320px;
             }
         }
 
@@ -690,7 +684,7 @@
                 height: 180px;
             }
             #best-members .card-img {
-                height: 240px;
+                height: 280px;
             }
         }
     </style>
@@ -724,7 +718,6 @@
 </header>
 
 <main>
-    <!-- ГЛАВНАЯ -->
     <div id="home" class="page active">
         <div class="container">
             <div class="hero">
@@ -737,7 +730,7 @@
                 <div class="about-grid">
                     <div class="about-text">
                         <p>Кадетский Парламент - законодательный и представительный орган ученического самоуправления Канского Морского Кадетского Корпуса. Он олицетворяет собой принципы чести, долга, справедливости и коллективной ответственности, служа фундаментом для развития кадетской демократии и формирования подлинного корпоративного духа.</p>
-                        <p>Основанный на принципах всеобщего, равного и прямого избирательного права при тайном голосовании, Парламент формируется путём подсчета общего количества голосов за каждого из кандидатов. Таким образом, в его состав попадают самые достойные представители корпуса — кадеты, чьи лидерские качества, активная гражданская позиция, безупречная репутация и преданность идеалам снискали всеобщее уважение и доверие.</p>
+                        <p>Основанный на принципах всеобщего, равного и прямого избирательного права при тайном голосовании, Кадетский Парламент формируется путём подсчета общего количества голосов за каждого из кандидатов. Таким образом, в его состав попадают самые достойные представители корпуса — кадеты, чьи лидерские качества, активная гражданская позиция, безупречная репутация и преданность идеалам снискали всеобщее уважение и доверие.</p>
                         <p>Это — не только орган управления, но и кузница будущих руководителей. В его стенах на практике постигаются азы правовой культуры, стратегического планирования, искусства переговоров и коллективного принятия решений.</p>
                     </div>
                     <div class="about-image">
@@ -748,37 +741,34 @@
         </div>
     </div>
 
-    <!-- ИСТОРИЯ (полная) -->
     <div id="history" class="page">
         <div class="container">
             <h2 class="section-title">История Кадетского Парламента</h2>
             <div class="timeline">
-                <div class="timeline-item"><div class="timeline-content"><div class="timeline-date">2022 год - Осень</div><h3>Создание Парламента</h3><p>Реформирование бывшего органа ученического самоуправления КСоЛД в Кадетский Парламент кадетом 9-ого класса, Каверзиным Иваном Игоревичом. Первые выборы председателя и членов парламента.</p></div></div>
-                <div class="timeline-item"><div class="timeline-content"><div class="timeline-date">2022 год - Зима</div><h3>Первые крупные изменения</h3><p>Организация первых масштабных мероприятий, создание положения о Кадетском Парламенте, формирование состава Парламента, начало работы.</p></div></div>
+                <div class="timeline-item"><div class="timeline-content"><div class="timeline-date">2022 год - Осень</div><h3>Создание Кадетского Парламента</h3><p>Реформирование бывшего органа ученического самоуправления КСоЛД в Кадетский Парламент кадетом 9-ого класса, Каверзиным Иваном Игоревичом. Первые выборы Председателя и членов Кадетского Парламента.</p></div></div>
+                <div class="timeline-item"><div class="timeline-content"><div class="timeline-date">2022 год - Зима</div><h3>Первые крупные изменения</h3><p>Организация первых масштабных мероприятий, создание Положения о Кадетском Парламенте, формирование состава Кадетского Парламента, начало работы.</p></div></div>
                 <div class="timeline-item"><div class="timeline-content"><div class="timeline-date">2022 год - Весна</div><h3>Первые результаты</h3><p>Завершение года, подведение итогов и выявление лучших по истечению периода. Подача отчетов Директору корпуса.</p></div></div>
                 <div class="timeline-item"><div class="timeline-content"><div class="timeline-date">2023 год - Осень</div><h3>Межкорпусное сотрудничество</h3><p>Налаживание партнерских отношений с кадетскими парламентами других корпусов, проведение совместных онлайн - встреч и обмен опытом.</p></div></div>
                 <div class="timeline-item"><div class="timeline-content"><div class="timeline-date">2023 год - Весна</div><h3>Окончание срока Первого Председателя</h3><p>Награждение похвальными грамотами и орденами "Военно - Морской Флот".</p></div></div>
-                <div class="timeline-item"><div class="timeline-content"><div class="timeline-date">2025 год - Осень</div><h3>Создание первого сайта Парламента</h3><p>Развитие в цифровой сфере для увеличения массовой известности в кругах корпуса, города и края.</p></div></div>
+                <div class="timeline-item"><div class="timeline-content"><div class="timeline-date">2025 год - Осень</div><h3>Создание первого сайта Кадетского Парламента</h3><p>Развитие в цифровой сфере для увеличения массовой известности в кругах корпуса, города и края.</p></div></div>
             </div>
-            <section><h2 class="section-title">Достижения за годы работы</h2><div class="grid-3"><div class="card"><div class="card-img"><img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Награды"></div><div class="card-content"><h3>Награды</h3><p>За активную работу на корпусном уровне, первый Председатель и Вице-Председатель Парламента были удостоены Высшей Награды Парламента, ордена "Военно-Морской Флот", а также Благодарственной Грамоты от Директора Корпуса.</p></div></div><div class="card"><div class="card-img"><img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Участники"></div><div class="card-content"><h3>Участники</h3><p>Более 40 кадет приняли участие в работе Парламента за всю историю его существования, активно развивая Орган на корпусном уровне и проявляя инициативу в развитии отношений между кадетами и администрацией.</p></div></div><div class="card"><div class="card-img"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Проекты"></div><div class="card-content"><h3>Проекты</h3><p>Под руководством Парламента в 2025 - ом учебном году было положено начало разработке проекта "Каток" для облагораживания и продуктивной эксплуатации прилегающей к корпусу территории.</p></div></div></div></section>
+            <section><h2 class="section-title">Достижения за годы работы</h2><div class="grid-3"><div class="card"><div class="card-img"><img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Награды"></div><div class="card-content"><h3>Награды</h3><p>За активную работу на корпусном уровне, первый Председатель и Вице-Председатель Кадетского Парламента были удостоены Высшей Награды Кадетского Парламента, ордена "Военно-Морской Флот", а также Благодарственной Грамоты от Директора Корпуса.</p></div></div><div class="card"><div class="card-img"><img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Участники"></div><div class="card-content"><h3>Участники</h3><p>Более 40 кадет приняли участие в работе Кадетского Парламента за всю историю его существования, активно развивая Орган на корпусном уровне и проявляя инициативу в развитии отношений между кадетами и администрацией.</p></div></div><div class="card"><div class="card-img"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Проекты"></div><div class="card-content"><h3>Проекты</h3><p>Под руководством Кадетского Парламента в 2025 - ом учебном году было положено начало разработке проекта "Каток" для облагораживания и продуктивной эксплуатации прилегающей к корпусу территории.</p></div></div></div></section>
         </div>
     </div>
 
-    <!-- ЛУЧШИЕ КАДЕТЫ (полная) - увеличенная высота фото -->
     <div id="best-members" class="page">
         <div class="container">
-            <h2 class="section-title">Лучшие кадеты Парламента</h2>
-            <p class="text-center" style="color: var(--gold); margin-bottom: 2rem;">Гордость нашего корпуса - кадеты, проявившие выдающиеся лидерские качества и внесшие значительный вклад в развитие Парламента</p>
+            <h2 class="section-title">Лучшие кадеты Кадетского Парламента</h2>
+            <p class="text-center" style="color: var(--gold); margin-bottom: 2rem;">Гордость нашего корпуса - кадеты, проявившие выдающиеся лидерские качества и внесшие значительный вклад в развитие Кадетского Парламента</p>
             <div class="grid-3">
-                <div class="card"><div class="card-img"><img src="van.jpg" alt="Каверзин Иван"></div><div class="card-content"><h3>Каверзин Иван Игоревич</h3><div class="card-role">Основатель и Первый Председатель Кадетского Парламента 2022-2024 учебный год</div><p>Выпускник Канского Морского Кадетского Корпуса (2024), серебряный медалист, лауреат государственных премий Союза Писателей России, за заслуги награжден Благодарственным письмом и Орденом "Военно - Морской Флот".</p><div class="achievements-list"><h4>Достижения:</h4><ul><li>Выступил с инициативой создания Кадетского парламента, доказав его необходимость для развития корпуса.</li><li>Лично разработал и сформировал Положение о Кадетском парламенте — основной документ, определяющий его цели, задачи, права, обязанности и структуру.</li><li>Был избран первым председателем, что является признанием его лидерских качеств и авторитета среди кадет. На этом посту он заложил традиции работы парламента, наладил взаимодействие между кадетами и администрацией корпуса.</li></ul></div></div></div>
-                <div class="card"><div class="card-img"><img src="" alt="Потылицын Лев"></div><div class="card-content"><h3>Потылицын Лев Евгеньевич</h3><div class="card-role">Вице - Председатель Кадетского Парламента 2023-2024 учебный год</div><p>Выпускник Канского Морского Кадетского Корпуса (2024), активист Кадетского Парламента, за заслуги награжден Благодарственным письмом и Орденом "Военно - Морской Флот".</p><div class="achievements-list"><h4>Достижения:</h4><ul><li>Организация нового Медиационного Отдела в Отделе Дисциплины Кадетского Парламента, активный контроль дисциплины в корпусе в учебное и внеурочное время.</li><li>Активное участие в организации Корпусных Мероприятий, проявление инициативы и выдвижение предложений для их организации.</li><li>Помощь в разработке Положения о Кадетском Парламенте, инициатива создания поощрительной меры стимулирования (орден "Военно - Морской Флот"), особый вклад в развитие дисциплинарного отдела Парламента, безупречное ведение работы на посту Министра Отдела Дисциплины.</li></ul></div></div></div>
-                <div class="card"><div class="card-img"><img src="" alt="Макиенко Дмитрий"></div><div class="card-content"><h3>Макиенко Дмитрий Михайлович</h3><div class="card-role">Активист Парламента, ведущий Корпусных мероприятий, хорошист.</div><p>Кадет 9-ого класса, Секретарь Кадетского Парламента (2025-2026).</p><div class="achievements-list"><h4>Достижения:</h4><ul><li>На протяжении двух лет активно участвует в организации корпусных мероприятий, также ведет мероприятия, посвященные знаменательным датам и открытиям Аллей Памяти по приглашению от города Канска.</li><li>Активный член Кадетского Парламента, вступивший в год основания. Проявляет инициативу в делах Органа, за что был удостоен высокой должности "Секретарь Кадетского Парламента".</li><li>Служит примером для младших товарищей, участвует в подготовке вновь прибывших обучающихся пятого класса к принятию Кадетской Клятвы, уча пятиклассников элементам строевой подготовки и нравственным принципам кадетской жизни, создавая важную базу для будущего обучения пятиклассников в Кадетском Корпусе.</li></ul></div></div></div>
+                <div class="card"><div class="card-img"><img src="van.jpg" alt="Каверзин Иван"></div><div class="card-content"><h3>Каверзин Иван Игоревич</h3><div class="card-role">Основатель и Первый Председатель Кадетского Парламента 2022-2024 учебный год</div><p>Выпускник Канского Морского Кадетского Корпуса (2024), серебряный медалист, лауреат государственных премий Союза Писателей России, за заслуги награжден Благодарственным письмом и Орденом "Военно - Морской Флот".</p><div class="achievements-list"><h4>Достижения:</h4><ul><li>Выступил с инициативой создания Кадетского Парламента, доказав его необходимость для развития корпуса.</li><li>Лично разработал и сформировал Положение о Кадетском Парламенте — основной документ, определяющий его цели, задачи, права, обязанности и структуру.</li><li>Был избран первым Председателем, что является признанием его лидерских качеств и авторитета среди кадет. На этом посту он заложил традиции работы Кадетского Парламента, наладил взаимодействие между кадетами и администрацией корпуса.</li></ul></div></div></div>
+                <div class="card"><div class="card-img"><img src="" alt="Потылицын Лев"></div><div class="card-content"><h3>Потылицын Лев Евгеньевич</h3><div class="card-role">Вице-Председатель Кадетского Парламента 2023-2024 учебный год</div><p>Выпускник Канского Морского Кадетского Корпуса (2024), активист Кадетского Парламента, за заслуги награжден Благодарственным письмом и Орденом "Военно - Морской Флот".</p><div class="achievements-list"><h4>Достижения:</h4><ul><li>Организация нового Медиационного Отдела в Отделе Дисциплины Кадетского Парламента, активный контроль дисциплины в корпусе в учебное и внеурочное время.</li><li>Активное участие в организации Корпусных Мероприятий, проявление инициативы и выдвижение предложений для их организации.</li><li>Помощь в разработке Положения о Кадетском Парламенте, инициатива создания поощрительной меры стимулирования (орден "Военно - Морской Флот"), особый вклад в развитие дисциплинарного отдела Кадетского Парламента, безупречное ведение работы на посту Министра Отдела Дисциплины.</li></ul></div></div></div>
+                <div class="card"><div class="card-img"><img src="" alt="Макиенко Дмитрий"></div><div class="card-content"><h3>Макиенко Дмитрий Михайлович</h3><div class="card-role">Активист Кадетского Парламента, ведущий Корпусных мероприятий, хорошист.</div><p>Кадет 9-ого класса, Секретарь Кадетского Парламента (2025-2026).</p><div class="achievements-list"><h4>Достижения:</h4><ul><li>На протяжении двух лет активно участвует в организации корпусных мероприятий, также ведет мероприятия, посвященные знаменательным датам и открытиям Аллей Памяти по приглашению от города Канска.</li><li>Активный член Кадетского Парламента, вступивший в год основания. Проявляет инициативу в делах Органа, за что был удостоен высокой должности "Секретарь Кадетского Парламента".</li><li>Служит примером для младших товарищей, участвует в подготовке вновь прибывших обучающихся пятого класса к принятию Кадетской Клятвы, уча пятиклассников элементам строевой подготовки и нравственным принципам кадетской жизни, создавая важную базу для будущего обучения пятиклассников в Кадетском Корпусе.</li></ul></div></div></div>
             </div>
-            <section style="margin-top: 3rem;"><h2 class="section-title">Галерея достижений</h2><div class="grid-3"><div class="card"><div class="card-img"><img src="https://images.unsplash.com/photo-1567690346811-22291ebe92ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=872&q=80" alt="Награды"></div><div class="card-content"><h3>Награды наших кадет</h3><p>За последние 3 года кадеты Парламента получили более 70 наград, участвуя в олимпиадах, соревнованиях и конкурсах различных уровней (от муниципального до международного).</p></div></div><div class="card"><div class="card-img"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Медалисты"></div><div class="card-content"><h3>Выпускники-медалисты</h3><p>2 выпускника-члена Парламента закончили корпус с золотыми медалями за последние 3 года. Медалисты без проблем смогли поступить в ВУЗ-ы страны, которые выбрали изначально.</p></div></div><div class="card"><div class="card-img"><img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Поступления"></div><div class="card-content"><h3>Поступления в вузы</h3><p>100% выпускников-членов Парламента поступают в высшие учебные военные и гражданские заведения Российской Федерации имея запас и высокие места в рейтингах поступления.</p></div></div></div></section>
+            <section style="margin-top: 3rem;"><h2 class="section-title">Галерея достижений</h2><div class="grid-3"><div class="card"><div class="card-img"><img src="https://images.unsplash.com/photo-1567690346811-22291ebe92ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=872&q=80" alt="Награды"></div><div class="card-content"><h3>Награды наших кадет</h3><p>За последние 3 года кадеты Кадетского Парламента получили более 70 наград, участвуя в олимпиадах, соревнованиях и конкурсах различных уровней (от муниципального до международного).</p></div></div><div class="card"><div class="card-img"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Медалисты"></div><div class="card-content"><h3>Выпускники-медалисты</h3><p>2 выпускника-члена Кадетского Парламента закончили корпус с золотыми медалями за последние 3 года. Медалисты без проблем смогли поступить в ВУЗ-ы страны, которые выбрали изначально.</p></div></div><div class="card"><div class="card-img"><img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Поступления"></div><div class="card-content"><h3>Поступления в вузы</h3><p>100% выпускников-членов Кадетского Парламента поступают в высшие учебные военные и гражданские заведения Российской Федерации имея запас и высокие места в рейтингах поступления.</p></div></div></div></section>
         </div>
     </div>
 
-    <!-- ДЕЯТЕЛЬНОСТЬ -->
     <div id="activities" class="page">
         <div class="container">
             <h2 class="section-title">Направления деятельности</h2>
@@ -790,23 +780,20 @@
         </div>
     </div>
 
-    <!-- ДОКУМЕНТЫ (полная версия: 3 категории, 9 документов) -->
     <div id="documents" class="page">
         <div class="container">
             <h2 class="section-title">Документы Кадетского Парламента</h2>
             <p class="text-center" style="margin-bottom: 2rem;">Официальные документы, регламентирующие деятельность Кадетского Парламента</p>
             
-            <!-- Уставные документы -->
             <div class="document-category">
                 <h3><i class="fas fa-gavel"></i> Уставные документы</h3>
                 <div class="grid-3">
                     <div class="card"><div class="card-img"><img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Положение"></div><div class="card-content"><h3>Положение о Кадетском Парламенте</h3><p>Основной документ, определяющий цели, задачи, права, обязанности и структуру Кадетского Парламента Канского Морского Кадетского Корпуса.</p><div class="document-meta"><i class="fas fa-calendar"></i> 15.09.2022 &nbsp; <i class="fas fa-file-pdf"></i> PDF 2.4 МБ</div><a href="#" class="btn" style="padding:8px 20px; font-size:0.85rem"><i class="fas fa-download"></i> Скачать</a></div></div>
-                    <div class="card"><div class="card-img"><img src="https://images.unsplash.com/photo-1589330691061-23c3434e3c68?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Регламент"></div><div class="card-content"><h3>Регламент работы Парламента</h3><p>Порядок проведения заседаний, процедура голосования, правила внесения предложений и принятия решений.</p><div class="document-meta"><i class="fas fa-calendar"></i> 01.10.2022 &nbsp; <i class="fas fa-file-word"></i> DOCX 1.8 МБ</div><a href="#" class="btn" style="padding:8px 20px; font-size:0.85rem"><i class="fas fa-download"></i> Скачать</a></div></div>
+                    <div class="card"><div class="card-img"><img src="https://images.unsplash.com/photo-1589330691061-23c3434e3c68?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Регламент"></div><div class="card-content"><h3>Регламент работы Кадетского Парламента</h3><p>Порядок проведения заседаний, процедура голосования, правила внесения предложений и принятия решений.</p><div class="document-meta"><i class="fas fa-calendar"></i> 01.10.2022 &nbsp; <i class="fas fa-file-word"></i> DOCX 1.8 МБ</div><a href="#" class="btn" style="padding:8px 20px; font-size:0.85rem"><i class="fas fa-download"></i> Скачать</a></div></div>
                     <div class="card"><div class="card-img"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Кодекс"></div><div class="card-content"><h3>Кодекс чести кадета-парламентария</h3><p>Этические нормы и правила поведения для членов Кадетского Парламента, стандарты чести и достоинства.</p><div class="document-meta"><i class="fas fa-calendar"></i> 20.10.2022 &nbsp; <i class="fas fa-file-pdf"></i> PDF 1.2 МБ</div><a href="#" class="btn" style="padding:8px 20px; font-size:0.85rem"><i class="fas fa-download"></i> Скачать</a></div></div>
                 </div>
             </div>
             
-            <!-- Отчеты и протоколы -->
             <div class="document-category">
                 <h3><i class="fas fa-chart-bar"></i> Отчеты и протоколы</h3>
                 <div class="grid-3">
@@ -816,19 +803,17 @@
                 </div>
             </div>
             
-            <!-- Проекты и инициативы -->
             <div class="document-category">
                 <h3><i class="fas fa-lightbulb"></i> Проекты и инициативы</h3>
                 <div class="grid-3">
                     <div class="card"><div class="card-img"><img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Проект Каток"></div><div class="card-content"><h3>Проект "Каток"</h3><p>Проектная документация по созданию катка на территории Канского Морского Кадетского Корпуса.</p><div class="document-meta"><i class="fas fa-calendar"></i> 10.11.2024 &nbsp; <i class="fas fa-file-pdf"></i> PDF 5.7 МБ</div><a href="#" class="btn" style="padding:8px 20px; font-size:0.85rem"><i class="fas fa-download"></i> Скачать</a></div></div>
-                    <div class="card"><div class="card-img"><img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Положение о наградах"></div><div class="card-content"><h3>Положение о наградах Парламента</h3><p>Положение об ордене "Военно-Морской Флот" и других наградах Кадетского Парламента.</p><div class="document-meta"><i class="fas fa-calendar"></i> 15.12.2022 &nbsp; <i class="fas fa-file-pdf"></i> PDF 1.1 МБ</div><a href="#" class="btn" style="padding:8px 20px; font-size:0.85rem"><i class="fas fa-download"></i> Скачать</a></div></div>
+                    <div class="card"><div class="card-img"><img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Положение о наградах"></div><div class="card-content"><h3>Положение о наградах Кадетского Парламента</h3><p>Положение об ордене "Военно-Морской Флот" и других наградах Кадетского Парламента.</p><div class="document-meta"><i class="fas fa-calendar"></i> 15.12.2022 &nbsp; <i class="fas fa-file-pdf"></i> PDF 1.1 МБ</div><a href="#" class="btn" style="padding:8px 20px; font-size:0.85rem"><i class="fas fa-download"></i> Скачать</a></div></div>
                     <div class="card"><div class="card-img"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Медиация"></div><div class="card-content"><h3>Регламент Медиационного Отдела</h3><p>Порядок работы отдела дисциплины и медиации, процедура разрешения конфликтов.</p><div class="document-meta"><i class="fas fa-calendar"></i> 05.02.2023 &nbsp; <i class="fas fa-file-word"></i> DOCX 1.3 МБ</div><a href="#" class="btn" style="padding:8px 20px; font-size:0.85rem"><i class="fas fa-download"></i> Скачать</a></div></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- КОНТАКТЫ -->
     <div id="contact" class="page">
         <div class="container">
             <h2 class="section-title">Свяжитесь с нами</h2>
@@ -837,7 +822,7 @@
                     <div class="contact-card"><div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><div><h3>Адрес</h3><p>Канский Морской Кадетский Корпус<br>ул. Герцена 11, г.Канск, Красноярский край, Россия</p></div></div>
                     <div class="contact-card"><div class="contact-icon"><i class="fas fa-envelope"></i></div><div><h3>Email</h3><p>Fo8983@yandex.ru</p></div></div>
                     <div class="contact-card"><div class="contact-icon"><i class="fas fa-clock"></i></div><div><h3>Время работы</h3><p>Пн-Вс: 8:00 - 21:00</p></div></div>
-                    <div class="contact-card"><div class="contact-icon"><i class="fas fa-users"></i></div><div><h3>Председатель Парламента</h3><p>Жданов Дмитрий Иванович</p></div></div>
+                    <div class="contact-card"><div class="contact-icon"><i class="fas fa-users"></i></div><div><h3>Председатель Кадетского Парламента</h3><p>Жданов Дмитрий Иванович</p></div></div>
                 </div>
                 <div class="contact-form">
                     <form id="contactForm" action="https://formspree.io/f/mrbgveqg" method="POST">
