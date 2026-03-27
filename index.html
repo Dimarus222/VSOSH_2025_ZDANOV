@@ -56,6 +56,7 @@
             font-size: clamp(1.8rem, 5vw, 2.5rem);
             font-weight: 800;
             position: relative;
+            margin-top: 15px;  /* добавили отступ сверху 15px */
         }
 
         .section-title::after {
@@ -281,6 +282,11 @@
             box-shadow: 0 8px 25px rgba(255, 184, 28, 0.4);
         }
 
+        /* общие стили для абзацев — выравнивание по ширине */
+        p {
+            text-align: justify;
+        }
+
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -368,10 +374,12 @@
             flex-direction: column;
         }
 
+        /* заголовки h3 внутри карточек — по центру */
         .card-content h3 {
             color: var(--gold);
             margin-bottom: 0.5rem;
             font-size: 1.3rem;
+            text-align: center;
         }
 
         .card-role {
@@ -381,6 +389,7 @@
             margin-bottom: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+            text-align: center;
         }
 
         .achievements-list {
@@ -404,6 +413,7 @@
             padding-left: 22px;
             position: relative;
             font-size: 0.85rem;
+            text-align: left;
         }
 
         .achievements-list li::before {
@@ -627,6 +637,15 @@
             text-align: center;
         }
 
+        /* Специальные стили для страницы "Лучшие кадеты": увеличиваем высоту изображений в карточках */
+        #best-members .card-img {
+            height: 320px;
+        }
+        #best-members .card-img img {
+            object-fit: cover;
+            object-position: top center;
+        }
+
         @media (max-width: 992px) {
             .timeline::before {
                 left: 20px;
@@ -637,6 +656,9 @@
             }
             .about-grid {
                 grid-template-columns: 1fr;
+            }
+            #best-members .card-img {
+                height: 280px;
             }
         }
 
@@ -651,6 +673,9 @@
             .document-category h3 {
                 font-size: 1.2rem;
             }
+            #best-members .card-img {
+                height: 260px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -663,6 +688,9 @@
             }
             .card-img {
                 height: 180px;
+            }
+            #best-members .card-img {
+                height: 240px;
             }
         }
     </style>
@@ -736,7 +764,7 @@
         </div>
     </div>
 
-    <!-- ЛУЧШИЕ КАДЕТЫ (полная) -->
+    <!-- ЛУЧШИЕ КАДЕТЫ (полная) - увеличенная высота фото -->
     <div id="best-members" class="page">
         <div class="container">
             <h2 class="section-title">Лучшие кадеты Парламента</h2>
