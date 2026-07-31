@@ -12,8 +12,10 @@
     <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%230B1A33' stroke='%23FFB81C' stroke-width='3'/><text x='50' y='70' font-size='50' text-anchor='middle' fill='%23FFB81C' font-weight='bold'>⚓</text></svg>">
     <link rel="shortcut icon" type="image/jpeg" href="/uploads/IMG_20260308_141624_767.jpg">
     <link rel="apple-touch-icon" href="/uploads/IMG_20260308_141624_767.jpg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Иконки и шрифты — без внешних CDN: свой SVG-спрайт и системные шрифты, чтобы страница
+         показывалась мгновенно и не зависела от Cloudflare/Google Fonts (которые бывают
+         недоступны или медленны из РФ). -->
+    <link rel="preload" as="image" href="/uploads/van.jpg" fetchpriority="high">
     <style>
         * {
             margin: 0;
@@ -67,7 +69,7 @@
         }
 
         body {
-            font-family: 'Manrope', sans-serif;
+            font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background: var(--gradient-1);
             color: var(--white);
             line-height: 1.6;
@@ -79,6 +81,16 @@
 
         body.menu-open {
             overflow: hidden;
+        }
+
+        /* Иконки — инлайновый SVG-спрайт вместо Font Awesome, без внешних запросов */
+        .icon {
+            width: 1em;
+            height: 1em;
+            display: inline-block;
+            vertical-align: -0.125em;
+            fill: none;
+            stroke: currentColor;
         }
 
         main {
@@ -93,7 +105,7 @@
         }
 
         h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
+            font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, serif;
             font-weight: 700;
             letter-spacing: -0.02em;
         }
@@ -315,8 +327,8 @@
         }
 
         .hero {
-            background: linear-gradient(rgba(11, 26, 51, 0.75), rgba(11, 26, 51, 0.85)), 
-                        url('https://images.unsplash.com/photo-1587441529457-37c5ac44329f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background: linear-gradient(rgba(11, 26, 51, 0.80), rgba(11, 26, 51, 0.88)),
+                        url('/uploads/van.jpg');
             background-size: cover;
             background-position: center;
             border-radius: 24px;
@@ -734,7 +746,7 @@
             font-weight: 800;
             color: var(--gold);
             margin-bottom: 1rem;
-            font-family: 'Playfair Display', serif;
+            font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, serif;
         }
 
         .social-links {
@@ -959,12 +971,41 @@
         }
     </style></head>
 <body>
+<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+<defs>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v10h12V10" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 20v-6h4v6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-anchor" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.2" stroke-width="1.8"/><path d="M12 7.2V21" stroke-width="1.8" stroke-linecap="round"/><path d="M7 13H2a10 10 0 0 0 10 8 10 10 0 0 0 10-8h-5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 10.5h6" stroke-width="1.8" stroke-linecap="round"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6Z" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="1.8"/><path d="M15 9l-2 6-6 2 2-6 6-2Z" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-file-alt" viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7Z" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 3v4h4" stroke-width="1.8" stroke-linejoin="round"/><path d="M9.5 12h5M9.5 15.5h5M9.5 8.5h2" stroke-width="1.6" stroke-linecap="round"/></symbol>
+<symbol id="i-envelope" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" stroke-width="1.8"/><path d="M3 6.5l9 6.5 9-6.5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 20V4M6 10l6-6 6 6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-quote-left" viewBox="0 0 24 24"><path d="M9 10c0-2.5 1.5-4.5 4-5v2c-1.2.4-2 1.4-2 3h2v5H9v-5Z" stroke-width="1.4" stroke-linejoin="round"/><path d="M17 10c0-2.5 1.5-4.5 4-5v2c-1.2.4-2 1.4-2 3h2v5h-4v-5Z" stroke-width="1.4" stroke-linejoin="round"/></symbol>
+<symbol id="i-gavel" viewBox="0 0 24 24"><path d="M14.5 3.5l4 4-2.2 2.2-4-4Z" stroke-width="1.7" stroke-linejoin="round"/><path d="M8 10l5 5" stroke-width="1.7" stroke-linecap="round"/><path d="M4 21l6.5-6.5" stroke-width="1.7" stroke-linecap="round"/><path d="M9 15.5l3-3 3 3-3 3Z" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+<symbol id="i-map-marker-alt" viewBox="0 0 24 24"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12Z" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="9" r="2.4" stroke-width="1.6"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3" stroke-width="1.7"/><path d="M3 20c0-3.5 2.5-6 6-6s6 2.5 6 6" stroke-width="1.7" stroke-linecap="round"/><circle cx="17" cy="9" r="2.3" stroke-width="1.6"/><path d="M15 20c.2-2.4 1.7-4.2 4-5" stroke-width="1.6" stroke-linecap="round"/></symbol>
+<symbol id="i-paper-plane" viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8-8-2Z" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+<symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" stroke-width="1.8"/><path d="M3 9h18M8 3v4M16 3v4" stroke-width="1.8" stroke-linecap="round"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4-4m4 4l4-4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 18v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-book-open" viewBox="0 0 24 24"><path d="M12 6c-2-1.5-5-2-8-1v13c3-1 6-.5 8 1 2-1.5 5-2 8-1V5c-3-1-6-.5-8 1Z" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 6v13" stroke-width="1.6"/></symbol>
+<symbol id="i-flag-checkered" viewBox="0 0 24 24"><path d="M5 21V4" stroke-width="1.8" stroke-linecap="round"/><path d="M5 4c2-1 4-1 6 0s4 1 6 0v8c-2 1-4 1-6 0s-4-1-6 0Z" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="1.8"/><path d="M3 12h18" stroke-width="1.6"/><path d="M12 3c2.5 2.5 3.5 6 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-6-3.5-9s1-6.5 3.5-9Z" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-handshake" viewBox="0 0 24 24"><path d="M2 13l4-4 3 3-4 4Z" stroke-width="1.5" stroke-linejoin="round"/><path d="M22 13l-4-4-3 3 4 4Z" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 12l3 3 3-3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 12l2 5a2 2 0 0 0 3 .8" stroke-width="1.5" stroke-linecap="round"/><path d="M18 12l-2 5a2 2 0 0 1-3 .8" stroke-width="1.5" stroke-linecap="round"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19C5 10 12 4 20 4c0 8-6 15-15 15Z" stroke-width="1.7" stroke-linejoin="round"/><path d="M6 18C10 14 14 9 19 5" stroke-width="1.6" stroke-linecap="round"/></symbol>
+<symbol id="i-seedling" viewBox="0 0 24 24"><path d="M12 21v-7" stroke-width="1.8" stroke-linecap="round"/><path d="M12 14c-5 0-8-3-8-8 5 0 8 3 8 8Z" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 12c0-4 3-7 8-7 0 4-3 7-8 7Z" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="i-snowflake" viewBox="0 0 24 24"><path d="M12 2v20M4.5 7l15 10M19.5 7l-15 10" stroke-width="1.7" stroke-linecap="round"/></symbol>
+<symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7 4h10v4a5 5 0 0 1-10 0Z" stroke-width="1.7" stroke-linejoin="round"/><path d="M5 6H3v2a4 4 0 0 0 4 4" stroke-width="1.6" stroke-linecap="round"/><path d="M19 6h2v2a4 4 0 0 1-4 4" stroke-width="1.6" stroke-linecap="round"/><path d="M9 20h6M12 16v4" stroke-width="1.7" stroke-linecap="round"/></symbol>
+<symbol id="i-vk" viewBox="0 0 24 24"><text x="3.2" y="17" font-size="13" font-weight="700" fill="currentColor" stroke="none" font-family="Arial, sans-serif">VK</text></symbol>
+</defs>
+</svg>
 
 <header>
     <div class="header-container">
         <div class="logo">
             <div class="logo-icon">
-                <img src="/uploads/IMG_20260308_141624_767.jpg" alt="Логотип" loading="lazy">
+                <img src="/uploads/IMG_20260308_141624_767.jpg" alt="Логотип" width="45" height="45" fetchpriority="high">
             </div>
             <div class="logo-text">
                 <h1>Кадетский Парламент</h1>
@@ -975,12 +1016,12 @@
     </div>
     <div class="mobile-nav" id="mobileNav" aria-label="Мобильная навигация">
         <ul>
-            <li><a href="#" class="mobile-nav-link active" data-page="home"><i class="fas fa-home"></i> Главная</a></li>
-            <li><a href="#" class="mobile-nav-link" data-page="history"><i class="fas fa-anchor"></i> История</a></li>
-            <li><a href="#" class="mobile-nav-link" data-page="best-members"><i class="fas fa-star"></i> Лучшие кадеты</a></li>
-            <li><a href="#" class="mobile-nav-link" data-page="activities"><i class="fas fa-compass"></i> Деятельность</a></li>
-            <li><a href="#" class="mobile-nav-link" data-page="documents"><i class="fas fa-file-alt"></i> Документы</a></li>
-            <li><a href="#" class="mobile-nav-link" data-page="contact"><i class="fas fa-envelope"></i> Контакты</a></li>
+            <li><a href="#" class="mobile-nav-link active" data-page="home"><svg class="icon"><use href="#i-home"></use></svg> Главная</a></li>
+            <li><a href="#" class="mobile-nav-link" data-page="history"><svg class="icon"><use href="#i-anchor"></use></svg> История</a></li>
+            <li><a href="#" class="mobile-nav-link" data-page="best-members"><svg class="icon"><use href="#i-star"></use></svg> Лучшие кадеты</a></li>
+            <li><a href="#" class="mobile-nav-link" data-page="activities"><svg class="icon"><use href="#i-compass"></use></svg> Деятельность</a></li>
+            <li><a href="#" class="mobile-nav-link" data-page="documents"><svg class="icon"><use href="#i-file-alt"></use></svg> Документы</a></li>
+            <li><a href="#" class="mobile-nav-link" data-page="contact"><svg class="icon"><use href="#i-envelope"></use></svg> Контакты</a></li>
         </ul>
     </div>
     <div class="menu-overlay" id="menuOverlay"></div>
@@ -994,7 +1035,7 @@
             <div class="hero">
                 <h2 id="heroTitle">Загрузка...</h2>
                 <p id="heroSubtitle"></p>
-                <button class="btn" id="learn-more-btn"><i class="fas fa-arrow-right"></i> Узнать больше</button>
+                <button class="btn" id="learn-more-btn"><svg class="icon"><use href="#i-arrow-right"></use></svg> Узнать больше</button>
             </div>
             <section>
                 <h2 class="section-title">О Кадетском Парламенте</h2>
@@ -1030,29 +1071,29 @@
             <h2 class="section-title">Направления деятельности</h2>
             <div class="grid-3" id="activitiesList"></div>
             <div style="margin-top: 3rem; text-align: center; padding: 2rem; background: rgba(255, 184, 28, 0.1); border-radius: 24px; border-left: 4px solid var(--gold);">
-                <i class="fas fa-quote-left" style="font-size: 2rem; color: var(--gold); opacity: 0.5; margin-bottom: 1rem; display: inline-block;"></i>
+                <svg class="icon" style="font-size: 2rem; color: var(--gold); opacity: 0.5; margin-bottom: 1rem; display: inline-block;"><use href="#i-quote-left"></use></svg>
                 <p style="font-style: italic; font-size: 1.1rem; max-width: 700px; margin: 0 auto;" id="activitiesQuote"></p>
                 <p style="margin-top: 1rem; color: var(--gold);">— Председатель Кадетского Парламента</p>
             </div>
         </div>
     </div>
 
-    <div id="documents" class="page"><div class="container"><h2 class="section-title">Документы Кадетского Парламента</h2><p class="text-center" style="margin-bottom: 2rem;">Официальные документы, регламентирующие деятельность Кадетского Парламента</p><div class="document-category"><h3><i class="fas fa-gavel"></i> Уставные документы</h3><div class="grid-3" id="documentsList"></div></div></div></div>
+    <div id="documents" class="page"><div class="container"><h2 class="section-title">Документы Кадетского Парламента</h2><p class="text-center" style="margin-bottom: 2rem;">Официальные документы, регламентирующие деятельность Кадетского Парламента</p><div class="document-category"><h3><svg class="icon"><use href="#i-gavel"></use></svg> Уставные документы</h3><div class="grid-3" id="documentsList"></div></div></div></div>
 
-    <div id="contact" class="page"><div class="container"><h2 class="section-title">Свяжитесь с нами</h2><div class="contact-grid"><div><div class="contact-card" id="emailCard"><div class="contact-icon"><i class="fas fa-envelope"></i></div><div><h3>Email</h3><p id="emailAddress"></p></div></div><div class="contact-card"><div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><div><h3>Адрес</h3><p id="contactAddress"></p></div></div><div class="contact-card"><div class="contact-icon"><i class="fas fa-clock"></i></div><div><h3>Время работы</h3><p id="contactHours"></p></div></div><div class="contact-card"><div class="contact-icon"><i class="fas fa-users"></i></div><div><h3>Председатель Кадетского Парламента</h3><p id="contactChairman"></p></div></div></div><div class="contact-form"><form id="contactForm" action="https://formspree.io/f/mrbgveqg" method="POST"><input type="text" name="name" placeholder="Ваше имя" required><input type="email" name="_replyto" placeholder="Ваш Email" required><input type="text" name="subject" placeholder="Тема сообщения"><textarea name="message" placeholder="Ваше сообщение" required></textarea><button type="submit" class="btn" style="width:100%; justify-content:center"><i class="fas fa-paper-plane"></i> Отправить сообщение</button></form></div></div></div></div>
+    <div id="contact" class="page"><div class="container"><h2 class="section-title">Свяжитесь с нами</h2><div class="contact-grid"><div><div class="contact-card" id="emailCard"><div class="contact-icon"><svg class="icon"><use href="#i-envelope"></use></svg></div><div><h3>Email</h3><p id="emailAddress"></p></div></div><div class="contact-card"><div class="contact-icon"><svg class="icon"><use href="#i-map-marker-alt"></use></svg></div><div><h3>Адрес</h3><p id="contactAddress"></p></div></div><div class="contact-card"><div class="contact-icon"><svg class="icon"><use href="#i-clock"></use></svg></div><div><h3>Время работы</h3><p id="contactHours"></p></div></div><div class="contact-card"><div class="contact-icon"><svg class="icon"><use href="#i-users"></use></svg></div><div><h3>Председатель Кадетского Парламента</h3><p id="contactChairman"></p></div></div></div><div class="contact-form"><form id="contactForm" action="https://formspree.io/f/mrbgveqg" method="POST"><input type="text" name="name" placeholder="Ваше имя" required><input type="email" name="_replyto" placeholder="Ваш Email" required><input type="text" name="subject" placeholder="Тема сообщения"><textarea name="message" placeholder="Ваше сообщение" required></textarea><button type="submit" class="btn" style="width:100%; justify-content:center"><svg class="icon"><use href="#i-paper-plane"></use></svg> Отправить сообщение</button></form></div></div></div></div>
 </main>
 
 <footer>
     <div class="container">
         <div class="footer-grid">
-            <div><div class="footer-logo">⚓ Кадетский Парламент</div><p>Официальный сайт Кадетского Парламента Канского Морского Кадетского Корпуса - органа ученического самоуправления.</p><div class="social-links"><a href="https://vk.com/kadetskyparlament"><i class="fab fa-vk"></i></a></div></div>
+            <div><div class="footer-logo">⚓ Кадетский Парламент</div><p>Официальный сайт Кадетского Парламента Канского Морского Кадетского Корпуса - органа ученического самоуправления.</p><div class="social-links"><a href="https://vk.com/kadetskyparlament"><svg class="icon"><use href="#i-vk"></use></svg></a></div></div>
             <div class="footer-links"><h4>Быстрые ссылки</h4><ul><li><a href="#" class="footer-nav-link" data-page="home">Главная</a></li><li><a href="#" class="footer-nav-link" data-page="history">История</a></li><li><a href="#" class="footer-nav-link" data-page="best-members">Лучшие кадеты</a></li><li><a href="#" class="footer-nav-link" data-page="activities">Деятельность</a></li><li><a href="#" class="footer-nav-link" data-page="documents">Документы</a></li><li><a href="#" class="footer-nav-link" data-page="contact">Контакты</a></li></ul></div>
         </div>
         <div class="copyright"><p>&copy; <span id="currentYear"></span> Кадетский Парламент Канского морского кадетского корпуса. Все права защищены.</p></div>
     </div>
 </footer>
 
-<button class="scroll-top" id="scrollTopBtn" aria-label="Наверх"><i class="fas fa-arrow-up"></i></button>
+<button class="scroll-top" id="scrollTopBtn" aria-label="Наверх"><svg class="icon"><use href="#i-arrow-up"></use></svg></button>
 
 <script src="/app.js"></script>
 </body>

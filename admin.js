@@ -265,7 +265,7 @@ async function renderHistory() {
 function timelineItemHtml(item) {
     return `
         <label>Дата / период</label><input type="text" class="f-date" value="${esc(item.date)}">
-        <label>Иконка Font Awesome (напр. fa-star)</label><input type="text" class="f-icon" value="${esc(item.icon)}">
+        <label>Код иконки (напр. fa-star) — доступные: fa-star, fa-anchor, fa-compass, fa-trophy, fa-book-open, fa-globe, fa-handshake, fa-leaf, fa-seedling, fa-snowflake, fa-flag-checkered, fa-users, fa-home, fa-clock</label><input type="text" class="f-icon" value="${esc(item.icon)}">
         <label>Заголовок</label><input type="text" class="f-title" value="${esc(item.title)}">
         <label>Текст</label><textarea class="f-text">${esc(item.text)}</textarea>
     `;
@@ -397,7 +397,7 @@ async function renderActivities() {
 }
 function activityItemHtml(a) {
     return `
-        <label>Иконка Font Awesome (напр. fa-book-open)</label><input type="text" class="f-icon" value="${esc(a.icon)}">
+        <label>Код иконки (напр. fa-book-open) — доступные: fa-star, fa-anchor, fa-compass, fa-trophy, fa-book-open, fa-globe, fa-handshake, fa-leaf, fa-seedling, fa-snowflake, fa-flag-checkered, fa-users, fa-home, fa-clock</label><input type="text" class="f-icon" value="${esc(a.icon)}">
         <label>Заголовок</label><input type="text" class="f-title" value="${esc(a.title)}">
         <label>Текст</label><textarea class="f-text">${esc(a.text)}</textarea>
     `;
