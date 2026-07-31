@@ -4,16 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Кадетский Парламент | Канский МКК</title>
-    <!-- SEO Meta теги -->
     <meta name="description" content="Официальный сайт Кадетского Парламента Канского Морского Кадетского Корпуса. Орган ученического самоуправления, история, документы, лучшие кадеты.">
     <meta property="og:title" content="Кадетский Парламент | Канский МКК">
     <meta property="og:description" content="Орган ученического самоуправления, развивающий лидерские качества кадет">
-    <meta property="og:image" content="IMG_20260308_141624_767.jpg">
+    <meta property="og:image" content="/uploads/IMG_20260308_141624_767.jpg">
     <meta property="og:type" content="website">
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%230B1A33' stroke='%23FFB81C' stroke-width='3'/><text x='50' y='70' font-size='50' text-anchor='middle' fill='%23FFB81C' font-weight='bold'>⚓</text></svg>">
-    <link rel="shortcut icon" type="image/jpeg" href="IMG_20260308_141624_767.jpg">
-    <link rel="apple-touch-icon" href="IMG_20260308_141624_767.jpg">
+    <link rel="shortcut icon" type="image/jpeg" href="/uploads/IMG_20260308_141624_767.jpg">
+    <link rel="apple-touch-icon" href="/uploads/IMG_20260308_141624_767.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -959,15 +957,14 @@
                 height: 300px;
             }
         }
-    </style>
-</head>
+    </style></head>
 <body>
 
 <header>
     <div class="header-container">
         <div class="logo">
             <div class="logo-icon">
-                <img src="IMG_20260308_141624_767.jpg" alt="Логотип" loading="lazy">
+                <img src="/uploads/IMG_20260308_141624_767.jpg" alt="Логотип" loading="lazy">
             </div>
             <div class="logo-text">
                 <h1>Кадетский Парламент</h1>
@@ -990,26 +987,21 @@
 </header>
 
 <main>
-    <!-- Хлебные крошки будут обновляться через JS -->
     <div class="container" id="breadcrumbsContainer"></div>
 
     <div id="home" class="page active">
         <div class="container">
             <div class="hero">
-                <h2>Кадетский Парламент<br>Канского Морского Кадетского Корпуса</h2>
-                <p>Орган ученического самоуправления, развивающий лидерские качества кадет</p>
+                <h2 id="heroTitle">Загрузка...</h2>
+                <p id="heroSubtitle"></p>
                 <button class="btn" id="learn-more-btn"><i class="fas fa-arrow-right"></i> Узнать больше</button>
             </div>
             <section>
                 <h2 class="section-title">О Кадетском Парламенте</h2>
                 <div class="about-grid">
-                    <div class="about-text">
-                        <p>Кадетский Парламент - законодательный и представительный орган ученического самоуправления Канского Морского Кадетского Корпуса. Он олицетворяет собой принципы чести, долга, справедливости и коллективной ответственности, служа фундаментом для развития кадетской демократии и формирования подлинного корпоративного духа.</p>
-                        <p>Основанный на принципах всеобщего, равного и прямого избирательного права при тайном голосовании, Кадетский Парламент формируется путём подсчета общего количества голосов за каждого из кандидатов. Таким образом, в его состав попадают самые достойные представители корпуса — кадеты, чьи лидерские качества, активная гражданская позиция, безупречная репутация и преданность идеалам снискали всеобщее уважение и доверие.</p>
-                        <p>Это — не только орган управления, но и кузница будущих руководителей. В его стенах на практике постигаются азы правовой культуры, стратегического планирования, искусства переговоров и коллективного принятия решений.</p>
-                    </div>
+                    <div class="about-text" id="aboutText"></div>
                     <div class="about-image">
-                        <img src="kadetsky.jpg" alt="Кадеты" loading="lazy">
+                        <img id="aboutImage" src="" alt="Кадеты" loading="lazy">
                     </div>
                 </div>
             </section>
@@ -1019,16 +1011,9 @@
     <div id="history" class="page">
         <div class="container">
             <h2 class="section-title">История Кадетского Парламента</h2>
-            <div class="timeline">
-                <div class="timeline-item"><div class="timeline-content"><div class="timeline-date"><i class="fas fa-leaf"></i> 2022 год - Осень</div><h3>Создание Кадетского Парламента</h3><p>Реформирование бывшего органа ученического самоуправления КСоЛД в Кадетский Парламент кадетом 9-ого класса, Каверзиным Иваном Игоревичом. Первые выборы Председателя и членов Кадетского Парламента.</p></div></div>
-                <div class="timeline-item"><div class="timeline-content"><div class="timeline-date"><i class="fas fa-snowflake"></i> 2022 год - Зима</div><h3>Первые крупные изменения</h3><p>Организация первых масштабных мероприятий, создание Положения о Кадетском Парламенте, формирование состава Кадетского Парламента, начало работы.</p></div></div>
-                <div class="timeline-item"><div class="timeline-content"><div class="timeline-date"><i class="fas fa-seedling"></i> 2022 год - Весна</div><h3>Первые результаты</h3><p>Завершение года, подведение итогов и выявление лучших по истечению периода. Подача отчетов Директору корпуса.</p></div></div>
-                <div class="timeline-item"><div class="timeline-content"><div class="timeline-date"><i class="fas fa-handshake"></i> 2023 год - Осень</div><h3>Межкорпусное сотрудничество</h3><p>Налаживание партнерских отношений с кадетскими парламентами других корпусов, проведение совместных онлайн - встреч и обмен опытом.</p></div></div>
-                <div class="timeline-item"><div class="timeline-content"><div class="timeline-date"><i class="fas fa-trophy"></i> 2023 год - Весна</div><h3>Окончание срока Первого Председателя</h3><p>Награждение похвальными грамотами и орденами "Военно - Морской Флот".</p></div></div>
-                <div class="timeline-item"><div class="timeline-content"><div class="timeline-date"><i class="fas fa-globe"></i> 2025 год - Осень</div><h3>Создание первого сайта Кадетского Парламента</h3><p>Развитие в цифровой сфере для увеличения массовой известности в кругах корпуса, города и края.</p></div></div>
-            </div>
-            <section style="margin-top: 4rem;"><h2 class="section-title">Достижения за годы работы</h2><div class="grid-3"><div class="card"><div class="card-content" style="padding-top: 2rem;"><h3>Награды</h3><p>За активную работу на корпусном уровне, первый Председатель и Вице-Председатель Кадетского Парламента были удостоены Высшей Награды Кадетского Парламента, ордена "Военно-Морской Флот", а также Благодарственной Грамоты от Директора Корпуса.</p></div></div><div class="card"><div class="card-content" style="padding-top: 2rem;"><h3>Участники</h3><p>Более 40 кадет приняли участие в работе Кадетского Парламента за всю историю его существования, активно развивая Орган на корпусном уровне и проявляя инициативу в развитии отношений между кадетами и администрацией.</p></div></div><div class="card"><div class="card-content" style="padding-top: 2rem;"><h3>Проекты</h3><p>Под руководством Кадетского Парламента в 2025-ом учебном году было положено начало разработке проекта "Каток" для облагораживания и продуктивной эксплуатации прилегающей к корпусу территории.</p></div></div></div></section>
-            <section style="margin-top: 4rem;"><h2 class="section-title">Галерея достижений</h2><div class="grid-3"><div class="card"><div class="card-content" style="padding-top: 2rem;"><h3>Награды наших кадет</h3><p>За последние 3 года кадеты Кадетского Парламента получили более 70 наград, участвуя в олимпиадах, соревнованиях и конкурсах различных уровней (от муниципального до международного).</p></div></div><div class="card"><div class="card-content" style="padding-top: 2rem;"><h3>Выпускники-медалисты</h3><p>2 выпускника-члена Кадетского Парламента закончили корпус с золотыми медалями за последние 3 года. Медалисты без проблем смогли поступить в ВУЗ-ы страны, которые выбрали изначально.</p></div></div><div class="card"><div class="card-content" style="padding-top: 2rem;"><h3>Поступления в вузы</h3><p>100% выпускников-членов Кадетского Парламента поступают в высшие учебные военные и гражданские заведения Российской Федерации имея запас и высокие места в рейтингах поступления.</p></div></div></div></section>
+            <div class="timeline" id="historyTimeline"></div>
+            <section style="margin-top: 4rem;"><h2 class="section-title">Достижения за годы работы</h2><div class="grid-3" id="historyAchievements"></div></section>
+            <section style="margin-top: 4rem;"><h2 class="section-title">Галерея достижений</h2><div class="grid-3" id="historyGallery"></div></section>
         </div>
     </div>
 
@@ -1036,86 +1021,25 @@
     <div class="container">
         <h2 class="section-title">Лучшие кадеты Кадетского Парламента</h2>
         <p class="text-center" style="color: var(--gold); margin-bottom: 2rem;">Гордость нашего корпуса - кадеты, проявившие выдающиеся лидерские качества и внесшие значительный вклад в развитие Кадетского Парламента</p>
-        <div class="grid-3" style="align-items: stretch;">
-            <div class="card" style="display: flex; flex-direction: column; height: 100%;">
-                <div class="card-img" style="height: 400px; flex-shrink: 0;">
-                    <img src="van.jpg" alt="Каверзин Иван" style="width: 100%; height: 100%; object-fit: cover; object-position: top center;" loading="lazy">
-                </div>
-                <div class="card-content" style="flex: 1; display: flex; flex-direction: column;">
-                    <h3>Каверзин Иван Игоревич</h3>
-                    <div class="card-role">Основатель и Первый Председатель Кадетского Парламента 2022-2024 учебный год</div>
-                    <p>Выпускник Канского Морского Кадетского Корпуса (2024), серебряный медалист, лауреат государственных премий Союза Писателей России, за заслуги награжден Благодарственным письмом и Орденом "Военно - Морской Флот".</p>
-                    <div class="achievements-list" style="margin-top: auto;">
-                        <h4>Достижения:</h4>
-                        <ul><li>Выступил с инициативой создания Кадетского Парламента, доказав его необходимость для развития корпуса.</li><li>Лично разработал и сформировал Положение о Кадетском Парламенте — основной документ, определяющий его цели, задачи, права, обязанности и структуру.</li><li>Был избран первым Председателем, что является признанием его лидерских качеств и авторитета среди кадет. На этом посту он заложил традиции работы Кадетского Парламента, наладил взаимодействие между кадетами и администрацией корпуса.</li></ul>
-                    </div>
-                </div>
-            </div>
-            <div class="card" style="display: flex; flex-direction: column; height: 100%;">
-                <div class="card-img" style="height: 400px; flex-shrink: 0;">
-                    <img src="image-29.jpg" alt="Потылицын Лев" style="width: 100%; height: 100%; object-fit: cover; object-position: top center;" loading="lazy">
-                </div>
-                <div class="card-content" style="flex: 1; display: flex; flex-direction: column;">
-                    <h3>Потылицын Лев Евгеньевич</h3>
-                    <div class="card-role">Вице-Председатель Кадетского Парламента 2023-2024 учебный год</div>
-                    <p>Выпускник Канского Морского Кадетского Корпуса (2024), активист Кадетского Парламента, за заслуги награжден Благодарственным письмом и Орденом "Военно - Морской Флот".</p>
-                    <div class="achievements-list" style="margin-top: auto;">
-                        <h4>Достижения:</h4>
-                        <ul><li>Организация нового Медиационного Отдела в Отделе Дисциплины Кадетского Парламента, активный контроль дисциплины в корпусе в учебное и внеурочное время.</li><li>Активное участие в организации Корпусных Мероприятий, проявление инициативы и выдвижение предложений для их организации.</li><li>Помощь в разработке Положения о Кадетском Парламенте, инициатива создания поощрительной меры стимулирования (орден "Военно - Морской Флот"), особый вклад в развитие дисциплинарного отдела Кадетского Парламента, безупречное ведение работы на посту Министра Отдела Дисциплины.</li></ul>
-                    </div>
-                </div>
-            </div>
-            <div class="card" style="display: flex; flex-direction: column; height: 100%;">
-                <div class="card-img" style="height: 400px; flex-shrink: 0;">
-                    <img src="1774626280331.jpg" alt="Лавров Сергей" style="width: 100%; height: 100%; object-fit: cover; object-position: top center;" loading="lazy">
-                </div>
-                <div class="card-content" style="flex: 1; display: flex; flex-direction: column;">
-                    <h3>Лавров Сергей</h3>
-                    <div class="card-role">Активист Кадетского Парламента, ведущий Корпусных мероприятий, хорошист.</div>
-                    <p>Кадет 8-ого класса (2025-2026), И.О. Председателя Кадетского Парламента (2025-2026).</p>
-                    <div class="achievements-list" style="margin-top: auto;">
-                        <h4>Достижения:</h4>
-                        <ul><li>На протяжении двух лет активно участвует в организации корпусных мероприятий, также ведет мероприятия, посвященные знаменательным датам и открытиям Аллей Памяти по приглашению от города Канска.</li><li>Активный член Кадетского Парламента, вступивший в год основания. Проявляет инициативу в делах Органа, за что был удостоен высокой должности "Исполняющий Обязанности Председателя Кадетского Парламента".</li><li>Служит примером для младших товарищей, участвует в подготовке вновь прибывших обучающихся пятого класса к принятию Кадетской Клятвы, уча пятиклассников элементам строевой подготовки и нравственным принципам кадетской жизни, создавая важную базу для будущего обучения пятиклассников в Кадетском Корпусе.</li></ul>
-                    </div>
-                </div>
-            </div>
-            <div class="card" style="display: flex; flex-direction: column; height: 100%;">
-                <div class="card-img" style="height: 400px; flex-shrink: 0;">
-                    <img src="1000067026.jpg" alt="Жданов Дмитрий" style="width: 100%; height: 100%; object-fit: cover; object-position: top center;" loading="lazy">
-                </div>
-                <div class="card-content" style="flex: 1; display: flex; flex-direction: column;">
-                    <h3>Жданов Дмитрий Иванович</h3>
-                    <div class="card-role">Председатель Кадетского Парламента 2025-2026 учебный год</div>
-                    <p>Кадет 11 класса, выпускник. Номинант литературных премий Российского Союза Писателей, поэт и прозаик.</p>
-                    <div class="achievements-list" style="margin-top: auto;">
-                        <h4>Достижения:</h4>
-                        <ul><li>Внёс важные поправки в нормативные документы, что позволило сделать работу Парламента более структурированной и соответствующей принципам кадетской демократии.</li><li>Дал начало информационно-коммуникативной цепи Кадетского Парламента, значительно улучшив внутреннее и внешнее взаимодействие, освещение мероприятий и обратную связь с кадетами корпуса.</li><li>Привнёс огромные изменения в организацию работы Парламента, повысив дисциплину, ответственность и вовлечённость членов в деятельность органа.</li></ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="grid-3" style="align-items: stretch;" id="bestMembers"></div>
     </div>
-</div>
+    </div>
 
     <div id="activities" class="page">
         <div class="container">
             <h2 class="section-title">Направления деятельности</h2>
-            <div class="grid-3">
-                <div class="card"><div class="card-content" style="padding-top: 2.5rem; text-align: center;"><i class="fas fa-book-open" style="font-size: 3rem; color: var(--gold); margin-bottom: 1rem; display: inline-block;"></i><h3>Учебная подготовка</h3><p>Проверка учебников, помощь отстающим кадетам в повышении успеваемости путем объяснения пропущенного или непонимаемого материала.</p></div></div>
-                <div class="card"><div class="card-content" style="padding-top: 2.5rem; text-align: center;"><i class="fas fa-handshake" style="font-size: 3rem; color: var(--gold); margin-bottom: 1rem; display: inline-block;"></i><h3>Внутренняя работа</h3><p>Решение конфликтов между кадетами, работа по соблюдению порядка во время учебного процесса, помощь кадетам в строевой подготовке.</p></div></div>
-                <div class="card"><div class="card-content" style="padding-top: 2.5rem; text-align: center;"><i class="fas fa-flag-checkered" style="font-size: 3rem; color: var(--gold); margin-bottom: 1rem; display: inline-block;"></i><h3>Патриотические мероприятия</h3><p>Организация мероприятий, направленных на формирование любви к Родине и уважения к флотским традициям. Проведение уроков мужества, встреч с ветеранами.</p></div></div>
-            </div>
+            <div class="grid-3" id="activitiesList"></div>
             <div style="margin-top: 3rem; text-align: center; padding: 2rem; background: rgba(255, 184, 28, 0.1); border-radius: 24px; border-left: 4px solid var(--gold);">
                 <i class="fas fa-quote-left" style="font-size: 2rem; color: var(--gold); opacity: 0.5; margin-bottom: 1rem; display: inline-block;"></i>
-                <p style="font-style: italic; font-size: 1.1rem; max-width: 700px; margin: 0 auto;">«Мы не просто выполняем обязанности — мы формируем будущее кадетского братства. Каждый наш шаг направлен на развитие, дисциплину и честь»</p>
+                <p style="font-style: italic; font-size: 1.1rem; max-width: 700px; margin: 0 auto;" id="activitiesQuote"></p>
                 <p style="margin-top: 1rem; color: var(--gold);">— Председатель Кадетского Парламента</p>
             </div>
         </div>
     </div>
 
-    <div id="documents" class="page"><div class="container"><h2 class="section-title">Документы Кадетского Парламента</h2><p class="text-center" style="margin-bottom: 2rem;">Официальные документы, регламентирующие деятельность Кадетского Парламента</p><div class="document-category"><h3><i class="fas fa-gavel"></i> Уставные документы</h3><div class="grid-3"><div class="card"><div class="card-img"><img src="5.jpg" alt="Документ" loading="lazy"></div><div class="card-content"><p>Основной документ, определяющий цели, задачи, права, обязанности и структуру Кадетского Парламента.</p><div class="document-meta"><i class="fas fa-calendar"></i> 27.03.2026 &nbsp; <i class="fas fa-file-pdf"></i> DOC 22.8 КБ</div><a href="5.doc" class="btn" style="padding:8px 20px; font-size:0.85rem"><i class="fas fa-download"></i> Скачать</a></div></div><div class="card"><div class="card-img"><img src="4.jpg" alt="Документ" loading="lazy"></div><div class="card-content"><p>Документ, регламентирующий структуру, функции, права и обязанности каждого отдела Кадетского Парламента.</p><div class="document-meta"><i class="fas fa-calendar"></i> 27.03.2026 &nbsp; <i class="fas fa-file-word"></i> DOC 21.5 КБ</div><a href="4.doc" class="btn" style="padding:8px 20px; font-size:0.85rem"><i class="fas fa-download"></i> Скачать</a></div></div><div class="card"><div class="card-img"><img src="6.jpg" alt="Документ" loading="lazy"></div><div class="card-content"><p>Официальный бланк для тайного голосования при выборах Председателя и состава Кадетского Парламента.</p><div class="document-meta"><i class="fas fa-calendar"></i> 27.03.2026 &nbsp; <i class="fas fa-file-pdf"></i> DOC 18 КБ</div><a href="3.doc" class="btn" style="padding:8px 20px; font-size:0.85rem"><i class="fas fa-download"></i> Скачать</a></div></div><div class="card"><div class="card-img"><img src="1.jpg" alt="Документ" loading="lazy"></div><div class="card-content"><p>Официальный бланк для выдвижения кандидата и его регистрации на выборах в Кадетский Парламент.</p><div class="document-meta"><i class="fas fa-calendar"></i> 27.03.2026 &nbsp; <i class="fas fa-file-pdf"></i> DOC 16 КБ</div><a href="2.doc" class="btn" style="padding:8px 20px; font-size:0.85rem"><i class="fas fa-download"></i> Скачать</a></div></div><div class="card"><div class="card-img"><img src="2.jpg" alt="Документ" loading="lazy"></div><div class="card-content"><p>Документ, определяющий порядок выдвижения кандидатов, проведения голосования и подведения итогов выборов в Кадетский Парламент.</p><div class="document-meta"><i class="fas fa-calendar"></i> 27.03.2026 &nbsp; <i class="fas fa-file-pdf"></i> DOC 21 КБ</div><a href="1.doc" class="btn" style="padding:8px 20px; font-size:0.85rem"><i class="fas fa-download"></i> Скачать</a></div></div><div class="card"><div class="card-img"><img src="3.jpg" alt="Документ" loading="lazy"></div><div class="card-content"><p>Документ, устанавливающий требования к кандидатам для допуска к участию в выборах и деятельности Кадетского Парламента.</p><div class="document-meta"><i class="fas fa-calendar"></i> 27.03.2026 &nbsp; <i class="fas fa-file-pdf"></i> DOC 20 КБ</div><a href="7.doc" class="btn" style="padding:8px 20px; font-size:0.85rem"><i class="fas fa-download"></i> Скачать</a></div></div></div></div></div></div>
+    <div id="documents" class="page"><div class="container"><h2 class="section-title">Документы Кадетского Парламента</h2><p class="text-center" style="margin-bottom: 2rem;">Официальные документы, регламентирующие деятельность Кадетского Парламента</p><div class="document-category"><h3><i class="fas fa-gavel"></i> Уставные документы</h3><div class="grid-3" id="documentsList"></div></div></div></div>
 
-    <div id="contact" class="page"><div class="container"><h2 class="section-title">Свяжитесь с нами</h2><div class="contact-grid"><div><div class="contact-card" id="emailCard"><div class="contact-icon"><i class="fas fa-envelope"></i></div><div><h3>Email</h3><p id="emailAddress">Fo8983@yandex.ru</p></div></div><div class="contact-card"><div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><div><h3>Адрес</h3><p>Канский Морской Кадетский Корпус<br>ул. Герцена 11, г.Канск, Красноярский край, Россия</p></div></div><div class="contact-card"><div class="contact-icon"><i class="fas fa-clock"></i></div><div><h3>Время работы</h3><p>Пн-Вс: 8:00 - 21:00</p></div></div><div class="contact-card"><div class="contact-icon"><i class="fas fa-users"></i></div><div><h3>Председатель Кадетского Парламента</h3><p>Жданов Дмитрий Иванович</p></div></div></div><div class="contact-form"><form id="contactForm" action="https://formspree.io/f/mrbgveqg" method="POST"><input type="text" name="name" placeholder="Ваше имя" required><input type="email" name="_replyto" placeholder="Ваш Email" required><input type="text" name="subject" placeholder="Тема сообщения"><textarea name="message" placeholder="Ваше сообщение" required></textarea><button type="submit" class="btn" style="width:100%; justify-content:center"><i class="fas fa-paper-plane"></i> Отправить сообщение</button></form></div></div></div></div>
+    <div id="contact" class="page"><div class="container"><h2 class="section-title">Свяжитесь с нами</h2><div class="contact-grid"><div><div class="contact-card" id="emailCard"><div class="contact-icon"><i class="fas fa-envelope"></i></div><div><h3>Email</h3><p id="emailAddress"></p></div></div><div class="contact-card"><div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><div><h3>Адрес</h3><p id="contactAddress"></p></div></div><div class="contact-card"><div class="contact-icon"><i class="fas fa-clock"></i></div><div><h3>Время работы</h3><p id="contactHours"></p></div></div><div class="contact-card"><div class="contact-icon"><i class="fas fa-users"></i></div><div><h3>Председатель Кадетского Парламента</h3><p id="contactChairman"></p></div></div></div><div class="contact-form"><form id="contactForm" action="https://formspree.io/f/mrbgveqg" method="POST"><input type="text" name="name" placeholder="Ваше имя" required><input type="email" name="_replyto" placeholder="Ваш Email" required><input type="text" name="subject" placeholder="Тема сообщения"><textarea name="message" placeholder="Ваше сообщение" required></textarea><button type="submit" class="btn" style="width:100%; justify-content:center"><i class="fas fa-paper-plane"></i> Отправить сообщение</button></form></div></div></div></div>
 </main>
 
 <footer>
@@ -1130,154 +1054,6 @@
 
 <button class="scroll-top" id="scrollTopBtn" aria-label="Наверх"><i class="fas fa-arrow-up"></i></button>
 
-<script>
-    // Динамический год
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-    // Хлебные крошки
-    const pageNames = {
-        home: 'Главная',
-        history: 'История',
-        'best-members': 'Лучшие кадеты',
-        activities: 'Деятельность',
-        documents: 'Документы',
-        contact: 'Контакты'
-    };
-    function updateBreadcrumbs(pageId) {
-        const container = document.getElementById('breadcrumbsContainer');
-        if (!container) return;
-        const name = pageNames[pageId] || 'Страница';
-        container.innerHTML = `<div class="breadcrumbs"><a href="#" data-page="home">Главная</a> / <span>${name}</span></div>`;
-        const homeLink = container.querySelector('a');
-        if (homeLink) {
-            homeLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                switchPage('home', document.querySelector('.mobile-nav-link[data-page="home"]'));
-            });
-        }
-    }
-
-    // Мобильное меню
-    const burgerBtn = document.getElementById('burgerBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    const menuOverlay = document.getElementById('menuOverlay');
-    const body = document.body;
-    
-    function closeMenu() { 
-        mobileNav.classList.remove('active'); 
-        menuOverlay.classList.remove('active'); 
-        burgerBtn.classList.remove('active');
-        burgerBtn.setAttribute('aria-expanded', 'false');
-        body.classList.remove('menu-open');
-    }
-    function openMenu() { 
-        mobileNav.classList.add('active'); 
-        menuOverlay.classList.add('active'); 
-        burgerBtn.classList.add('active');
-        burgerBtn.setAttribute('aria-expanded', 'true');
-        body.classList.add('menu-open');
-    }
-    burgerBtn.addEventListener('click', () => { 
-        mobileNav.classList.contains('active') ? closeMenu() : openMenu(); 
-    });
-    menuOverlay.addEventListener('click', closeMenu);
-    
-    // Свайп для закрытия меню
-    let touchStartX = 0;
-    mobileNav.addEventListener('touchstart', (e) => {
-        touchStartX = e.touches[0].clientX;
-    });
-    mobileNav.addEventListener('touchmove', (e) => {
-        const touchEndX = e.touches[0].clientX;
-        if (touchEndX - touchStartX > 50 && mobileNav.classList.contains('active')) {
-            closeMenu();
-        }
-    });
-    
-    // Переключение страниц
-    const navLinks = document.querySelectorAll('.mobile-nav-link, .footer-nav-link');
-    const pages = document.querySelectorAll('.page');
-    function switchPage(pageId, activeElement) {
-        pages.forEach(p => p.classList.remove('active'));
-        document.getElementById(pageId).classList.add('active');
-        document.querySelectorAll('.mobile-nav-link').forEach(l => l.classList.remove('active'));
-        if (activeElement && activeElement.classList && activeElement.classList.contains('mobile-nav-link')) {
-            activeElement.classList.add('active');
-        }
-        updateBreadcrumbs(pageId);
-        closeMenu();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            switchPage(this.getAttribute('data-page'), this);
-        });
-    });
-    document.getElementById('learn-more-btn')?.addEventListener('click', () => {
-        switchPage('history', document.querySelector('.mobile-nav-link[data-page="history"]'));
-    });
-    
-    // Инициализация хлебных крошек для активной страницы
-    const activePage = document.querySelector('.page.active')?.id || 'home';
-    updateBreadcrumbs(activePage);
-    
-    // Форма обратной связи
-    const form = document.getElementById("contactForm");
-    if (form) {
-        form.addEventListener("submit", async function(e) {
-            e.preventDefault();
-            const status = document.createElement('div');
-            status.style.cssText = 'margin-top:1rem; padding:0.8rem; border-radius:12px; text-align:center; background:rgba(255,184,28,0.2);';
-            form.appendChild(status);
-            const data = new FormData(form);
-            try {
-                const res = await fetch(form.action, { method: form.method, body: data, headers: { 'Accept': 'application/json' } });
-                if (res.ok) { status.innerHTML = "✓ Сообщение отправлено!"; status.style.border = "1px solid #2E7D32"; form.reset(); setTimeout(() => status.remove(), 4000); }
-                else throw new Error();
-            } catch { status.innerHTML = "✗ Ошибка отправки"; status.style.border = "1px solid #d32f2f"; setTimeout(() => status.remove(), 4000); }
-        });
-    }
-    
-    // Копирование email
-    const emailCard = document.getElementById('emailCard');
-    const emailText = document.getElementById('emailAddress')?.innerText;
-    if (emailCard && emailText) {
-        emailCard.style.cursor = 'pointer';
-        emailCard.addEventListener('click', () => {
-            navigator.clipboard.writeText(emailText).then(() => {
-                showToast('✉️ Email скопирован!');
-            }).catch(() => {
-                showToast('❌ Ошибка копирования');
-            });
-        });
-    }
-    
-    // Toast уведомление
-    function showToast(message) {
-        const existingToast = document.querySelector('.toast');
-        if (existingToast) existingToast.remove();
-        const toast = document.createElement('div');
-        toast.className = 'toast';
-        toast.textContent = message;
-        document.body.appendChild(toast);
-        setTimeout(() => {
-            toast.remove();
-        }, 2500);
-    }
-    
-    // Кнопка "Наверх"
-    const scrollBtn = document.getElementById('scrollTopBtn');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            scrollBtn.classList.add('show');
-        } else {
-            scrollBtn.classList.remove('show');
-        }
-    });
-    scrollBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-</script>
+<script src="/app.js"></script>
 </body>
 </html>
