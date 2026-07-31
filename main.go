@@ -470,7 +470,10 @@ func main() {
 
 	// Uploads (user-uploaded files live on the volume, not in the repo)
 	mux.HandleFunc("POST /api/admin/upload", requireAuth(handleUpload))
-	mux.Handle("/uploads/", http.StripPrefix("/uploads/", http.FileServer(http.Dir(uploadsDir))))
+	uploadsHandler := http.StripPrefix("/uploads/", http.FileServer(http.Dir(uploadsDir)))
+	mux.HandleFunc("GET /uploads/", func(w http.ResponseWriter, r *http.Request) {
+		uploadsHandler.ServeHTTP(w, r)
+	})
 
 	// Static frontend files — served individually by name, since the repo has
 	// no subfolders. Only these exact files are exposed, never the whole
