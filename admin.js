@@ -27,10 +27,39 @@ function esc(s) {
     return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 
+// ===== Тосты =====
+function showToast(text, ok) {
+    const box = document.getElementById('toasts');
+    const t = document.createElement('div');
+    t.className = 'toast' + (ok ? '' : ' err');
+    t.textContent = (ok ? '✓ ' : '✕ ') + text;
+    box.appendChild(t);
+    setTimeout(() => { t.style.opacity = '0'; t.style.transition = 'opacity .3s'; setTimeout(() => t.remove(), 300); }, 2800);
+}
+
 function statusMsg(el, text, ok) {
-    el.textContent = text;
-    el.className = 'status-msg ' + (ok ? 'ok' : 'err');
-    if (ok) setTimeout(() => { el.textContent = ''; }, 3000);
+    if (el) {
+        el.textContent = text;
+        el.className = 'status-msg ' + (ok ? 'ok' : 'err');
+        if (ok) setTimeout(() => { el.textContent = ''; }, 3000);
+    }
+    showToast(text, ok);
+}
+
+// Оборачивает обработчик сохранения: блокирует кнопку и показывает спиннер, пока идёт запрос
+function withBusy(btn, fn) {
+    return async (...args) => {
+        if (btn.disabled) return;
+        const original = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spin"></span> Сохранение…';
+        try {
+            await fn(...args);
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = original;
+        }
+    };
 }
 
 // ===== Auth =====
@@ -45,18 +74,37 @@ async function checkAuth() {
         appEl.style.display = 'block';
         loadTab('hero');
     } catch {
-        loginScreen.style.display = 'block';
+        loginScreen.style.display = 'flex';
         appEl.style.display = 'none';
     }
 }
 
+const passToggle = document.getElementById('passToggle');
+passToggle.addEventListener('click', () => {
+    const inp = document.getElementById('loginPass');
+    const showing = inp.type === 'text';
+    inp.type = showing ? 'password' : 'text';
+    passToggle.textContent = showing ? '👁' : '🙈';
+    passToggle.title = showing ? 'Показать пароль' : 'Скрыть пароль';
+});
+
 document.getElementById('loginBtn').addEventListener('click', doLogin);
+document.getElementById('loginUser').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
 document.getElementById('loginPass').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+
 async function doLogin() {
     const username = document.getElementById('loginUser').value.trim();
     const password = document.getElementById('loginPass').value;
     const errEl = document.getElementById('loginErr');
+    const btn = document.getElementById('loginBtn');
+    const label = document.getElementById('loginBtnLabel');
     errEl.textContent = '';
+    if (!username || !password) {
+        errEl.textContent = 'Введите логин и пароль';
+        return;
+    }
+    btn.disabled = true;
+    label.innerHTML = '<span class="spin"></span> Входим…';
     try {
         await api('/api/admin/login', {
             method: 'POST',
@@ -66,6 +114,11 @@ async function doLogin() {
         checkAuth();
     } catch (e) {
         errEl.textContent = e.message;
+        const card = document.getElementById('loginCard');
+        card.classList.remove('shake'); void card.offsetWidth; card.classList.add('shake');
+    } finally {
+        btn.disabled = false;
+        label.textContent = 'Войти';
     }
 }
 document.getElementById('logoutBtn').addEventListener('click', async () => {
@@ -77,16 +130,18 @@ checkAuth();
 
 // ===== Tabs =====
 const tabContent = document.getElementById('tabContent');
+const pageTitle = document.getElementById('pageTitle');
 document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
+        pageTitle.textContent = btn.dataset.title || btn.textContent.trim();
         loadTab(btn.dataset.tab);
     });
 });
 
 async function loadTab(tab) {
-    tabContent.innerHTML = '<p>Загрузка…</p>';
+    tabContent.innerHTML = '<div class="loading-line"><span class="spin"></span> Загрузка…</div>';
     try {
         if (tab === 'hero') await renderHero();
         else if (tab === 'history') await renderHistory();
@@ -103,8 +158,27 @@ async function loadTab(tab) {
 function panel(title, innerHtml) {
     return `<div class="panel"><h3>${title}</h3>${innerHtml}</div>`;
 }
-function saveRow(id) {
-    return `<div class="save-row"><button class="btn" id="${id}-save">Сохранить</button><span class="status-msg" id="${id}-status"></span></div>`;
+function saveRow(id, label) {
+    return `<div class="save-row"><button class="btn" id="${id}-save">${label || 'Сохранить'}</button><span class="status-msg" id="${id}-status"></span></div>`;
+}
+
+// Живое превью фото сразу при выборе файла, до сохранения
+function wireImagePreview(fileInput, imgEl) {
+    if (!fileInput || !imgEl) return;
+    fileInput.addEventListener('change', () => {
+        const file = fileInput.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = () => { imgEl.src = reader.result; imgEl.style.display = 'block'; };
+        reader.readAsDataURL(file);
+    });
+}
+
+// Подтверждение перед удалением карточки
+function confirmRemove(card, what) {
+    if (confirm(`Удалить ${what || 'этот элемент'}? Изменения нужно будет сохранить кнопкой ниже.`)) {
+        card.remove();
+    }
 }
 
 // ===== Главная (hero + about) =====
@@ -131,18 +205,22 @@ async function renderHero() {
             ${saveRow('about')}
         `);
 
-    document.getElementById('hero-save').addEventListener('click', async () => {
+    wireImagePreview(document.getElementById('about-image-file'), document.getElementById('about-image-preview'));
+
+    const heroBtn = document.getElementById('hero-save');
+    heroBtn.addEventListener('click', withBusy(heroBtn, async () => {
         const el = document.getElementById('hero-status');
         try {
             await putContent('hero', {
                 title: document.getElementById('hero-title').value,
                 subtitle: document.getElementById('hero-subtitle').value,
             });
-            statusMsg(el, '✓ Сохранено', true);
+            statusMsg(el, 'Сохранено', true);
         } catch (e) { statusMsg(el, e.message, false); }
-    });
+    }));
 
-    document.getElementById('about-save').addEventListener('click', async () => {
+    const aboutBtn = document.getElementById('about-save');
+    aboutBtn.addEventListener('click', withBusy(aboutBtn, async () => {
         const el = document.getElementById('about-status');
         try {
             let imgUrl = aboutImage;
@@ -152,9 +230,9 @@ async function renderHero() {
                 .split(/\n\s*\n/).map(p => p.trim()).filter(Boolean);
             await putContent('about', paragraphs);
             await putContent('about_image', imgUrl);
-            statusMsg(el, '✓ Сохранено', true);
+            statusMsg(el, 'Сохранено', true);
         } catch (e) { statusMsg(el, e.message, false); }
-    });
+    }));
 }
 
 // ===== История =====
@@ -168,28 +246,20 @@ async function renderHistory() {
         panel('Достижения за годы работы', `<div id="achievements-items"></div><button class="btn secondary add-btn" id="achievements-add">+ Добавить карточку</button>${saveRow('achievements')}`) +
         panel('Галерея достижений', `<div id="gallery-items"></div><button class="btn secondary add-btn" id="gallery-add">+ Добавить карточку</button>${saveRow('gallery')}`);
 
-    setupSimpleListEditor('timeline-items', timeline, item => `
-        <label>Дата / период</label><input type="text" class="f-date" value="${esc(item.date)}">
-        <label>Иконка Font Awesome (напр. fa-star)</label><input type="text" class="f-icon" value="${esc(item.icon)}">
-        <label>Заголовок</label><input type="text" class="f-title" value="${esc(item.title)}">
-        <label>Текст</label><textarea class="f-text">${esc(item.text)}</textarea>
-    `, () => ({ date: '', icon: 'fa-star', title: '', text: '' }));
+    setupSimpleListEditor('timeline-items', timeline, timelineItemHtml);
     document.getElementById('timeline-add').addEventListener('click', () => addSimpleItem('timeline-items', { date: '', icon: 'fa-star', title: '', text: '' }, timelineItemHtml));
-    document.getElementById('timeline-save').addEventListener('click', () => saveSimpleList('timeline-items', 'history_timeline', ['date', 'icon', 'title', 'text'], 'timeline-status'));
+    const timelineBtn = document.getElementById('timeline-save');
+    timelineBtn.addEventListener('click', withBusy(timelineBtn, () => saveSimpleList('timeline-items', 'history_timeline', ['date', 'icon', 'title', 'text'], 'timeline-status')));
 
-    setupSimpleListEditor('achievements-items', achievements, item => `
-        <label>Заголовок</label><input type="text" class="f-title" value="${esc(item.title)}">
-        <label>Текст</label><textarea class="f-text">${esc(item.text)}</textarea>
-    `);
+    setupSimpleListEditor('achievements-items', achievements, achievementItemHtml);
     document.getElementById('achievements-add').addEventListener('click', () => addSimpleItem('achievements-items', { title: '', text: '' }, achievementItemHtml));
-    document.getElementById('achievements-save').addEventListener('click', () => saveSimpleList('achievements-items', 'history_achievements', ['title', 'text'], 'achievements-status'));
+    const achBtn = document.getElementById('achievements-save');
+    achBtn.addEventListener('click', withBusy(achBtn, () => saveSimpleList('achievements-items', 'history_achievements', ['title', 'text'], 'achievements-status')));
 
-    setupSimpleListEditor('gallery-items', gallery, item => `
-        <label>Заголовок</label><input type="text" class="f-title" value="${esc(item.title)}">
-        <label>Текст</label><textarea class="f-text">${esc(item.text)}</textarea>
-    `);
+    setupSimpleListEditor('gallery-items', gallery, achievementItemHtml);
     document.getElementById('gallery-add').addEventListener('click', () => addSimpleItem('gallery-items', { title: '', text: '' }, achievementItemHtml));
-    document.getElementById('gallery-save').addEventListener('click', () => saveSimpleList('gallery-items', 'history_gallery', ['title', 'text'], 'gallery-status'));
+    const galBtn = document.getElementById('gallery-save');
+    galBtn.addEventListener('click', withBusy(galBtn, () => saveSimpleList('gallery-items', 'history_gallery', ['title', 'text'], 'gallery-status')));
 }
 
 function timelineItemHtml(item) {
@@ -211,14 +281,22 @@ function achievementItemHtml(item) {
 function setupSimpleListEditor(containerId, items, itemHtmlFn) {
     const container = document.getElementById(containerId);
     container.innerHTML = '';
+    if (!items.length) container.innerHTML = '<div class="empty-hint">Пока нет ни одного элемента — добавьте первый кнопкой ниже.</div>';
     items.forEach(item => addItemCard(container, itemHtmlFn(item)));
 }
-function addItemCard(container, innerHtml) {
+function addItemCard(container, innerHtml, what) {
+    const emptyHint = container.querySelector('.empty-hint');
+    if (emptyHint) emptyHint.remove();
     const card = document.createElement('div');
     card.className = 'item-card';
     card.innerHTML = `<button type="button" class="remove-btn" title="Удалить">✕</button>${innerHtml}`;
-    card.querySelector('.remove-btn').addEventListener('click', () => card.remove());
+    card.querySelector('.remove-btn').addEventListener('click', () => confirmRemove(card, what));
     container.appendChild(card);
+    // если внутри карточки есть input[type=file] рядом с .image-preview — включаем live-превью
+    const fileInput = card.querySelector('input[type=file][accept*="image"]');
+    const preview = card.querySelector('.image-preview');
+    if (fileInput && preview) wireImagePreview(fileInput, preview);
+    return card;
 }
 function addSimpleItem(containerId, emptyItem, itemHtmlFn) {
     const container = document.getElementById(containerId);
@@ -228,7 +306,7 @@ async function saveSimpleList(containerId, key, fields, statusId) {
     const container = document.getElementById(containerId);
     const statusEl = document.getElementById(statusId);
     try {
-        const items = Array.from(container.children).map(card => {
+        const items = Array.from(container.children).filter(c => c.classList.contains('item-card')).map(card => {
             const obj = {};
             fields.forEach(f => {
                 const input = card.querySelector('.f-' + f);
@@ -237,7 +315,7 @@ async function saveSimpleList(containerId, key, fields, statusId) {
             return obj;
         });
         await putContent(key, items);
-        statusMsg(statusEl, '✓ Сохранено', true);
+        statusMsg(statusEl, 'Сохранено', true);
     } catch (e) { statusMsg(statusEl, e.message, false); }
 }
 
@@ -247,17 +325,19 @@ async function renderBestMembers() {
     tabContent.innerHTML = panel('Лучшие кадеты', `<div id="members-items"></div><button class="btn secondary add-btn" id="members-add">+ Добавить кадета</button>${saveRow('members')}`);
     const container = document.getElementById('members-items');
     container.innerHTML = '';
-    members.forEach(m => addItemCard(container, memberItemHtml(m)));
+    if (!members.length) container.innerHTML = '<div class="empty-hint">Пока нет ни одного кадета — добавьте первого кнопкой ниже.</div>';
+    members.forEach(m => addItemCard(container, memberItemHtml(m), 'кадета'));
 
     document.getElementById('members-add').addEventListener('click', () => {
-        addItemCard(container, memberItemHtml({ name: '', photo: '', role: '', bio: '', achievements: [] }));
+        addItemCard(container, memberItemHtml({ name: '', photo: '', role: '', bio: '', achievements: [] }), 'кадета');
     });
 
-    document.getElementById('members-save').addEventListener('click', async () => {
+    const membersBtn = document.getElementById('members-save');
+    membersBtn.addEventListener('click', withBusy(membersBtn, async () => {
         const statusEl = document.getElementById('members-status');
         try {
             const items = [];
-            for (const card of Array.from(container.children)) {
+            for (const card of Array.from(container.children).filter(c => c.classList.contains('item-card'))) {
                 let photo = card.querySelector('.f-photo-url').value;
                 const file = card.querySelector('.f-photo-file').files[0];
                 if (file) photo = await uploadFile(file);
@@ -270,9 +350,9 @@ async function renderBestMembers() {
                 });
             }
             await putContent('best_members', items);
-            statusMsg(statusEl, '✓ Сохранено', true);
+            statusMsg(statusEl, 'Сохранено', true);
         } catch (e) { statusMsg(statusEl, e.message, false); }
-    });
+    }));
 }
 function memberItemHtml(m) {
     return `
@@ -300,17 +380,20 @@ async function renderActivities() {
 
     const container = document.getElementById('activities-items');
     container.innerHTML = '';
-    activities.forEach(a => addItemCard(container, activityItemHtml(a)));
-    document.getElementById('activities-add').addEventListener('click', () => addItemCard(container, activityItemHtml({ icon: 'fa-star', title: '', text: '' })));
-    document.getElementById('activities-save').addEventListener('click', () => saveSimpleListGeneric(container, 'activities', ['icon', 'title', 'text'], 'activities-status'));
+    if (!activities.length) container.innerHTML = '<div class="empty-hint">Пока нет ни одного направления — добавьте первое кнопкой ниже.</div>';
+    activities.forEach(a => addItemCard(container, activityItemHtml(a), 'направление'));
+    document.getElementById('activities-add').addEventListener('click', () => addItemCard(container, activityItemHtml({ icon: 'fa-star', title: '', text: '' }), 'направление'));
+    const actBtn = document.getElementById('activities-save');
+    actBtn.addEventListener('click', withBusy(actBtn, () => saveSimpleListGeneric(container, 'activities', ['icon', 'title', 'text'], 'activities-status')));
 
-    document.getElementById('quote-save').addEventListener('click', async () => {
+    const quoteBtn = document.getElementById('quote-save');
+    quoteBtn.addEventListener('click', withBusy(quoteBtn, async () => {
         const el = document.getElementById('quote-status');
         try {
             await putContent('activities_quote', document.getElementById('quote-text').value);
-            statusMsg(el, '✓ Сохранено', true);
+            statusMsg(el, 'Сохранено', true);
         } catch (e) { statusMsg(el, e.message, false); }
-    });
+    }));
 }
 function activityItemHtml(a) {
     return `
@@ -322,13 +405,13 @@ function activityItemHtml(a) {
 async function saveSimpleListGeneric(container, key, fields, statusId) {
     const statusEl = document.getElementById(statusId);
     try {
-        const items = Array.from(container.children).map(card => {
+        const items = Array.from(container.children).filter(c => c.classList.contains('item-card')).map(card => {
             const obj = {};
             fields.forEach(f => { const inp = card.querySelector('.f-' + f); obj[f] = inp ? inp.value : ''; });
             return obj;
         });
         await putContent(key, items);
-        statusMsg(statusEl, '✓ Сохранено', true);
+        statusMsg(statusEl, 'Сохранено', true);
     } catch (e) { statusMsg(statusEl, e.message, false); }
 }
 
@@ -338,14 +421,16 @@ async function renderDocuments() {
     tabContent.innerHTML = panel('Документы', `<div id="documents-items"></div><button class="btn secondary add-btn" id="documents-add">+ Добавить документ</button>${saveRow('documents')}`);
     const container = document.getElementById('documents-items');
     container.innerHTML = '';
-    docs.forEach(d => addItemCard(container, documentItemHtml(d)));
-    document.getElementById('documents-add').addEventListener('click', () => addItemCard(container, documentItemHtml({ category: 'Уставные документы', image: '', file: '', desc: '', date: '', size: '' })));
+    if (!docs.length) container.innerHTML = '<div class="empty-hint">Пока нет ни одного документа — добавьте первый кнопкой ниже.</div>';
+    docs.forEach(d => addItemCard(container, documentItemHtml(d), 'документ'));
+    document.getElementById('documents-add').addEventListener('click', () => addItemCard(container, documentItemHtml({ category: 'Уставные документы', image: '', file: '', desc: '', date: '', size: '' }), 'документ'));
 
-    document.getElementById('documents-save').addEventListener('click', async () => {
+    const docsBtn = document.getElementById('documents-save');
+    docsBtn.addEventListener('click', withBusy(docsBtn, async () => {
         const statusEl = document.getElementById('documents-status');
         try {
             const items = [];
-            for (const card of Array.from(container.children)) {
+            for (const card of Array.from(container.children).filter(c => c.classList.contains('item-card'))) {
                 let image = card.querySelector('.f-image-url').value;
                 const imageFile = card.querySelector('.f-image-file').files[0];
                 if (imageFile) image = await uploadFile(imageFile);
@@ -361,9 +446,9 @@ async function renderDocuments() {
                 });
             }
             await putContent('documents', items);
-            statusMsg(statusEl, '✓ Сохранено', true);
+            statusMsg(statusEl, 'Сохранено', true);
         } catch (e) { statusMsg(statusEl, e.message, false); }
-    });
+    }));
 }
 function documentItemHtml(d) {
     return `
@@ -396,7 +481,8 @@ async function renderContact() {
         <label>Председатель</label><input type="text" id="c-chairman" value="${esc(c.chairman)}">
         ${saveRow('contact')}
     `);
-    document.getElementById('contact-save').addEventListener('click', async () => {
+    const contactBtn = document.getElementById('contact-save');
+    contactBtn.addEventListener('click', withBusy(contactBtn, async () => {
         const el = document.getElementById('contact-status');
         try {
             await putContent('contact', {
@@ -405,9 +491,9 @@ async function renderContact() {
                 hours: document.getElementById('c-hours').value,
                 chairman: document.getElementById('c-chairman').value,
             });
-            statusMsg(el, '✓ Сохранено', true);
+            statusMsg(el, 'Сохранено', true);
         } catch (e) { statusMsg(el, e.message, false); }
-    });
+    }));
 }
 
 // ===== Смена пароля =====
@@ -415,9 +501,10 @@ function renderPassword() {
     tabContent.innerHTML = panel('Смена пароля', `
         <label>Текущий пароль</label><input type="password" id="p-old">
         <label>Новый пароль (мин. 6 символов)</label><input type="password" id="p-new">
-        ${saveRow('pass')}
+        ${saveRow('pass', 'Сменить пароль')}
     `);
-    document.getElementById('pass-save').addEventListener('click', async () => {
+    const passBtn = document.getElementById('pass-save');
+    passBtn.addEventListener('click', withBusy(passBtn, async () => {
         const el = document.getElementById('pass-status');
         try {
             await api('/api/admin/change-password', {
@@ -428,9 +515,9 @@ function renderPassword() {
                     new_password: document.getElementById('p-new').value,
                 }),
             });
-            statusMsg(el, '✓ Пароль изменён', true);
+            statusMsg(el, 'Пароль изменён', true);
             document.getElementById('p-old').value = '';
             document.getElementById('p-new').value = '';
         } catch (e) { statusMsg(el, e.message, false); }
-    });
+    }));
 }

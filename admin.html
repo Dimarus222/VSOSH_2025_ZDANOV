@@ -6,76 +6,278 @@
 <title>Админ-панель | Кадетский Парламент</title>
 <meta name="robots" content="noindex, nofollow">
 <style>
-    :root{--navy:#0B1A33;--navy2:#13294B;--gold:#FFB81C;--bg:#F5F7FA;--gray:#8D9AA9;--danger:#d32f2f;--ok:#2E7D32;}
+    :root{
+        --navy:#0B1A33;
+        --navy2:#13294B;
+        --navy3:#1E4A6F;
+        --gold:#FFB81C;
+        --gold-dim:#8a6a1f;
+        --bg:#EEF1F6;
+        --card:#ffffff;
+        --border:#E3E8F0;
+        --ink:#16202E;
+        --muted:#6B7A90;
+        --danger:#D64545;
+        --danger-dim:#fbeaea;
+        --ok:#2E7D32;
+        --ok-dim:#e9f6ea;
+        --radius:14px;
+    }
     *{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:#1a1a1a;}
-    header{background:var(--navy);color:#fff;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;}
-    header h1{font-size:1.1rem;font-weight:700;}
-    header .right{display:flex;gap:0.6rem;align-items:center;font-size:0.9rem;}
-    a.site-link{color:var(--gold);text-decoration:none;}
+    html,body{height:100%;}
+    body{
+        font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+        background:var(--bg);
+        color:var(--ink);
+        -webkit-font-smoothing:antialiased;
+    }
     button{cursor:pointer;font-family:inherit;}
-    .btn{background:var(--gold);color:var(--navy);border:none;padding:0.55rem 1.1rem;border-radius:8px;font-weight:700;font-size:0.9rem;}
-    .btn:hover{opacity:0.9;}
-    .btn.secondary{background:#fff;color:var(--navy);border:1px solid #ccc;}
+    a{color:inherit;}
+
+    /* ---------- Кнопки ---------- */
+    .btn{
+        background:var(--gold);color:var(--navy);border:none;
+        padding:0.65rem 1.2rem;border-radius:10px;font-weight:700;font-size:0.9rem;
+        transition:transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+        display:inline-flex;align-items:center;gap:0.45rem;justify-content:center;
+    }
+    .btn:hover{box-shadow:0 4px 14px rgba(255,184,28,0.35);}
+    .btn:active{transform:translateY(1px);}
+    .btn.secondary{background:#fff;color:var(--navy);border:1px solid var(--border);}
+    .btn.secondary:hover{box-shadow:0 4px 14px rgba(11,26,51,0.08);border-color:#c9d2e0;}
     .btn.danger{background:var(--danger);color:#fff;}
-    .btn:disabled{opacity:0.5;cursor:not-allowed;}
-    .wrap{max-width:1100px;margin:0 auto;padding:1.5rem;}
-    #loginScreen{max-width:380px;margin:4rem auto;background:#fff;padding:2rem;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,0.08);}
-    #loginScreen h2{margin-bottom:1.2rem;color:var(--navy);}
-    #loginScreen input{width:100%;padding:0.7rem;margin-bottom:0.8rem;border:1px solid #ccc;border-radius:8px;font-size:1rem;}
-    #loginScreen .err{color:var(--danger);font-size:0.85rem;margin-bottom:0.8rem;min-height:1.2em;}
-    .tabs{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.2rem;}
-    .tab-btn{background:#fff;border:1px solid #ddd;padding:0.5rem 0.9rem;border-radius:20px;font-size:0.85rem;color:#333;}
-    .tab-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
-    .panel{background:#fff;border-radius:14px;padding:1.5rem;box-shadow:0 4px 16px rgba(0,0,0,0.06);margin-bottom:1.5rem;}
-    .panel h3{color:var(--navy);margin-bottom:1rem;}
-    label{display:block;font-size:0.85rem;font-weight:600;color:#444;margin:0.8rem 0 0.3rem;}
-    input[type=text], input[type=email], textarea{width:100%;padding:0.6rem;border:1px solid #ccc;border-radius:8px;font-size:0.95rem;font-family:inherit;}
-    textarea{min-height:80px;resize:vertical;}
-    .save-row{margin-top:1rem;display:flex;gap:0.6rem;align-items:center;}
-    .status-msg{font-size:0.85rem;}
+    .btn.danger:hover{box-shadow:0 4px 14px rgba(214,69,69,0.35);}
+    .btn:disabled{opacity:0.55;cursor:not-allowed;box-shadow:none;transform:none;}
+    .btn .spin{width:14px;height:14px;border-radius:50%;border:2px solid rgba(0,0,0,0.25);border-top-color:currentColor;animation:spin .7s linear infinite;display:inline-block;}
+    @keyframes spin{to{transform:rotate(360deg);}}
+
+    /* ---------- Экран входа ---------- */
+    #loginScreen{
+        min-height:100vh;display:flex;align-items:center;justify-content:center;
+        background:
+            radial-gradient(circle at 15% 20%, rgba(255,184,28,0.10), transparent 45%),
+            radial-gradient(circle at 85% 80%, rgba(30,74,111,0.55), transparent 50%),
+            linear-gradient(160deg, var(--navy) 0%, var(--navy2) 55%, #0d2038 100%);
+        padding:1.5rem;
+    }
+    .login-card{
+        width:100%;max-width:380px;background:rgba(255,255,255,0.98);
+        border-radius:20px;padding:2.4rem 2rem 2rem;
+        box-shadow:0 30px 60px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.06);
+        animation:rise .5s ease;
+    }
+    @keyframes rise{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+    .login-emblem{
+        width:58px;height:58px;border-radius:50%;margin:0 auto 1.1rem;
+        background:linear-gradient(160deg,var(--navy2),var(--navy));
+        border:2px solid var(--gold);
+        display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--gold);
+    }
+    .login-card h2{text-align:center;font-size:1.25rem;color:var(--navy);margin-bottom:0.15rem;}
+    .login-card .sub{text-align:center;color:var(--muted);font-size:0.85rem;margin-bottom:1.5rem;}
+    .field{margin-bottom:1rem;}
+    .field label{display:block;font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.03em;margin-bottom:0.35rem;}
+    .field input{
+        width:100%;padding:0.75rem 0.9rem;border:1.5px solid var(--border);border-radius:10px;
+        font-size:0.98rem;transition:border-color .15s, box-shadow .15s;background:#fbfcfe;
+    }
+    .field input:focus{outline:none;border-color:var(--navy3);box-shadow:0 0 0 3px rgba(30,74,111,0.14);background:#fff;}
+    .pass-wrap{position:relative;}
+    .pass-wrap input{padding-right:2.6rem;}
+    .pass-toggle{
+        position:absolute;right:0.4rem;top:50%;transform:translateY(-50%);
+        background:none;border:none;color:var(--muted);font-size:1rem;padding:0.4rem;line-height:1;
+    }
+    #loginScreen .err{
+        color:var(--danger);font-size:0.85rem;margin:-0.3rem 0 0.9rem;min-height:1.2em;
+        display:flex;align-items:center;gap:0.35rem;
+    }
+    .login-card.shake{animation:shake .4s;}
+    @keyframes shake{
+        10%,90%{transform:translateX(-1px);}
+        20%,80%{transform:translateX(2px);}
+        30%,50%,70%{transform:translateX(-5px);}
+        40%,60%{transform:translateX(5px);}
+    }
+    .login-card .btn{width:100%;padding:0.8rem;font-size:0.95rem;margin-top:0.2rem;}
+
+    /* ---------- Каркас панели ---------- */
+    #app{display:none;min-height:100vh;}
+    .layout{display:flex;min-height:100vh;}
+
+    .sidebar{
+        width:250px;flex:0 0 250px;background:linear-gradient(180deg,var(--navy) 0%,var(--navy2) 100%);
+        color:#fff;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;
+    }
+    .brand{
+        display:flex;align-items:center;gap:0.7rem;padding:1.3rem 1.2rem;
+        border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+    .brand .mark{
+        width:38px;height:38px;border-radius:50%;border:2px solid var(--gold);color:var(--gold);
+        display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex:none;
+    }
+    .brand .txt{font-size:0.88rem;font-weight:700;line-height:1.25;}
+    .brand .txt small{display:block;font-weight:500;color:#9fb0c6;font-size:0.72rem;}
+
+    nav.tabs{flex:1;padding:0.8rem;display:flex;flex-direction:column;gap:0.25rem;overflow-y:auto;}
+    .tab-btn{
+        background:none;border:none;color:#c7d2e1;text-align:left;
+        padding:0.65rem 0.8rem;border-radius:10px;font-size:0.88rem;font-weight:600;
+        display:flex;align-items:center;gap:0.65rem;transition:background .15s,color .15s;
+    }
+    .tab-btn .ic{font-size:1.05rem;width:1.3rem;text-align:center;flex:none;}
+    .tab-btn:hover{background:rgba(255,255,255,0.06);color:#fff;}
+    .tab-btn.active{background:var(--gold);color:var(--navy);}
+    .tab-btn.active .ic{filter:none;}
+
+    .sidebar-foot{padding:0.9rem;border-top:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;gap:0.6rem;}
+    a.site-link{
+        color:var(--gold);text-decoration:none;font-size:0.85rem;font-weight:600;
+        display:flex;align-items:center;gap:0.4rem;padding:0.4rem 0.2rem;
+    }
+    .whoami-row{display:flex;align-items:center;justify-content:space-between;gap:0.5rem;}
+    #whoami{font-size:0.78rem;color:#9fb0c6;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+    #logoutBtn{
+        background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.14);
+        padding:0.4rem 0.75rem;border-radius:8px;font-size:0.8rem;font-weight:600;flex:none;
+    }
+    #logoutBtn:hover{background:rgba(255,255,255,0.16);}
+
+    .main{flex:1;min-width:0;display:flex;flex-direction:column;}
+    .topbar{
+        background:#fff;border-bottom:1px solid var(--border);padding:1rem 1.6rem;
+        position:sticky;top:0;z-index:5;
+    }
+    .topbar h1{font-size:1.15rem;color:var(--navy);}
+    .wrap{max-width:900px;margin:0 auto;padding:1.6rem;width:100%;}
+
+    /* ---------- Панели/карточки ---------- */
+    .panel{
+        background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+        padding:1.5rem;box-shadow:0 2px 10px rgba(18,32,56,0.04);margin-bottom:1.4rem;
+    }
+    .panel h3{color:var(--navy);margin-bottom:1.1rem;font-size:1.02rem;display:flex;align-items:center;gap:0.5rem;}
+    .panel h3::before{content:"";width:4px;height:16px;background:var(--gold);border-radius:3px;}
+
+    label{display:block;font-size:0.8rem;font-weight:700;color:var(--muted);margin:0.9rem 0 0.35rem;text-transform:uppercase;letter-spacing:0.02em;}
+    input[type=text], input[type=email], input[type=password], textarea{
+        width:100%;padding:0.65rem 0.8rem;border:1.5px solid var(--border);border-radius:9px;
+        font-size:0.94rem;font-family:inherit;background:#fbfcfe;transition:border-color .15s, box-shadow .15s;
+    }
+    input:focus, textarea:focus{outline:none;border-color:var(--navy3);box-shadow:0 0 0 3px rgba(30,74,111,0.12);background:#fff;}
+    textarea{min-height:80px;resize:vertical;line-height:1.5;}
+
+    .save-row{margin-top:1.1rem;display:flex;gap:0.7rem;align-items:center;flex-wrap:wrap;}
+    .status-msg{font-size:0.85rem;font-weight:600;}
     .status-msg.ok{color:var(--ok);}
     .status-msg.err{color:var(--danger);}
-    .item-card{border:1px solid #e3e6ec;border-radius:10px;padding:1rem;margin-bottom:1rem;position:relative;background:#fafbfc;}
-    .item-card .remove-btn{position:absolute;top:0.6rem;right:0.6rem;background:none;border:none;color:var(--danger);font-size:1.1rem;}
-    .image-preview{max-width:140px;max-height:140px;border-radius:8px;display:block;margin:0.4rem 0;object-fit:cover;}
-    .upload-row{display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;}
+
+    .item-card{
+        border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.1rem 0.9rem;
+        margin-bottom:1rem;position:relative;background:#fbfcfe;
+    }
+    .item-card .remove-btn{
+        position:absolute;top:0.6rem;right:0.6rem;background:var(--danger-dim);border:none;color:var(--danger);
+        font-size:0.95rem;width:26px;height:26px;border-radius:50%;line-height:1;
+        display:flex;align-items:center;justify-content:center;transition:background .15s;
+    }
+    .item-card .remove-btn:hover{background:#f6d3d3;}
+
+    .image-preview{max-width:140px;max-height:140px;border-radius:9px;display:block;margin:0.4rem 0;object-fit:cover;border:1px solid var(--border);}
+    .upload-row{display:flex;gap:0.7rem;align-items:center;flex-wrap:wrap;}
     .achievements-editor textarea{min-height:100px;}
-    .hint{font-size:0.8rem;color:var(--gray);margin-top:0.2rem;}
-    .add-btn{margin-top:0.5rem;}
-    #app{display:none;}
+    .hint{font-size:0.8rem;color:var(--muted);margin-top:0.3rem;text-transform:none;font-weight:500;}
+    .add-btn{margin-top:0.6rem;}
+    .empty-hint{color:var(--muted);font-size:0.88rem;padding:0.8rem 0;}
+
+    input[type=file]{font-size:0.85rem;color:var(--muted);}
+    input[type=file]::file-selector-button{
+        background:#fff;border:1px solid var(--border);border-radius:8px;padding:0.4rem 0.7rem;
+        font-size:0.82rem;font-weight:600;color:var(--navy);margin-right:0.6rem;cursor:pointer;
+    }
+    input[type=file]::file-selector-button:hover{background:var(--bg);}
+
+    .loading-line{color:var(--muted);font-size:0.9rem;padding:1.5rem 0;display:flex;align-items:center;gap:0.6rem;}
+    .loading-line .spin{width:16px;height:16px;border-radius:50%;border:2px solid var(--border);border-top-color:var(--navy3);animation:spin .7s linear infinite;}
+
+    /* ---------- Тосты ---------- */
+    #toasts{position:fixed;top:1rem;right:1rem;z-index:100;display:flex;flex-direction:column;gap:0.5rem;max-width:320px;}
+    .toast{
+        background:#fff;border-radius:10px;padding:0.75rem 1rem;font-size:0.86rem;font-weight:600;
+        box-shadow:0 10px 30px rgba(0,0,0,0.15);border-left:4px solid var(--ok);color:var(--ink);
+        animation:toast-in .2s ease;
+    }
+    .toast.err{border-left-color:var(--danger);}
+    @keyframes toast-in{from{opacity:0;transform:translateX(20px);}to{opacity:1;transform:translateX(0);}}
+
+    /* ---------- Мобильная адаптация ---------- */
+    @media (max-width:860px){
+        .layout{flex-direction:column;}
+        .sidebar{width:100%;flex:none;position:sticky;top:0;height:auto;z-index:10;}
+        .brand{padding:0.9rem 1rem;}
+        nav.tabs{flex-direction:row;flex-wrap:wrap;overflow-x:auto;padding:0.6rem;}
+        .tab-btn{flex:none;padding:0.5rem 0.7rem;font-size:0.8rem;}
+        .tab-btn span.label{display:inline;}
+        .sidebar-foot{flex-direction:row;align-items:center;justify-content:space-between;}
+        .whoami-row{flex:1;}
+        .wrap{padding:1.1rem;}
+    }
 </style>
 </head>
 <body>
 
+<div id="toasts"></div>
+
 <div id="loginScreen">
-    <h2>⚓ Вход в админ-панель</h2>
-    <div class="err" id="loginErr"></div>
-    <input type="text" id="loginUser" placeholder="Логин" autocomplete="username">
-    <input type="password" id="loginPass" placeholder="Пароль" autocomplete="current-password">
-    <button class="btn" id="loginBtn" style="width:100%">Войти</button>
+    <div class="login-card" id="loginCard">
+        <div class="login-emblem">⚓</div>
+        <h2>Админ-панель</h2>
+        <div class="sub">Кадетский Парламент — Канский МКК</div>
+        <div class="err" id="loginErr"></div>
+        <div class="field">
+            <label for="loginUser">Логин</label>
+            <input type="text" id="loginUser" placeholder="Введите логин" autocomplete="username">
+        </div>
+        <div class="field">
+            <label for="loginPass">Пароль</label>
+            <div class="pass-wrap">
+                <input type="password" id="loginPass" placeholder="Введите пароль" autocomplete="current-password">
+                <button type="button" class="pass-toggle" id="passToggle" title="Показать пароль">👁</button>
+            </div>
+        </div>
+        <button class="btn" id="loginBtn"><span id="loginBtnLabel">Войти</span></button>
+    </div>
 </div>
 
 <div id="app">
-    <header>
-        <h1>⚓ Админ-панель — Кадетский Парламент</h1>
-        <div class="right">
-            <a class="site-link" href="/" target="_blank">Открыть сайт ↗</a>
-            <span id="whoami"></span>
-            <button class="btn secondary" id="logoutBtn">Выйти</button>
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="mark">⚓</div>
+                <div class="txt">Кадетский Парламент<small>Панель управления сайтом</small></div>
+            </div>
+            <nav class="tabs">
+                <button class="tab-btn active" data-tab="hero" data-title="Главная"><span class="ic">🏠</span><span class="label">Главная</span></button>
+                <button class="tab-btn" data-tab="history" data-title="История"><span class="ic">🕰️</span><span class="label">История</span></button>
+                <button class="tab-btn" data-tab="best_members" data-title="Лучшие кадеты"><span class="ic">🎖️</span><span class="label">Лучшие кадеты</span></button>
+                <button class="tab-btn" data-tab="activities" data-title="Деятельность"><span class="ic">🧭</span><span class="label">Деятельность</span></button>
+                <button class="tab-btn" data-tab="documents" data-title="Документы"><span class="ic">📄</span><span class="label">Документы</span></button>
+                <button class="tab-btn" data-tab="contact" data-title="Контакты"><span class="ic">✉️</span><span class="label">Контакты</span></button>
+                <button class="tab-btn" data-tab="password" data-title="Пароль"><span class="ic">🔒</span><span class="label">Пароль</span></button>
+            </nav>
+            <div class="sidebar-foot">
+                <a class="site-link" href="/" target="_blank">🔗 Открыть сайт</a>
+                <div class="whoami-row">
+                    <span id="whoami"></span>
+                    <button id="logoutBtn">Выйти</button>
+                </div>
+            </div>
+        </aside>
+        <div class="main">
+            <header class="topbar"><h1 id="pageTitle">Главная</h1></header>
+            <div class="wrap"><div id="tabContent"></div></div>
         </div>
-    </header>
-    <div class="wrap">
-        <div class="tabs">
-            <button class="tab-btn active" data-tab="hero">Главная</button>
-            <button class="tab-btn" data-tab="history">История</button>
-            <button class="tab-btn" data-tab="best_members">Лучшие кадеты</button>
-            <button class="tab-btn" data-tab="activities">Деятельность</button>
-            <button class="tab-btn" data-tab="documents">Документы</button>
-            <button class="tab-btn" data-tab="contact">Контакты</button>
-            <button class="tab-btn" data-tab="password">Пароль</button>
-        </div>
-        <div id="tabContent"></div>
     </div>
 </div>
 
