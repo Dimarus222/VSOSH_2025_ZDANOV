@@ -4,14 +4,6 @@ function esc(s) {
 }
 function nl2br(s) { return esc(s).replace(/\n/g, '<br>'); }
 
-// Иконки хранятся в контенте как коды вида "fa-star" (их можно менять в админке) —
-// здесь они превращаются в ссылку на локальный SVG-спрайт вместо Font Awesome.
-function iconSvg(code, style) {
-    const name = String(code || 'fa-star').replace(/^fa-/, '');
-    const styleAttr = style ? ` style="${style}"` : '';
-    return `<svg class="icon"${styleAttr}><use href="#i-${esc(name)}"></use></svg>`;
-}
-
 async function loadContent() {
     try {
         const res = await fetch('/api/content');
@@ -35,7 +27,7 @@ function render(data) {
     }
     if (Array.isArray(data.history_timeline)) {
         document.getElementById('historyTimeline').innerHTML = data.history_timeline.map(item => `
-            <div class="timeline-item"><div class="timeline-content"><div class="timeline-date">${iconSvg(item.icon)} ${esc(item.date)}</div><h3>${esc(item.title)}</h3><p>${esc(item.text)}</p></div></div>
+            <div class="timeline-item"><div class="timeline-content"><div class="timeline-date"><i class="fas ${esc(item.icon || 'fa-star')}"></i> ${esc(item.date)}</div><h3>${esc(item.title)}</h3><p>${esc(item.text)}</p></div></div>
         `).join('');
     }
     if (Array.isArray(data.history_achievements)) {
@@ -52,7 +44,7 @@ function render(data) {
         document.getElementById('bestMembers').innerHTML = data.best_members.map(m => `
             <div class="card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-img" style="height: 400px; flex-shrink: 0;">
-                    <img src="${esc(m.photo)}" alt="${esc(m.name)}" style="width: 100%; height: 100%; object-fit: cover; object-position: top center;" loading="lazy" width="400" height="400">
+                    <img src="${esc(m.photo)}" alt="${esc(m.name)}" style="width: 100%; height: 100%; object-fit: cover; object-position: top center;" loading="lazy">
                 </div>
                 <div class="card-content" style="flex: 1; display: flex; flex-direction: column;">
                     <h3>${esc(m.name)}</h3>
@@ -68,7 +60,7 @@ function render(data) {
     }
     if (Array.isArray(data.activities)) {
         document.getElementById('activitiesList').innerHTML = data.activities.map(a => `
-            <div class="card"><div class="card-content" style="padding-top: 2.5rem; text-align: center;">${iconSvg(a.icon, 'font-size:3rem;color:var(--gold);margin-bottom:1rem;display:inline-block;')}<h3>${esc(a.title)}</h3><p>${esc(a.text)}</p></div></div>
+            <div class="card"><div class="card-content" style="padding-top: 2.5rem; text-align: center;"><i class="fas ${esc(a.icon || 'fa-star')}" style="font-size: 3rem; color: var(--gold); margin-bottom: 1rem; display: inline-block;"></i><h3>${esc(a.title)}</h3><p>${esc(a.text)}</p></div></div>
         `).join('');
     }
     if (data.activities_quote) {
@@ -76,7 +68,7 @@ function render(data) {
     }
     if (Array.isArray(data.documents)) {
         document.getElementById('documentsList').innerHTML = data.documents.map(d => `
-            <div class="card"><div class="card-img"><img src="${esc(d.image)}" alt="Документ" loading="lazy" width="400" height="450"></div><div class="card-content"><p>${esc(d.desc)}</p><div class="document-meta">${iconSvg('fa-calendar')} ${esc(d.date)} &nbsp; ${iconSvg('fa-file-alt')} ${esc(d.size)}</div><a href="${esc(d.file)}" class="btn" style="padding:8px 20px; font-size:0.85rem" download>${iconSvg('fa-download')} Скачать</a></div></div>
+            <div class="card"><div class="card-img"><img src="${esc(d.image)}" alt="Документ" loading="lazy"></div><div class="card-content"><p>${esc(d.desc)}</p><div class="document-meta"><i class="fas fa-calendar"></i> ${esc(d.date)} &nbsp; <i class="fas fa-file-alt"></i> ${esc(d.size)}</div><a href="${esc(d.file)}" class="btn" style="padding:8px 20px; font-size:0.85rem" download><i class="fas fa-download"></i> Скачать</a></div></div>
         `).join('');
     }
     if (data.contact) {

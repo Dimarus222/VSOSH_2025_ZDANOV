@@ -1,7 +1,6 @@
 package main
 
 import (
-	"compress/gzip"
 	"crypto/rand"
 	"database/sql"
 	"encoding/hex"
@@ -473,9 +472,6 @@ func main() {
 	mux.HandleFunc("POST /api/admin/upload", requireAuth(handleUpload))
 	uploadsHandler := http.StripPrefix("/uploads/", http.FileServer(http.Dir(uploadsDir)))
 	mux.HandleFunc("GET /uploads/", func(w http.ResponseWriter, r *http.Request) {
-		// Картинки/документы меняются редко — кэшируем на сутки на телефоне пользователя,
-		// чтобы при повторном заходе на сайт они не качались заново.
-		w.Header().Set("Cache-Control", "public, max-age=86400")
 		uploadsHandler.ServeHTTP(w, r)
 	})
 
@@ -488,10 +484,6 @@ func main() {
 			if contentType != "" {
 				w.Header().Set("Content-Type", contentType)
 			}
-			// Короткий кэш: если через минуту-две после деплоя браузер спросит снова,
-			// он всё равно перепроверит файл (If-Modified-Since), но не будет качать
-			// html/js заново на каждый чих при навигации по сайту.
-			w.Header().Set("Cache-Control", "public, max-age=300, must-revalidate")
 			http.ServeFile(w, r, full)
 		}
 	}
@@ -503,53 +495,9 @@ func main() {
 	port := envOr("PORT", "8080")
 	addr := ":" + port
 	log.Printf("KMKK сервер запущен на %s (web=%s, uploads=%s)", addr, webDir, uploadsDir)
-	if err := http.ListenAndServe(addr, logMiddleware(gzipMiddleware(mux))); err != nil {
+	if err := http.ListenAndServe(addr, logMiddleware(mux)); err != nil {
 		log.Fatal(err)
 	}
-}
-
-// gzipResponseWriter compresses response bodies on the fly for clients that
-// support it (almost all browsers). This roughly halves the transfer size of
-// text responses (HTML/JS/JSON) — the images/documents under /uploads/ are
-// skipped since they're already compressed formats and gzipping them again
-// wastes CPU for no benefit.
-type gzipResponseWriter struct {
-	http.ResponseWriter
-	gz          *gzip.Writer
-	wroteHeader bool
-}
-
-func (w *gzipResponseWriter) WriteHeader(code int) {
-	// http.ServeFile sets Content-Length/Accept-Ranges for the *uncompressed*
-	// file size; since we're rewriting the body through gzip, those headers
-	// would be wrong and must be dropped before they reach the client.
-	w.Header().Del("Content-Length")
-	w.Header().Del("Accept-Ranges")
-	w.Header().Set("Content-Encoding", "gzip")
-	w.Header().Set("Vary", "Accept-Encoding")
-	w.wroteHeader = true
-	w.ResponseWriter.WriteHeader(code)
-}
-
-func (w *gzipResponseWriter) Write(b []byte) (int, error) {
-	if !w.wroteHeader {
-		w.WriteHeader(http.StatusOK)
-	}
-	return w.gz.Write(b)
-}
-
-func gzipMiddleware(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if !strings.Contains(r.Header.Get("Accept-Encoding"), "gzip") ||
-			strings.HasPrefix(r.URL.Path, "/uploads/") ||
-			r.Header.Get("Range") != "" {
-			next.ServeHTTP(w, r)
-			return
-		}
-		gz := gzip.NewWriter(w)
-		defer gz.Close()
-		next.ServeHTTP(&gzipResponseWriter{ResponseWriter: w, gz: gz}, r)
-	})
 }
 
 // seedUploadsIfEmpty copies the original site images/documents (checked into
